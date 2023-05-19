@@ -1,2 +1,2 @@
-# mave_vocabulary
-linkml representation of MAVE controlled vocabulary terms
+# MAVE Minimum Information Model
+JSON Schema for validating MAVE experiment metadata

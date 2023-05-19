@@ -1,0 +1,54 @@
+# https://docs.google.com/document/d/1HTy5oLd0FWwcqirCh6WXFcBAiwHl5rr5hnjg_kEYKsE/edit
+$schema: http://json-schema.org/draft-07/schema
+title: MAVE experiment definition
+definitions:
+  referenceSequence:
+    type: object
+    properties:
+      id:
+        type: string
+      sha512t24u:
+        type: string
+        pattern:  [0-9A-Za-z_\-]{32}
+      sequence:
+        type: string
+      sequenceAlphabet:
+        type: string
+        enum:
+          - DNA
+          - RNA
+          - Protein
+    required:
+      - sequence_type # to-do: see if a literal sequence or sha512t24u can be oneOf listed here
+  variantLibrary:
+    type: object
+    definition: a collection of sequences that are derived from a common target sequence
+    properties:
+      targetSequence:
+        description: the sequence used as a reference from which all variants in the library are defined
+        $ref: "definitions/referenceSequence"
+      scope:
+        description: the collection of DNA elements introduced into the library. DNA elements can have known
+          (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc), 
+          or unknown functions. For a given DNA element we distinguish the mode of variant programming/engineering 
+          (e.g. all SNV, indels, ClinVar variants etc).
+        type: array
+        items:
+          type:
+            string
+          enum:
+            - Coding
+            - Intronic
+            - Non-coding regulatory
+            - Non-coding other
+        minItems: 1
+      method:
+        description: the method used for generating the library
+      properties:
+    required:
+      - scope
+      - targetSequence
+type: object
+properties:
+  library:
+    $ref: "#definitions/variantLibrary"
