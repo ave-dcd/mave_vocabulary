@@ -1,3 +1,17 @@
-library:
-  targetSequence:
-    id:
+variantLibrary:
+  # targetSequence: # todo
+  scope:
+    - system: ave
+      code: <not defined> # todo
+      display: Coding
+  # relevance? # todo
+  generationMethod:
+    - type:
+        system: ave
+        code: AVE_00015
+        display: doped oligo synthesis (Oligo pool synthesis, Twist Bioscience)
+  deliveryMethod:
+    - type:
+        system: ave
+        code: < not defined > # todo
+        display: Plasmid / not integrated # todo: evaluate note about add as attribute

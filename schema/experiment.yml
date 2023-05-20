@@ -2,16 +2,36 @@
 $schema: http://json-schema.org/draft-07/schema
 title: MAVE experiment definition
 definitions:
+  id:     # from https://build.fhir.org/datatypes.html#id
+    type: string
+    pattern: [ A-Za-z0-9\-\. ]{ 1,64 }
+  coding: # from https://build.fhir.org/datatypes.html#Coding
+    type: object
+    properties:
+      system:
+        description: Identity of the terminology system
+        type: string
+        pattern: \S*
+      version:
+        type: string
+      code:
+        type: string
+        pattern: [^\s]+( [^\s]+)*
+      display:
+        type: string
+      userSelected:
+        type: boolean
   referenceSequence:
     type: object
     properties:
       id:
-        type: string
+        $ref: "#/definitions/id"
       sha512t24u:
         type: string
-        pattern:  [0-9A-Za-z_\-]{32}
+        pattern: [0-9A-Za-z_\-]{32}
       sequence:
         type: string
+        pattern: ^[A-Z*\-]*$
       sequenceAlphabet:
         type: string
         enum:
@@ -26,7 +46,7 @@ definitions:
     properties:
       targetSequence:
         description: the sequence used as a reference from which all variants in the library are defined
-        $ref: "definitions/referenceSequence"
+        $ref: "#/definitions/referenceSequence"
       scope:
         description: the collection of DNA elements introduced into the library. DNA elements can have known
           (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc), 
@@ -42,13 +62,22 @@ definitions:
             - Non-coding regulatory
             - Non-coding other
         minItems: 1
-      method:
+      generationMethod:
         description: the method used for generating the library
-      properties:
+        type: object
+        properties:
+          type:
+            description: the type of method used to generate the library
+            type:
+              $ref: "#/definitions/coding"
+          functionality:
+            description: the functional mechanism of a variant library generation method
+            type:
+              $ref: "#/definitions/coding"
     required:
       - scope
       - targetSequence
 type: object
 properties:
-  library:
-    $ref: "#definitions/variantLibrary"
+  variantLibrary:
+    $ref: "#/definitions/variantLibrary"
