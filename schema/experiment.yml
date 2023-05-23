@@ -1,7 +1,7 @@
 # https://docs.google.com/document/d/1HTy5oLd0FWwcqirCh6WXFcBAiwHl5rr5hnjg_kEYKsE/edit
-$schema: http://json-schema.org/draft-07/schema
+$schema: https://json-schema.org/draft/2020-12/schema
 title: MAVE experiment definition
-definitions:
+$defs:
   id:     # from https://build.fhir.org/datatypes.html#id
     type: string
     pattern: [ A-Za-z0-9\-\. ]{ 1,64 }
@@ -9,23 +9,27 @@ definitions:
     type: object
     properties:
       system:
-        description: Identity of the terminology system
+        description: identity of the terminology system.
         type: string
         pattern: \S*
       version:
+        description: version of the terminology system.
         type: string
       code:
+        description: a code within the terminology system.
         type: string
-        pattern: [^\s]+( [^\s]+)*
+        pattern: \S+( \S+)*
       display:
+        description: a human-readable description of the concept associated with the code.
         type: string
       userSelected:
+        description: a flag indicating whether the
         type: boolean
   referenceSequence:
     type: object
     properties:
       id:
-        $ref: "#/definitions/id"
+        $ref: "#/$defs/id"
       sha512t24u:
         type: string
         pattern: [0-9A-Za-z_\-]{32}
@@ -46,22 +50,25 @@ definitions:
     properties:
       targetSequence:
         description: the sequence used as a reference from which all variants in the library are defined
-        $ref: "#/definitions/referenceSequence"
+        $ref: "#/$defs/referenceSequence"
       scope:
-        description: the collection of DNA elements introduced into the library. DNA elements can have known
+        description: the functional scope of DNA elements introduced into the library. DNA elements can have known
           (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc), 
-          or unknown functions. For a given DNA element we distinguish the mode of variant programming/engineering 
-          (e.g. all SNV, indels, ClinVar variants etc).
-        type: array
-        items:
+          or unknown functions.
+        type: object
+        properties:
           type:
-            string
-          enum:
-            - Coding
-            - Intronic
-            - Non-coding regulatory
-            - Non-coding other
-        minItems: 1
+            description: the scope type for elements introduced into the library.
+            type: string
+            enum: # todo: change this to coding and add to controlled vocabulary
+              - Coding
+              - Intronic
+              - Non-coding regulatory
+              - Non-coding other
+          description:
+            type: string
+            description: additional details about the DNA element scope. For example, distinguishing the mode of 
+              variant programming/engineering (e.g. all SNV, indels, ClinVar variants etc).
       generationMethod:
         description: the method used for generating the library
         type: object
@@ -69,15 +76,51 @@ definitions:
           type:
             description: the type of method used to generate the library
             type:
-              $ref: "#/definitions/coding"
+              $ref: "#/$defs/coding"
           functionality:
             description: the functional mechanism of a variant library generation method
             type:
-              $ref: "#/definitions/coding"
+              $ref: "#/$defs/coding"
+          description:
+            description: additional details about the variant library generation method
+            type: string
+        required:
+          - type
+          - functionality
     required:
       - scope
       - targetSequence
+      - generationMethod
+  deliveryMethod:
+    description:
+    type: object
+    properties:
+      type:
+        $ref: "#/$defs/coding"
+        description: a coding defining how the variant library was delivered to the
+          model system for phenotype evaluation.
+      description:
+        type: string
+        description: additional details about the delivery method.
+    required:
+      - type
 type: object
 properties:
   variantLibrary:
-    $ref: "#/definitions/variantLibrary"
+    description: characteristics of the variant library generation process.
+    $ref: "#/$defs/variantLibrary"
+  deliveryMethod:
+    description:
+    $ref: "#/$defs/deliveryMethod"
+  phenotypicAssay:
+    $ref: "#/$defs/phenotypicAssay"
+  scoreSet:
+    type: array
+    items:
+      - $ref: "#/$defs/scoreSet"
+    minItems: 1
+  required:
+    - variantLibrary
+    - deliveryMethod
+    - phenotypicAssay
+    - scoreSet

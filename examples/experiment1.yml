@@ -6,12 +6,12 @@ variantLibrary:
       display: Coding
   # relevance? # todo
   generationMethod:
-    - type:
-        system: ave
-        code: AVE_00015
-        display: doped oligo synthesis (Oligo pool synthesis, Twist Bioscience)
+    type:
+      system: ave
+      code: AVE_00015
+      display: doped oligo synthesis
   deliveryMethod:
-    - type:
-        system: ave
-        code: < not defined > # todo
-        display: Plasmid / not integrated # todo: evaluate note about add as attribute
+    type:
+      system: ave
+      code: < not defined > # todo
+      display: Plasmid / not integrated # todo: evaluate note about add as attribute
