@@ -1,9 +1,9 @@
 variantLibrary:
   # targetSequence: # todo
   scope:
-    - system: ave
-      code: <not defined> # todo
-      display: Coding
+    system: ave
+    code: <not defined> # todo
+    display: Coding
   # relevance? # todo
   generationMethod:
     type:
@@ -15,3 +15,9 @@ variantLibrary:
       system: ave
       code: < not defined > # todo
       display: Plasmid / not integrated # todo: evaluate note about add as attribute
+deliveryMethod:
+  test
+phenotypicAssay:
+  test
+scoreSet:
+  test
