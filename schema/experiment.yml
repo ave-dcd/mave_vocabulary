@@ -47,11 +47,14 @@ $defs:
       - sequence_type # to-do: see if a literal sequence or sha512t24u can be oneOf listed here
   variantLibrary:
     type: object
-    definition: a collection of sequences that are derived from a common target sequence
+    definition: a collection of sequences that are derived from a common target sequence.
     properties:
-      targetSequence:
-        description: the sequence used as a reference from which all variants in the library are defined
-        $ref: "#/$defs/referenceSequence"
+      targetSequences:
+        description: the collection of sequences used as references from which all variants in the library are defined.
+        type: array
+        items:
+          - $ref: "#/$defs/referenceSequence"
+        minItems: 1
       scope:
         description: the functional scope of DNA elements introduced into the library. DNA elements can have known
           (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc), 
@@ -88,23 +91,23 @@ $defs:
         required:
           - type
           - functionality
+      deliveryMethod:
+        description: a description of how the variant library was delivered to the model system for phenotype
+          evaluation.
+        type: object
+        properties:
+          type:
+            $ref: "#/$defs/coding"
+            description: a coding defining the delivery method.
+          description:
+            type: string
+            description: additional details about the delivery method.
+        required:
+          - type
     required:
       - scope
       - targetSequence
       - generationMethod
-  deliveryMethod:
-    description: a description of how the variant library was delivered to the model system for phenotype 
-      evaluation.
-    type: object
-    properties:
-      type:
-        $ref: "#/$defs/coding"
-        description: a coding defining the delivery method.
-      description:
-        type: string
-        description: additional details about the delivery method.
-    required:
-      - type
   phenotypicAssay:
     description: a physical adjudication of a model system that allows for systematic interrogation of a functional 
       read-out for a large amount of genetic variants.
@@ -160,30 +163,40 @@ $defs:
       - relevance
       - modelSystem
   scoreSet:
-    description: a collection of assayed variants and their phenotypic scores.
+    description: a set of assayed variants and their phenotypic scores.
     type: object
     properties:
-      variant:
-        type: object
-        description: a variant associated with a phenotypic score.
-        properties:
-          vrs:
-            $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
-            description: a computable description of the variant using GA4GH VRS.
-          mave-hgvs:
-            type: string
-            description: a human-readable description of the variant using MAVE-HGVS.
-        anyOf:
-          - required:
-              - vrs
-          - required:
-              - mave-hgvs
-      score:
-        type: number
-        description: a phenotypic score associated with a variant.
-      required:
-        - variant
-        - score
+      variantScores:
+        description: a set of variants and their phenotypic scores.
+        type: array
+        items:
+          - type: object
+            properties:
+              variant:
+                type: object
+                description: a variant associated with a phenotypic score.
+                properties:
+                  vrs:
+                    # $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
+                    type: object
+                    description: a computable description of the variant using GA4GH VRS.
+                  mave-hgvs:
+                    type: string
+                    description: a human-readable description of the variant using MAVE-HGVS.
+                anyOf:
+                  - required:
+                      - vrs
+                  - required:
+                      - mave-hgvs
+              score:
+                type: number
+                description: a phenotypic score associated with a variant.
+            required:
+              - variant
+              - score
+        minItems: 1
+      sequencing:
+        description: the sequencing strategy used to identify variants in the score set.
     required:
       - sequencing
       - variant_scores
@@ -204,9 +217,6 @@ properties:
   variantLibrary:
     description: characteristics of the variant library generation process.
     $ref: "#/$defs/variantLibrary"
-  deliveryMethod:
-    description:
-    $ref: "#/$defs/deliveryMethod"
   phenotypicAssay:
     $ref: "#/$defs/phenotypicAssay"
   scoreSet:
@@ -215,7 +225,8 @@ properties:
       - $ref: "#/$defs/scoreSet"
     minItems: 1
   required:
+    - title
+    - abstract
     - variantLibrary
-    - deliveryMethod
     - phenotypicAssay
     - scoreSet

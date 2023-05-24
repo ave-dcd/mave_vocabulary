@@ -1,23 +1,35 @@
 variantLibrary:
-  # targetSequence: # todo
+  targetSequences:
+    - test
   scope:
-    system: ave
-    code: <not defined> # todo
-    display: Coding
-  # relevance? # todo
+    test
   generationMethod:
-    type:
-      system: ave
-      code: AVE_00015
-      display: doped oligo synthesis
+    test
   deliveryMethod:
-    type:
-      system: ave
-      code: < not defined > # todo
-      display: Plasmid / not integrated # todo: evaluate note about add as attribute
-deliveryMethod:
-  test
+    test
 phenotypicAssay:
-  test
+  dimensionality:
+    test
+  method:
+    test
+  relevance:
+    test
+  modelSystem:
+    test
 scoreSet:
-  test
+  variantScores:
+    - variant:
+        type: Allele
+        location:
+          type: SequenceLocation
+          start: 0
+          end: 1
+        state: A
+      score: 0.93
+  sequencing:
+    system:
+      AVE Vocabulary
+    code:
+      AVE_000XX
+    display:
+      test
