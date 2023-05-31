@@ -1,5 +1,5 @@
 title: Amyloid-Beta Deep Mutational Scan
-abstract: Lorem ipsum
+abstract: Multiplexed assays of variant effects (MAVEs) guide clinical variant interpretation and reveal disease mechanisms. To date, MAVEs have focussed on a single mutation type–amino acid (AA) substitutions–despite the diversity of coding variants that cause disease. Here we use Deep Indel Mutagenesis (DIM) to generate a comprehensive atlas of diverse variant effects for a disease protein, the amyloid beta (Aβ) peptide that aggregates in Alzheimer's disease (AD) and is mutated in familial AD (fAD). The atlas identifies known fAD mutations and reveals that many variants beyond substitutions accelerate Aβ aggregation and are likely to be pathogenic. Truncations, substitutions, insertions, single- and internal multi-AA deletions differ in their propensity to enhance or impair aggregation, but likely pathogenic variants from all classes are highly enriched in the polar N-terminal region of Aβ. This comparative atlas highlights the importance of including diverse mutation types in MAVEs and provides important mechanistic insights into amyloid nucleation.
 publication:
   title: >-
     An atlas of amyloid aggregation: the impact of substitutions, insertions, deletions and truncations 
@@ -11,3 +11,12 @@ publication:
 variantLibrary:
   scope:
     type: Coding
+  targetSequences:
+    - id: ga4gh:SQ.upmBKNxvwSQPi9n6JMSkWimiVyhutErS
+      sha512t24u: upmBKNxvwSQPi9n6JMSkWimiVyhutErS
+      sequence: DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIA
+      sequenceAlphabet: Protein
+  generationMethod:
+    generationSystem: oligo-directed mutagenic PCR
+    integrationMechanism: episomal delivery
+    description: Oligo pool synthesis, Twist Bioscience

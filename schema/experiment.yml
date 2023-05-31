@@ -2,9 +2,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: MAVE experiment definition
 $defs:
-  id:     # from https://build.fhir.org/datatypes.html#id
-    type: string
-    pattern: '[ A-Za-z0-9\-\. ]{ 1,64 }'
   Publication:
     type: object
     additionalProperties: false
@@ -49,7 +46,7 @@ $defs:
     additionalProperties: false
     properties:
       id:
-        $ref: "#/$defs/id"
+        type: string
       sha512t24u:
         type: string
         pattern: '[0-9A-Za-z_\-]{32}'
@@ -62,19 +59,83 @@ $defs:
           - DNA
           - RNA
           - Protein
+  EndogenousLocusLibraryMethod:
+    type: object
+    additionalProperties: false
+    description: a methodology for generating a variant library at an endogenous locus
+    properties:
+      generationSystem:
+        type: string
+        description: the system used to generate the library
+        enum:
+          - SpCas9
+          - SaCas9
+          - AsCas12a
+          - RfsCas13d
+      generationMechanism:
+        description: the functional mechanism of the library generation method
+        type: string
+        enum:
+          - wildtype nuclease
+          - base editor
+          - prime editor
+      description:
+        description: additional details about the variant library generation method
+        type: string
     required:
-      - sequence_type # to-do: see if a literal sequence or sha512t24u can be oneOf listed here
+      - system
+      - functionality
+  InVitroConstructLibraryMethod:
+    type: object
+    additionalProperties: false
+    description: a methodology for generating and integrating an exogenous variant library
+    properties:
+      generationSystem:
+        type: string
+        description: the type of method used to generate the library
+        enum:
+          - oligo-directed mutagenic PCR
+          - error-prone PCR
+          - nicking mutagenesis
+          - microarray synthesis
+          - site-directed mutagenesis
+          - doped oligo synthesis
+          - proprietary method
+          - other
+      integrationMechanism:
+        description: the mechanism for integration/expression of an exogenous construct
+        type: string
+        enum:
+          - native locus replacement
+          - insertion of extra-local construct
+          - viral integration
+          - episomal delivery
+          - transfection of RNA
+      description:
+        description: additional details about the variant library generation method
+        type: string
+    if:
+      properties:
+        generationSystem:
+          const: other
+    then:
+      required:
+        - generationSystem
+        - description
+    else:
+      required:
+        - generationSystem
   VariantLibrary:
     type: object
     additionalProperties: false
-    definition: a collection of sequences that are derived from a common target sequence.
+    description: a collection of sequences that are derived from a common target sequence.
     properties:
-#      targetSequences:
-#        description: the collection of sequences used as references from which all variants in the library are defined.
-#        type: array
-#        items:
-#          - $ref: "#/$defs/referenceSequence"
-#        minItems: 1
+      targetSequences:
+        description: the collection of sequences used as references from which all variants in the library are defined.
+        type: array
+        items:
+          $ref: "#/$defs/ReferenceSequence"
+        minItems: 1
       scope:
         description: the functional scope of DNA elements introduced into the library. DNA elements can have known
           or unknown functions. Example functions include a gene, an exon or set of exons included in a transcript, 
@@ -100,25 +161,12 @@ $defs:
         then:
           required:
             - description
+      generationMethod:
+        description: the method used for generating the library
+        oneOf:
+#          - $ref: "#/$defs/EndogenousLocusLibraryMethod"
+          - $ref: "#/$defs/InVitroConstructLibraryMethod"
 
-#      generationMethod:
-#        description: the method used for generating the library
-#        type: object
-#        properties:
-#          type:
-#            description: the type of method used to generate the library
-#            type:
-#              $ref: "#/$defs/coding"
-#          functionality:
-#            description: the functional mechanism of a variant library generation method
-#            type:
-#              $ref: "#/$defs/coding"
-#          description:
-#            description: additional details about the variant library generation method
-#            type: string
-#        required:
-#          - type
-#          - functionality
 #      deliveryMethod:
 #        description: a description of how the variant library was delivered to the model system for phenotype
 #          evaluation.
@@ -134,8 +182,8 @@ $defs:
 #          - type
     required:
       - scope
-#      - targetSequence
-#      - generationMethod
+      - targetSequences
+      - generationMethod
 #      - deliveryMethod
 #  phenotypicAssay:
 #    description: a physical adjudication of a model system that allows for systematic interrogation of a functional
