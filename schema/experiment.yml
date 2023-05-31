@@ -5,8 +5,30 @@ $defs:
   id:     # from https://build.fhir.org/datatypes.html#id
     type: string
     pattern: '[ A-Za-z0-9\-\. ]{ 1,64 }'
-  coding: # from https://build.fhir.org/datatypes.html#Coding
+  Publication:
     type: object
+    additionalProperties: false
+    properties:
+      title:
+        type: string
+        description: the title of the publication.
+      journal:
+        type: string
+        description: the name of the journal.
+      date:
+        type: string
+        format: date
+        description: the date the publication was published.
+      ref:
+        type: string
+        format: uri
+        description: >-
+          a Universal Record Identifier for the publication.
+    required:
+      - ref
+  Coding:
+    type: object
+    additionalProperties: false
     properties:
       system:
         description: identity of the terminology system.
@@ -19,15 +41,12 @@ $defs:
         description: a code within the terminology system.
         type: string
         pattern: '\S+( \S+)*'
-      display:
+      label:
         description: a human-readable description of the concept associated with the code.
         type: string
-      userSelected:
-        description: a flag indicating whether the code was selected by a human user (i.e.
-          not the result of an automated process).
-        type: boolean
-  referenceSequence:
+  ReferenceSequence:
     type: object
+    additionalProperties: false
     properties:
       id:
         $ref: "#/$defs/id"
@@ -45,162 +64,173 @@ $defs:
           - Protein
     required:
       - sequence_type # to-do: see if a literal sequence or sha512t24u can be oneOf listed here
-  variantLibrary:
+  VariantLibrary:
     type: object
+    additionalProperties: false
     definition: a collection of sequences that are derived from a common target sequence.
     properties:
-      targetSequences:
-        description: the collection of sequences used as references from which all variants in the library are defined.
-        type: array
-        items:
-          - $ref: "#/$defs/referenceSequence"
-        minItems: 1
+#      targetSequences:
+#        description: the collection of sequences used as references from which all variants in the library are defined.
+#        type: array
+#        items:
+#          - $ref: "#/$defs/referenceSequence"
+#        minItems: 1
       scope:
         description: the functional scope of DNA elements introduced into the library. DNA elements can have known
-          (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc), 
+          (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc),
           or unknown functions.
         type: object
         properties:
           type:
             description: the scope type for elements introduced into the library.
             type: string
-            enum: # todo: change this to coding and add to controlled vocabulary
+            enum:
               - Coding
               - Intronic
               - Non-coding regulatory
               - Non-coding other
           description:
             type: string
-            description: additional details about the DNA element scope. For example, distinguishing the mode of 
+            description: additional details about the DNA element scope. For example, distinguishing the mode of
               variant programming/engineering (e.g. all SNV, indels, ClinVar variants etc).
-      generationMethod:
-        description: the method used for generating the library
-        type: object
-        properties:
-          type:
-            description: the type of method used to generate the library
+        if:
+          properties:
             type:
-              $ref: "#/$defs/coding"
-          functionality:
-            description: the functional mechanism of a variant library generation method
-            type:
-              $ref: "#/$defs/coding"
-          description:
-            description: additional details about the variant library generation method
-            type: string
-        required:
-          - type
-          - functionality
-      deliveryMethod:
-        description: a description of how the variant library was delivered to the model system for phenotype
-          evaluation.
-        type: object
-        properties:
-          type:
-            $ref: "#/$defs/coding"
-            description: a coding defining the delivery method.
-          description:
-            type: string
-            description: additional details about the delivery method.
-        required:
-          - type
+              const: Non-coding other
+        then:
+          required:
+            - description
+
+#      generationMethod:
+#        description: the method used for generating the library
+#        type: object
+#        properties:
+#          type:
+#            description: the type of method used to generate the library
+#            type:
+#              $ref: "#/$defs/coding"
+#          functionality:
+#            description: the functional mechanism of a variant library generation method
+#            type:
+#              $ref: "#/$defs/coding"
+#          description:
+#            description: additional details about the variant library generation method
+#            type: string
+#        required:
+#          - type
+#          - functionality
+#      deliveryMethod:
+#        description: a description of how the variant library was delivered to the model system for phenotype
+#          evaluation.
+#        type: object
+#        properties:
+#          type:
+#            $ref: "#/$defs/coding"
+#            description: a coding defining the delivery method.
+#          description:
+#            type: string
+#            description: additional details about the delivery method.
+#        required:
+#          - type
     required:
       - scope
-      - targetSequence
-      - generationMethod
-  phenotypicAssay:
-    description: a physical adjudication of a model system that allows for systematic interrogation of a functional 
-      read-out for a large amount of genetic variants.
-    type: object
-    properties:
-      dimensionality:
-        type: object
-        description: dimensionality of phenotyping assay. Describes how many phenotypes and of what complexity
-          are included in the map.
-        properties:
-          type:
-            type:
-              $ref: "#/$defs/coding" #todo: make codings for this concept
-            description: a coding defining the dimensionality of the assay as single or multiple functional
-              readouts.
-          description:
-            type: string
-            description: additional details about the dimensionality of the assay.
-        required:
-          - type
-      method:
-        description: the assay method, defining the molecular properties interrogated.
-        type: object
-        properties:
-          type:
-            $ref: "#/$defs/coding" #todo: make codings for this concept
-            description: a coding defining the assay method as a type of assay. This should be a coding
-              descending from the "assay" concept in the ontology of biomedical investigations (OBI:0000070).
-          description:
-            type: string
-            description: additional details about the assay method.
-        required:
-          - type
-      relevance:
-        description: the disease or biological processes the assay is relevant to.
-        type: array
-        items:
-          - $ref: "#/$defs/coding"
-        minItems: 1
-      modelSystem:
-        description: the model system context that influences expression of the phenotype.
-        type: object
-        properties:
-          type:
-            $ref: "#/$defs/coding"
-            description: a coding defining the model system.
-          description:
-            type: string
-            description: additional details about the model system.
-    required:
-      - dimensionality
-      - method
-      - relevance
-      - modelSystem
-  scoreSet:
-    description: a set of assayed variants and their phenotypic scores.
-    type: object
-    properties:
-      variantScores:
-        description: a set of variants and their phenotypic scores.
-        type: array
-        items:
-          - type: object
-            properties:
-              variant:
-                type: object
-                description: a variant associated with a phenotypic score.
-                properties:
-                  vrs:
-                    # $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
-                    type: object
-                    description: a computable description of the variant using GA4GH VRS.
-                  mave-hgvs:
-                    type: string
-                    description: a human-readable description of the variant using MAVE-HGVS.
-                anyOf:
-                  - required:
-                      - vrs
-                  - required:
-                      - mave-hgvs
-              score:
-                type: number
-                description: a phenotypic score associated with a variant.
-            required:
-              - variant
-              - score
-        minItems: 1
-      sequencing:
-        description: the sequencing strategy used to identify variants in the score set.
-    required:
-      - sequencing
-      - variant_scores
+#      - targetSequence
+#      - generationMethod
+#      - deliveryMethod
+#  phenotypicAssay:
+#    description: a physical adjudication of a model system that allows for systematic interrogation of a functional
+#      read-out for a large amount of genetic variants.
+#    type: object
+#    properties:
+#      dimensionality:
+#        type: object
+#        description: dimensionality of phenotyping assay. Describes how many phenotypes and of what complexity
+#          are included in the map.
+#        properties:
+#          type:
+#            type:
+#              $ref: "#/$defs/coding" #todo: make codings for this concept
+#            description: a coding defining the dimensionality of the assay as single or multiple functional
+#              readouts.
+#          description:
+#            type: string
+#            description: additional details about the dimensionality of the assay.
+#        required:
+#          - type
+#      method:
+#        description: the assay method, defining the molecular properties interrogated.
+#        type: object
+#        properties:
+#          type:
+#            $ref: "#/$defs/coding" #todo: make codings for this concept
+#            description: a coding defining the assay method as a type of assay. This should be a coding
+#              descending from the "assay" concept in the ontology of biomedical investigations (OBI:0000070).
+#          description:
+#            type: string
+#            description: additional details about the assay method.
+#        required:
+#          - type
+#      relevance:
+#        description: the disease or biological processes the assay is relevant to.
+#        type: array
+#        items:
+#          - $ref: "#/$defs/coding"
+#        minItems: 1
+#      modelSystem:
+#        description: the model system context that influences expression of the phenotype.
+#        type: object
+#        properties:
+#          type:
+#            $ref: "#/$defs/coding"
+#            description: a coding defining the model system.
+#          description:
+#            type: string
+#            description: additional details about the model system.
+#    required:
+#      - dimensionality
+#      - method
+#      - relevance
+#      - modelSystem
+#  scoreSet:
+#    description: a set of assayed variants and their phenotypic scores.
+#    type: object
+#    properties:
+#      variantScores:
+#        description: a set of variants and their phenotypic scores.
+#        type: array
+#        items:
+#          - type: object
+#            properties:
+#              variant:
+#                type: object
+#                description: a variant associated with a phenotypic score.
+#                properties:
+#                  vrs:
+#                    # $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
+#                    type: object
+#                    description: a computable description of the variant using GA4GH VRS.
+#                  mave-hgvs:
+#                    type: string
+#                    description: a human-readable description of the variant using MAVE-HGVS.
+#                anyOf:
+#                  - required:
+#                      - vrs
+#                  - required:
+#                      - mave-hgvs
+#              score:
+#                type: number
+#                description: a phenotypic score associated with a variant.
+#            required:
+#              - variant
+#              - score
+#        minItems: 1
+#      sequencing:
+#        description: the sequencing strategy used to identify variants in the score set.
+#    required:
+#      - sequencing
+#      - variant_scores
 type: object
+additionalProperties: false
 properties:
   title:
     description: the title of the MAVE experiment.
@@ -208,25 +238,22 @@ properties:
   abstract:
     description: an abstract describing the MAVE experiment.
     type: string
-  publications:
-    description: publications associated with the MAVE experiment, encoded as DOIs or 
-      publication identifiers.
-    type: array
-    items:
-      - $ref: "#/$defs/coding"
+  publication:
+    description: the primary publication describing this experiment.
+    $ref: "#/$defs/Publication"
   variantLibrary:
     description: characteristics of the variant library generation process.
-    $ref: "#/$defs/variantLibrary"
-  phenotypicAssay:
-    $ref: "#/$defs/phenotypicAssay"
-  scoreSet:
-    type: array
-    items:
-      - $ref: "#/$defs/scoreSet"
-    minItems: 1
-  required:
-    - title
-    - abstract
-    - variantLibrary
-    - phenotypicAssay
-    - scoreSet
+    $ref: "#/$defs/VariantLibrary"
+#  phenotypicAssay:
+#    $ref: "#/$defs/phenotypicAssay"
+#  scoreSets:
+#    type: array
+#    items:
+#      - $ref: "#/$defs/scoreSet"
+#    minItems: 1
+required:
+  - title
+  - abstract
+  - variantLibrary
+#    - phenotypicAssay
+#    - scoreSet

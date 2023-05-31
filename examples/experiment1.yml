@@ -1,35 +1,13 @@
+title: Amyloid-Beta Deep Mutational Scan
+abstract: Lorem ipsum
+publication:
+  title: >-
+    An atlas of amyloid aggregation: the impact of substitutions, insertions, deletions and truncations 
+    on amyloid beta fibril nucleation.
+  journal:
+    Nature Communications
+  date: "2022-11-18"
+  ref: https://doi.org/10.1038/s41467-022-34742-3
 variantLibrary:
-  targetSequences:
-    - test
   scope:
-    test
-  generationMethod:
-    test
-  deliveryMethod:
-    test
-phenotypicAssay:
-  dimensionality:
-    test
-  method:
-    test
-  relevance:
-    test
-  modelSystem:
-    test
-scoreSet:
-  variantScores:
-    - variant:
-        type: Allele
-        location:
-          type: SequenceLocation
-          start: 0
-          end: 1
-        state: A
-      score: 0.93
-  sequencing:
-    system:
-      AVE Vocabulary
-    code:
-      AVE_000XX
-    display:
-      test
+    type: Non-coding regulatory
