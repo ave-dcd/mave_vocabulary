@@ -77,8 +77,8 @@ $defs:
 #        minItems: 1
       scope:
         description: the functional scope of DNA elements introduced into the library. DNA elements can have known
-          (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, repressors, etc),
-          or unknown functions.
+          or unknown functions. Example functions include a gene, an exon or set of exons included in a transcript, 
+          a set of enhancers, a set of repressors, etc.
         type: object
         properties:
           type:
@@ -87,8 +87,8 @@ $defs:
             enum:
               - Coding
               - Intronic
-              - Non-coding regulatory
-              - Non-coding other
+              - Non-coding, regulatory
+              - Non-coding, other
           description:
             type: string
             description: additional details about the DNA element scope. For example, distinguishing the mode of
@@ -96,7 +96,7 @@ $defs:
         if:
           properties:
             type:
-              const: Non-coding other
+              const: Non-coding, other
         then:
           required:
             - description
