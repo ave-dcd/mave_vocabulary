@@ -164,7 +164,7 @@ $defs:
       generationMethod:
         description: the method used for generating the library
         oneOf:
-#          - $ref: "#/$defs/EndogenousLocusLibraryMethod"
+          - $ref: "#/$defs/EndogenousLocusLibraryMethod"
           - $ref: "#/$defs/InVitroConstructLibraryMethod"
 
 #      deliveryMethod:
