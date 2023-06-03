@@ -8,19 +8,19 @@ $defs:
     properties:
       title:
         type: string
-        description: the title of the publication.
+        description: the title of the publication
       journal:
         type: string
-        description: the name of the journal.
+        description: the name of the journal
       date:
         type: string
         format: date
-        description: the date the publication was published.
+        description: the date the publication was published
       ref:
         type: string
         format: uri
         description: >-
-          a Universal Record Identifier for the publication.
+          a Universal Record Identifier for the publication
     required:
       - ref
   Coding:
@@ -28,18 +28,18 @@ $defs:
     additionalProperties: false
     properties:
       system:
-        description: identity of the terminology system.
+        description: identity of the terminology system
         type: string
-        pattern: '\S*'
+        format: uri
       version:
-        description: version of the terminology system.
+        description: version of the terminology system
         type: string
       code:
-        description: a code within the terminology system.
+        description: a code within the terminology system
         type: string
         pattern: '\S+( \S+)*'
       label:
-        description: a human-readable description of the concept associated with the code.
+        description: a human-readable description of the concept associated with the code
         type: string
   ReferenceSequence:
     type: object
@@ -64,7 +64,10 @@ $defs:
     additionalProperties: false
     description: a methodology for generating a variant library at an endogenous locus
     properties:
-      generationSystem:
+      type:
+        const: endogenous locus library
+        default: endogenous locus library
+      system:
         type: string
         description: the system used to generate the library
         enum:
@@ -72,7 +75,7 @@ $defs:
           - SaCas9
           - AsCas12a
           - RfsCas13d
-      generationMechanism:
+      mechanism:
         description: the functional mechanism of the library generation method
         type: string
         enum:
@@ -83,14 +86,18 @@ $defs:
         description: additional details about the variant library generation method
         type: string
     required:
+      - type
       - system
-      - functionality
+      - mechanism
   InVitroConstructLibraryMethod:
     type: object
     additionalProperties: false
     description: a methodology for generating and integrating an exogenous variant library
     properties:
-      generationSystem:
+      type:
+        const: in-vitro construct library
+        default: in-vitro construct library
+      system:
         type: string
         description: the type of method used to generate the library
         enum:
@@ -100,38 +107,42 @@ $defs:
           - microarray synthesis
           - site-directed mutagenesis
           - doped oligo synthesis
+          - oligo pool synthesis
           - proprietary method
           - other
-      integrationMechanism:
-        description: the mechanism for integration/expression of an exogenous construct
+      integration:
+        description: the mechanism for integration or expression of an exogenous construct
         type: string
         enum:
           - native locus replacement
-          - insertion of extra-local construct
+          - extra-local construct insertion
           - viral integration
           - episomal delivery
+          - plasmid (not integrated)
           - transfection of RNA
       description:
         description: additional details about the variant library generation method
         type: string
     if:
       properties:
-        generationSystem:
+        system:
           const: other
     then:
       required:
-        - generationSystem
+        - type
+        - system
         - description
     else:
       required:
-        - generationSystem
+        - type
+        - system
   VariantLibrary:
     type: object
     additionalProperties: false
-    description: a collection of sequences that are derived from a common target sequence.
+    description: a collection of sequences that are derived from a common target sequence
     properties:
       targetSequences:
-        description: the collection of sequences used as references from which all variants in the library are defined.
+        description: the collection of sequences used as references from which all variants in the library are defined
         type: array
         items:
           $ref: "#/$defs/ReferenceSequence"
@@ -143,13 +154,13 @@ $defs:
         type: object
         properties:
           type:
-            description: the scope type for elements introduced into the library.
+            description: the scope type for elements introduced into the library
             type: string
             enum:
-              - Coding
-              - Intronic
-              - Non-coding, regulatory
-              - Non-coding, other
+              - coding
+              - intronic
+              - non-coding, regulatory
+              - non-coding, other
           description:
             type: string
             description: additional details about the DNA element scope. For example, distinguishing the mode of
@@ -166,79 +177,127 @@ $defs:
         oneOf:
           - $ref: "#/$defs/EndogenousLocusLibraryMethod"
           - $ref: "#/$defs/InVitroConstructLibraryMethod"
-
-#      deliveryMethod:
-#        description: a description of how the variant library was delivered to the model system for phenotype
-#          evaluation.
-#        type: object
-#        properties:
-#          type:
-#            $ref: "#/$defs/coding"
-#            description: a coding defining the delivery method.
-#          description:
-#            type: string
-#            description: additional details about the delivery method.
-#        required:
-#          - type
+      deliveryMethod:
+        description: a description of how the variant library was delivered to the model system for phenotype
+          evaluation.
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+              - electroporation
+              - nucleofection
+              - chemical-based transfection
+              - adeno-associated virus transduction
+              - lentivirus transduction
+              - chemical or heat shock transformation
+              - other
+          description:
+            type: string
+            description: additional details about the delivery method.
+        required:
+          - type
     required:
       - scope
       - targetSequences
       - generationMethod
-#      - deliveryMethod
-#  phenotypicAssay:
-#    description: a physical adjudication of a model system that allows for systematic interrogation of a functional
-#      read-out for a large amount of genetic variants.
-#    type: object
-#    properties:
-#      dimensionality:
-#        type: object
-#        description: dimensionality of phenotyping assay. Describes how many phenotypes and of what complexity
-#          are included in the map.
-#        properties:
-#          type:
-#            type:
-#              $ref: "#/$defs/coding" #todo: make codings for this concept
-#            description: a coding defining the dimensionality of the assay as single or multiple functional
-#              readouts.
-#          description:
-#            type: string
-#            description: additional details about the dimensionality of the assay.
-#        required:
-#          - type
-#      method:
-#        description: the assay method, defining the molecular properties interrogated.
-#        type: object
-#        properties:
-#          type:
-#            $ref: "#/$defs/coding" #todo: make codings for this concept
-#            description: a coding defining the assay method as a type of assay. This should be a coding
-#              descending from the "assay" concept in the ontology of biomedical investigations (OBI:0000070).
-#          description:
-#            type: string
-#            description: additional details about the assay method.
-#        required:
-#          - type
-#      relevance:
-#        description: the disease or biological processes the assay is relevant to.
-#        type: array
-#        items:
-#          - $ref: "#/$defs/coding"
-#        minItems: 1
-#      modelSystem:
-#        description: the model system context that influences expression of the phenotype.
-#        type: object
-#        properties:
-#          type:
-#            $ref: "#/$defs/coding"
-#            description: a coding defining the model system.
-#          description:
-#            type: string
-#            description: additional details about the model system.
-#    required:
-#      - dimensionality
-#      - method
-#      - relevance
-#      - modelSystem
+      - deliveryMethod
+  phenotypicAssay:
+    description: a physical adjudication of a model system that allows for systematic interrogation of a functional
+      read-out for a large amount of genetic variants.
+    type: object
+    properties:
+      dimensionality:
+        type: object
+        description: dimensionality of phenotyping assay. Describes how many phenotypes and of what complexity
+          are included in the map.
+        properties:
+          type:
+            description: a coding defining the dimensionality of the assay as single or multiple functional
+              readouts.
+            type: string
+            enum:
+              - single dimension
+              - high-dimensional data
+              - multiple functional readouts
+          description:
+            type: string
+            description: additional details about the dimensionality of the assay
+        required:
+          - type
+      method:
+        description: the assay method, defining the molecular properties interrogated.
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+              - promoter activity reporter gene assay
+              - bulk RNA-sequencing
+              - single-cell RNA sequencing assay
+              - fluorescence in-situ hybridization (FISH) assay
+              - flow cytometry assay
+              - imaging mass cytometry assay
+              - evolution of ligands by exponential enrichment assay
+              - single cell imaging
+              - multiplexed fluorescent antibody imaging
+              - binding assays
+              - cell proliferation assay
+              - survival assessment assay
+              - other
+          description:
+            type: string
+            description: additional details about the assay method.
+        required:
+          - type
+      relevance:
+        description: the disease or biological processes the assay is relevant to.
+        type: array
+        items:
+          $ref: "#/$defs/Coding"
+        minItems: 1
+      modelSystem:
+        description: the model system context that influences expression of the phenotype.
+        type: object
+        properties:
+          type:
+            description: the model system.
+            type: string
+            enum:
+              - immortalized human cells
+              - murine primary cells
+              - induced pluripotent stem cells from male
+              - induced pluripotent stem cells from female
+              - patient derived primary cells (e.g. T-cells, adipocytes)
+              - yeast
+              - E. coli
+              - bacteriophage
+              - molecular display
+              - other
+          description:
+            type: string
+            description: additional details about the model system.
+      profilingStrategy:
+        description: the strategy used to profile the variant library
+        type: string
+        enum:
+          - direct sequencing
+          - shotgun sequencing
+          - barcode sequencing
+      sequencingMethod:
+        description: the sequencing method used
+        type: string
+        enum:
+          - single-segment (short read)
+          - single-segment (long read)
+          - multi-segment
+    required:
+      - dimensionality
+      - method
+      - relevance
+      - modelSystem
+      - profilingStrategy
+      - sequencingMethod
 #  scoreSet:
 #    description: a set of assayed variants and their phenotypic scores.
 #    type: object
@@ -272,28 +331,25 @@ $defs:
 #              - variant
 #              - score
 #        minItems: 1
-#      sequencing:
-#        description: the sequencing strategy used to identify variants in the score set.
 #    required:
-#      - sequencing
 #      - variant_scores
 type: object
 additionalProperties: false
 properties:
   title:
-    description: the title of the MAVE experiment.
+    description: the title of the MAVE experiment
     type: string
   abstract:
-    description: an abstract describing the MAVE experiment.
+    description: an abstract describing the MAVE experiment
     type: string
   publication:
-    description: the primary publication describing this experiment.
+    description: the primary publication describing this experiment
     $ref: "#/$defs/Publication"
   variantLibrary:
-    description: characteristics of the variant library generation process.
+    description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"
-#  phenotypicAssay:
-#    $ref: "#/$defs/phenotypicAssay"
+  phenotypicAssay:
+    $ref: "#/$defs/phenotypicAssay"
 #  scoreSets:
 #    type: array
 #    items:
@@ -303,5 +359,5 @@ required:
   - title
   - abstract
   - variantLibrary
-#    - phenotypicAssay
+  - phenotypicAssay
 #    - scoreSet

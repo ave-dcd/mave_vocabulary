@@ -10,13 +10,37 @@ publication:
   ref: https://doi.org/10.1038/s41467-022-34742-3
 variantLibrary:
   scope:
-    type: Coding
+    type: coding
   targetSequences:
     - id: ga4gh:SQ.upmBKNxvwSQPi9n6JMSkWimiVyhutErS
       sha512t24u: upmBKNxvwSQPi9n6JMSkWimiVyhutErS
       sequence: DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIA
       sequenceAlphabet: Protein
   generationMethod:
-    generationSystem: oligo-directed mutagenic PCR
-    integrationMechanism: episomal delivery
+    type: in-vitro construct library
+    system: oligo pool synthesis
+    integration: plasmid (not integrated)
     description: Oligo pool synthesis, Twist Bioscience
+  deliveryMethod:
+    type: chemical or heat shock transformation
+phenotypicAssay:
+  dimensionality:
+    type: single dimension
+  method:
+    type: survival assessment assay
+    description: Survival assessment assay (growth in -adenine)
+  relevance:
+    - system: https://www.omim.org/
+      code: OMIM:104300
+      label: ALZHEIMER DISEASE, FAMILIAL, 1; AD1
+    - system: https://www.omim.org/
+      code: OMIM:104760
+      label: AMYLOID BETA A4 PRECURSOR PROTEIN; APP
+    - system: https://mondo.monarchinitiative.org/
+      code: MONDO:0004975
+      label: Alzheimer’s Disease
+  modelSystem:
+    type: yeast
+    description: Yeast (S.cerevisiae)
+  profilingStrategy: direct sequencing
+  sequencingMethod: single-segment (short read)
