@@ -116,7 +116,7 @@ $defs:
         enum:
           - native locus replacement
           - extra-local construct insertion
-          - viral integration
+          - random locus viral integration
           - episomal delivery
           - plasmid (not integrated)
           - transfection of RNA
