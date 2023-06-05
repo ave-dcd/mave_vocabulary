@@ -2,25 +2,27 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: MAVE experiment definition
 $defs:
-  Publication:
+  Document:
     type: object
     additionalProperties: false
+    description: a written document describing a work
     properties:
       title:
         type: string
-        description: the title of the publication
-      journal:
+        description: the title of the document
+      system:
         type: string
-        description: the name of the journal
+        description: >-
+          the name of the system the document is registered in, such as a journal or preprint server
       date:
         type: string
         format: date
-        description: the date the publication was published
+        description: the date the document was registered
       ref:
         type: string
         format: uri
         description: >-
-          a Universal Record Identifier for the publication
+          a Universal Record Identifier for the document
     required:
       - ref
   Coding:
@@ -58,7 +60,7 @@ $defs:
         enum:
           - DNA
           - RNA
-          - Protein
+          - protein
   EndogenousLocusLibraryMethod:
     type: object
     additionalProperties: false
@@ -168,7 +170,7 @@ $defs:
         if:
           properties:
             type:
-              const: Non-coding, other
+              const: non-coding, other
         then:
           required:
             - description
@@ -266,11 +268,11 @@ $defs:
             enum:
               - immortalized human cells
               - murine primary cells
-              - induced pluripotent stem cells from male
-              - induced pluripotent stem cells from female
+              - induced pluripotent stem cells from human male
+              - induced pluripotent stem cells from human female
               - patient derived primary cells (e.g. T-cells, adipocytes)
               - yeast
-              - E. coli
+              - bacteria
               - bacteriophage
               - molecular display
               - other
@@ -342,9 +344,9 @@ properties:
   abstract:
     description: an abstract describing the MAVE experiment
     type: string
-  publication:
-    description: the primary publication describing this experiment
-    $ref: "#/$defs/Publication"
+  document:
+    description: the primary document describing this experiment
+    $ref: "#/$defs/Document"
   variantLibrary:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"
