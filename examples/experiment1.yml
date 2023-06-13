@@ -37,7 +37,7 @@ phenotypicAssay:
       code: 104760
       label: AMYLOID BETA A4 PRECURSOR PROTEIN; APP
     - system: https://mondo.monarchinitiative.org/
-      code: MONDO_0004975
+      code: MONDO:0004975
       label: Alzheimer’s Disease
   modelSystem:
     type: yeast
