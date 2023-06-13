@@ -180,7 +180,7 @@ $defs:
           - $ref: "#/$defs/EndogenousLocusLibraryMethod"
           - $ref: "#/$defs/InVitroConstructLibraryMethod"
       deliveryMethod:
-        description: a description of how the variant library was delivered to the model system for phenotype
+        description: how the variant library was delivered to the model system for phenotype
           evaluation.
         type: object
         properties:
@@ -196,7 +196,7 @@ $defs:
               - other
           description:
             type: string
-            description: additional details about the delivery method.
+            description: additional details about the delivery method
         required:
           - type
     required:
