@@ -81,7 +81,7 @@ $defs:
         description: the functional mechanism of the library generation method
         type: string
         enum:
-          - wildtype nuclease
+          - nuclease
           - base editor
           - prime editor
       description:
