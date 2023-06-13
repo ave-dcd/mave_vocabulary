@@ -31,13 +31,13 @@ phenotypicAssay:
     description: Survival assessment assay (growth in -adenine)
   relevance:
     - system: https://www.omim.org/
-      code: OMIM:104300
+      code: 104300
       label: ALZHEIMER DISEASE, FAMILIAL, 1; AD1
     - system: https://www.omim.org/
-      code: OMIM:104760
+      code: 104760
       label: AMYLOID BETA A4 PRECURSOR PROTEIN; APP
     - system: https://mondo.monarchinitiative.org/
-      code: MONDO:0004975
+      code: MONDO_0004975
       label: Alzheimer’s Disease
   modelSystem:
     type: yeast
