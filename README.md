@@ -31,6 +31,13 @@ For many fields, there is an enumerated list of valid values corresponding to th
 The general schema structure and terms are also described below. 
 The YAML documents in the `schema` directory should be considered the authoritative structure and source of information where there are discrepancies.
 
+### Generating sequence identifiers
+
+Some examples (e.g. `examples/Seuma_2018.yml`) include target sequence identifiers and hashes.
+These values were generated according to the [GA4GH VRS](https://vrs.ga4gh.org/) standard (see [here](en/stable/impl-guide/computed_identifiers.html)) for details.
+
+Generating these stable identifiers is not required but is recommended, particularly for in-vitro construct libraries.
+
 ## Controlled vocabulary terms
 
 ### Important acronyms
