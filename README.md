@@ -1,6 +1,7 @@
 # MAVE Minimum Information Model
 
-[![arXiv](https://img.shields.io/badge/arXiv-2306.15113-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2306.15113)
+[![arXiv](https://img.shields.io/badge/arXiv-2306.15113-b31b1b.svg)](https://arxiv.org/abs/2306.15113)
+[![DOI](https://zenodo.org/badge/634403007.svg)](https://zenodo.org/badge/latestdoi/634403007)
 
 JSON Schema for validating MAVE experiment metadata
 
