@@ -1,4 +1,3 @@
-# https://docs.google.com/document/d/1HTy5oLd0FWwcqirCh6WXFcBAiwHl5rr5hnjg_kEYKsE/edit
 $schema: https://json-schema.org/draft/2020-12/schema
 title: MAVE experiment definition
 $defs:
@@ -300,41 +299,6 @@ $defs:
       - modelSystem
       - profilingStrategy
       - sequencingMethod
-#  scoreSet:
-#    description: a set of assayed variants and their phenotypic scores.
-#    type: object
-#    properties:
-#      variantScores:
-#        description: a set of variants and their phenotypic scores.
-#        type: array
-#        items:
-#          - type: object
-#            properties:
-#              variant:
-#                type: object
-#                description: a variant associated with a phenotypic score.
-#                properties:
-#                  vrs:
-#                    # $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
-#                    type: object
-#                    description: a computable description of the variant using GA4GH VRS.
-#                  mave-hgvs:
-#                    type: string
-#                    description: a human-readable description of the variant using MAVE-HGVS.
-#                anyOf:
-#                  - required:
-#                      - vrs
-#                  - required:
-#                      - mave-hgvs
-#              score:
-#                type: number
-#                description: a phenotypic score associated with a variant.
-#            required:
-#              - variant
-#              - score
-#        minItems: 1
-#    required:
-#      - variant_scores
 type: object
 additionalProperties: false
 properties:
@@ -352,14 +316,8 @@ properties:
     $ref: "#/$defs/VariantLibrary"
   phenotypicAssay:
     $ref: "#/$defs/phenotypicAssay"
-#  scoreSets:
-#    type: array
-#    items:
-#      - $ref: "#/$defs/scoreSet"
-#    minItems: 1
 required:
   - title
   - abstract
   - variantLibrary
   - phenotypicAssay
-#    - scoreSet
