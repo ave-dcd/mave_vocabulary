@@ -45,7 +45,10 @@ where there are discrepancies.
 
 ### Generating sequence identifiers
 
-Some examples (e.g. `examples/Seuma_2018.yml`) include target sequence identifiers and hashes.
+S* `examples/Findlay_2018.yml` describes a saturation genome editing experiment on BRCA1, involving CRISPR-based editing
+of the endogenous locus and measuring cell survival in HAP1 cells
+
+ome examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
 These values were generated according to the [GA4GH VRS](https://vrs.ga4gh.org/) standard (see 
 [here](en/stable/impl-guide/computed_identifiers.html)) for details.
 
