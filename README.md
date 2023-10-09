@@ -43,12 +43,45 @@ The general schema structure and terms are also described below.
 The YAML documents in the `schema` directory should be considered the authoritative structure and source of information 
 where there are discrepancies.
 
+### Applying the schema to your datasets
+
+Unless you are an experienced YAML user who is able to read the `schema/experiment.yml` file yourself, we recommend 
+choosing the most closely-related example file as a starting point and modifying it as needed.
+
+The repository currently contains three examples:
+
+* `examples/Findlay_2018.yml` describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based 
+editing of the endogenous locus and measuring cell survival in HAP1 cells 
+([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/30209399/))
+* `examples/Matreyek_2018.ml` describes a deep mutational scan of PTEN, expressed using a designed construct integrated
+into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq 
+([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/29785012/))
+* `examples/Seuma_2022.yml` describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
+effect on yeast growth ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/36400770/))
+
+The schema starts with some descriptive metadata, such as the title and abstract.
+We recommend that the title in particular focus on describing the dataset specific to the document rather than the 
+overall study.
+The `title` and `abstract` are required properties.
+
+The next section (`document`) describes the publication (if any).
+This part of the schema is optional, but if it is included, the `ref` property that provides an accession number 
+(such as a [DOI](https://www.doi.org/)) is required.
+
+The following sections `variantLibrary` and `phenotypicAssay` describe the experiment that was performed and both are 
+required.
+Each has several subsections that provide structure for detailing the important experimental design decisions captured 
+by the schema.
+We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help
+complete this section, as it will be different for each experiment.
+
+*Note:* We anticipate that the standard will be adopted by established resources such as 
+[MaveDB](https://www.mavedb.org) that will provide users with the ability to download a minimum information file after 
+data deposition.
+
 ### Generating sequence identifiers
 
-S* `examples/Findlay_2018.yml` describes a saturation genome editing experiment on BRCA1, involving CRISPR-based editing
-of the endogenous locus and measuring cell survival in HAP1 cells
-
-ome examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
+Some examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
 These values were generated according to the [GA4GH VRS](https://vrs.ga4gh.org/) standard (see 
 [here](en/stable/impl-guide/computed_identifiers.html)) for details.
 
@@ -92,7 +125,7 @@ Controlled vocabulary terms (one or many):
 - Non-coding regulatory
 - Non-coding other (eg tRNA)
 	
-**Variant Library characteristics** – methods used to generate the library
+**Variant library characteristics** – methods used to generate the library
 
 *Variant generation method* – how was the variant library created 
 (e.g. doped oligo, mutagenic PCR, primer-based, base editor)
