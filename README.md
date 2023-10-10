@@ -107,6 +107,19 @@ A combined resource for variant effects measured across model systems and contex
 structure and function of the genome and its products, as well as the consequences of its perturbation in health and 
 disease.
 
+### Ontologies and identifiers
+
+For describing assay readouts, we make use of terms from the 
+[Ontology for Biomedical Investigations](https://obi-ontology.org/).
+
+For describing human phenotypes relevant to the assay, we suggest using terms from [OMIM](https://www.omim.org/) or the 
+[Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
+
+For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html), 
+where available.
+We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes 
+the organism (including strain, where applicable).
+
 ### Experimental vocabulary (genetic perturbation, phenotype and context)
 
 #### Genetic perturbation
@@ -220,8 +233,8 @@ Controlled vocabulary terms (select one):
     - OBI_0000699 Survival assessment assay
     - “Other”
 
-**Disease/biological process relevance** – choose terms from [OMIM](https://www.omim.org/) or 
-[https://mondo.monarchinitiative.org/](https://mondo.monarchinitiative.org/)
+**Disease/biological process relevance** – choose terms from [OMIM](https://www.omim.org/) or the
+[Mondo Disease Ontology](https://mondo.monarchinitiative.org/)
 
 #### Context - Characteristics of the model system that influence expression of phenotype
 
