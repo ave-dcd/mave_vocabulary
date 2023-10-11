@@ -46,6 +46,9 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: multiple functional readouts
+  replication:
+    type: biological
+    description: two biological replicates were performed
   method:
     type: survival assessment assay
   method:

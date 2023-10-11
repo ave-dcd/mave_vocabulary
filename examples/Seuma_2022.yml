@@ -41,6 +41,10 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: single dimension
+  replication:
+    type: biological and technical
+    description: Three biological replicates (transformations) were performed and five technical replicate selections
+      were done for each. Sequencing was performed by combining six equimolar samples of each technical replicate.
   method:
     type: survival assessment assay
     description: Survival assessment assay (growth in -adenine)
