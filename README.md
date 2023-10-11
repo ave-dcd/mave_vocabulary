@@ -116,14 +116,11 @@ that are derived from a common target sequence.
 
 #### Library scope
 
-the functional scope of DNA elements introduced into the library.
-DNA elements can have known or unknown functions. Example functions include a gene, an exon or set of exons included in a 
+The variant library should be defined by the functional scope of DNA elements introduced into the library.
+DNA elements can have known or unknown functions. Example functions include a gene, an exon or set of exons included in a
 transcript, a set of enhancers, a set of repressors, etc.
 
-For a given DNA element we distinguish the mode of variant programming/engineering
-(e.g. all SNV, indels, ClinVar variants, etc).
-
-Controlled vocabulary terms for `scope.type` (one or many):
+We define the scope type using the following controlled vocabulary terms:
 
 - coding
 - intronic
@@ -184,17 +181,29 @@ For endogenous editing, `system` refers to the CRISPR/Cas system used, and is on
 In addition, `mechanism` is used to define the functional mechanism of the method, and is one of the following controlled vocabulary
 terms:
 
-Controlled vocabulary terms (one or many):
+- nuclease
+- base editor
+- prime editor
 
-- Electroporation
-- Lipofection
-- Nucleofection
-- Microinjection
-- Chemical-based transfection
-- Transduction: AAV
-- Transduction: lentivirus
-- Transformation: chemical or heat shock
-- Other (please specify)
+`system` and `mechanism` are required properties. `description` may be used to further describe the generation method
+`system` and `mechanism` parameters.
+
+#### Delivery method
+
+The delivery method specifies how the variant induction machinery and/or construct was delivered to the cell/organism
+(e.g. viral transduction, electroporation, transfection and MOI).
+
+The delivery method is specified by the `type` property and must be one of the following controlled vocabulary terms:
+
+- electroporation
+- nucleofection
+- chemical-based transfection
+- adeno-associated virus transduction
+- lentivirus transduction
+- chemical or heat shock transformation
+- other
+
+The `type` field is required. Additional detail about the delivery method may be provided with the `description` property.
 
 #### Phenotypic assay
 
