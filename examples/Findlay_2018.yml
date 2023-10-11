@@ -53,5 +53,9 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HAP1
+    identifiers:
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid9606
+        label: Homo sapiens
   profilingStrategy: direct sequencing
   sequencingMethod: multi-segment

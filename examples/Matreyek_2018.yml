@@ -80,5 +80,12 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HEK 293T TetBxb1BFP
+    identifiers:
+      - system: https://www.ebi.ac.uk/ols/ontologies/clo
+        code: CLO:0037372
+        label: HEK293T cell
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid9606
+        label: Homo sapiens
   profilingStrategy: barcode sequencing
   sequencingMethod: single-segment (short read)

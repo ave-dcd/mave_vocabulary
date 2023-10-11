@@ -295,6 +295,12 @@ $defs:
           description:
             type: string
             description: additional details about the model system.
+          identifiers:
+            description: relevant ontology terms or identifiers for the model system.
+            type: array
+            items:
+              $ref: "#/$defs/Coding"
+            minItems: 1
       profilingStrategy:
         description: the strategy used to profile the variant library
         type: string
