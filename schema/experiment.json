@@ -1,0 +1,421 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "title": "MAVE experiment definition",
+   "$defs": {
+      "Document": {
+         "type": "object",
+         "additionalProperties": false,
+         "description": "a written document describing a work",
+         "properties": {
+            "title": {
+               "type": "string",
+               "description": "the title of the document"
+            },
+            "system": {
+               "type": "string",
+               "description": "the name of the system the document is registered in, such as a journal or preprint server"
+            },
+            "date": {
+               "type": "string",
+               "format": "date",
+               "description": "the date the document was registered"
+            },
+            "ref": {
+               "type": "string",
+               "format": "uri",
+               "description": "a Universal Record Identifier for the document"
+            }
+         },
+         "required": [
+            "ref"
+         ]
+      },
+      "Coding": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "system": {
+               "description": "identity of the terminology system",
+               "type": "string",
+               "format": "uri"
+            },
+            "version": {
+               "description": "version of the terminology system",
+               "type": "string"
+            },
+            "code": {
+               "description": "a code within the terminology system",
+               "type": "string",
+               "pattern": "\\S+( \\S+)*"
+            },
+            "label": {
+               "description": "a human-readable description of the concept associated with the code",
+               "type": "string"
+            }
+         }
+      },
+      "ReferenceSequence": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "id": {
+               "type": "string"
+            },
+            "sha512t24u": {
+               "type": "string",
+               "pattern": "[0-9A-Za-z_\\-]{32}"
+            },
+            "sequence": {
+               "type": "string",
+               "pattern": "^[A-Z*\\-]*$"
+            },
+            "sequenceAlphabet": {
+               "type": "string",
+               "enum": [
+                  "DNA",
+                  "RNA",
+                  "protein"
+               ]
+            }
+         }
+      },
+      "EndogenousLocusLibraryMethod": {
+         "type": "object",
+         "additionalProperties": false,
+         "description": "a methodology for generating a variant library at an endogenous locus",
+         "properties": {
+            "type": {
+               "const": "endogenous locus library",
+               "default": "endogenous locus library"
+            },
+            "system": {
+               "type": "string",
+               "description": "the system used to generate the library",
+               "enum": [
+                  "SpCas9",
+                  "SaCas9",
+                  "AsCas12a",
+                  "RfsCas13d"
+               ]
+            },
+            "mechanism": {
+               "description": "the functional mechanism of the library generation method",
+               "type": "string",
+               "enum": [
+                  "nuclease",
+                  "base editor",
+                  "prime editor"
+               ]
+            },
+            "description": {
+               "description": "additional details about the variant library generation method",
+               "type": "string"
+            }
+         },
+         "required": [
+            "type",
+            "system",
+            "mechanism"
+         ]
+      },
+      "InVitroConstructLibraryMethod": {
+         "type": "object",
+         "additionalProperties": false,
+         "description": "a methodology for generating and integrating an exogenous variant library",
+         "properties": {
+            "type": {
+               "const": "in-vitro construct library",
+               "default": "in-vitro construct library"
+            },
+            "system": {
+               "type": "string",
+               "description": "the type of method used to generate the library",
+               "enum": [
+                  "oligo-directed mutagenic PCR",
+                  "error-prone PCR",
+                  "nicking mutagenesis",
+                  "microarray synthesis",
+                  "site-directed mutagenesis",
+                  "doped oligo synthesis",
+                  "oligo pool synthesis",
+                  "proprietary method",
+                  "other"
+               ]
+            },
+            "integration": {
+               "description": "the mechanism for integration or expression of an exogenous construct",
+               "type": "string",
+               "enum": [
+                  "native locus replacement",
+                  "extra-local construct insertion",
+                  "random locus viral integration",
+                  "episomal delivery",
+                  "plasmid (not integrated)",
+                  "transfection of RNA"
+               ]
+            },
+            "description": {
+               "description": "additional details about the variant library generation method",
+               "type": "string"
+            }
+         },
+         "if": {
+            "properties": {
+               "system": {
+                  "const": "other"
+               }
+            }
+         },
+         "then": {
+            "required": [
+               "type",
+               "system",
+               "description"
+            ]
+         },
+         "else": {
+            "required": [
+               "type",
+               "system"
+            ]
+         }
+      },
+      "VariantLibrary": {
+         "type": "object",
+         "additionalProperties": false,
+         "description": "a collection of sequences that are derived from a common target sequence",
+         "properties": {
+            "targetSequences": {
+               "description": "the collection of sequences used as references from which all variants in the library are defined",
+               "type": "array",
+               "items": {
+                  "$ref": "#/$defs/ReferenceSequence"
+               },
+               "minItems": 1
+            },
+            "scope": {
+               "description": "the functional scope of DNA elements introduced into the library. DNA elements can have known or unknown functions. Example functions include a gene, an exon or set of exons included in a transcript, a set of enhancers, a set of repressors, etc.",
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "description": "the scope type for elements introduced into the library",
+                     "type": "string",
+                     "enum": [
+                        "coding",
+                        "intronic",
+                        "non-coding, regulatory",
+                        "non-coding, other"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the DNA element scope. For example, distinguishing the mode of variant programming/engineering (e.g. all SNV, indels, ClinVar variants etc)."
+                  }
+               },
+               "if": {
+                  "properties": {
+                     "type": {
+                        "const": "non-coding, other"
+                     }
+                  }
+               },
+               "then": {
+                  "required": [
+                     "description"
+                  ]
+               }
+            },
+            "generationMethod": {
+               "description": "the method used for generating the library",
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/EndogenousLocusLibraryMethod"
+                  },
+                  {
+                     "$ref": "#/$defs/InVitroConstructLibraryMethod"
+                  }
+               ]
+            },
+            "deliveryMethod": {
+               "description": "how the variant library was delivered to the model system for phenotype evaluation.",
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "type": "string",
+                     "enum": [
+                        "electroporation",
+                        "nucleofection",
+                        "chemical-based transfection",
+                        "adeno-associated virus transduction",
+                        "lentivirus transduction",
+                        "chemical or heat shock transformation",
+                        "other"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the delivery method"
+                  }
+               },
+               "required": [
+                  "type"
+               ]
+            }
+         },
+         "required": [
+            "scope",
+            "targetSequences",
+            "generationMethod",
+            "deliveryMethod"
+         ]
+      },
+      "phenotypicAssay": {
+         "description": "a physical adjudication of a model system that allows for systematic interrogation of a functional read-out for a large amount of genetic variants.",
+         "type": "object",
+         "properties": {
+            "dimensionality": {
+               "type": "object",
+               "description": "dimensionality of phenotyping assay. Describes how many phenotypes and of what complexity are included in the map.",
+               "properties": {
+                  "type": {
+                     "description": "a coding defining the dimensionality of the assay as single or multiple functional readouts.",
+                     "type": "string",
+                     "enum": [
+                        "single dimension",
+                        "high-dimensional data",
+                        "multiple functional readouts"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the dimensionality of the assay"
+                  }
+               },
+               "required": [
+                  "type"
+               ]
+            },
+            "method": {
+               "description": "the assay method, defining the molecular properties interrogated.",
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "type": "string",
+                     "enum": [
+                        "promoter activity reporter gene assay",
+                        "bulk RNA-sequencing",
+                        "single-cell RNA sequencing assay",
+                        "fluorescence in-situ hybridization (FISH) assay",
+                        "flow cytometry assay",
+                        "imaging mass cytometry assay",
+                        "evolution of ligands by exponential enrichment assay",
+                        "single cell imaging",
+                        "multiplexed fluorescent antibody imaging",
+                        "binding assays",
+                        "cell proliferation assay",
+                        "survival assessment assay",
+                        "other"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the assay method."
+                  }
+               },
+               "required": [
+                  "type"
+               ]
+            },
+            "relevance": {
+               "description": "the disease or biological processes the assay is relevant to.",
+               "type": "array",
+               "items": {
+                  "$ref": "#/$defs/Coding"
+               },
+               "minItems": 1
+            },
+            "modelSystem": {
+               "description": "the model system context that influences expression of the phenotype.",
+               "type": "object",
+               "properties": {
+                  "type": {
+                     "description": "the model system.",
+                     "type": "string",
+                     "enum": [
+                        "immortalized human cells",
+                        "murine primary cells",
+                        "induced pluripotent stem cells from human male",
+                        "induced pluripotent stem cells from human female",
+                        "patient derived primary cells (e.g. T-cells, adipocytes)",
+                        "yeast",
+                        "bacteria",
+                        "bacteriophage",
+                        "molecular display",
+                        "other"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the model system."
+                  }
+               }
+            },
+            "profilingStrategy": {
+               "description": "the strategy used to profile the variant library",
+               "type": "string",
+               "enum": [
+                  "direct sequencing",
+                  "shotgun sequencing",
+                  "barcode sequencing"
+               ]
+            },
+            "sequencingMethod": {
+               "description": "the sequencing method used",
+               "type": "string",
+               "enum": [
+                  "single-segment (short read)",
+                  "single-segment (long read)",
+                  "multi-segment"
+               ]
+            }
+         },
+         "required": [
+            "dimensionality",
+            "method",
+            "relevance",
+            "modelSystem",
+            "profilingStrategy",
+            "sequencingMethod"
+         ]
+      }
+   },
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+      "title": {
+         "description": "the title of the MAVE experiment",
+         "type": "string"
+      },
+      "abstract": {
+         "description": "an abstract describing the MAVE experiment",
+         "type": "string"
+      },
+      "document": {
+         "description": "the primary document describing this experiment",
+         "$ref": "#/$defs/Document"
+      },
+      "variantLibrary": {
+         "description": "characteristics of the variant library generation process",
+         "$ref": "#/$defs/VariantLibrary"
+      },
+      "phenotypicAssay": {
+         "$ref": "#/$defs/phenotypicAssay"
+      }
+   },
+   "required": [
+      "title",
+      "abstract",
+      "variantLibrary",
+      "phenotypicAssay"
+   ]
+}

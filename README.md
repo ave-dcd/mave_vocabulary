@@ -5,25 +5,25 @@
 
 JSON Schema for validating MAVE experiment metadata
 
-*Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data 
+*Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data
 repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org).
 
 ## How to use this repository
 
-This repository contains an implementation of the schema described in the 
-[Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a 
+This repository contains an implementation of the schema described in the
+[Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a
 multiplexed assay experiment.
 
-The schema defines a set of required and optional fields and possible values that can be used to validate a minimum 
+The schema defines a set of required and optional fields and possible values that can be used to validate a minimum
 information document.
 The implementation is found in the `schema` directory.
 
-In addition to the structure of the minimum information model, the schema also defines controlled vocabulary terms for 
+In addition to the structure of the minimum information model, the schema also defines controlled vocabulary terms for
 describing one of these experiments.
 
 The `examples` directory contains examples of this type of document describing real experiments, as well as a simple 
 Python script that will run the schema validation using [jsonschema](https://pypi.org/project/jsonschema/).
-Many other implementations of the JSON Schema standard are available in other languages (see 
+Many other implementations of the JSON Schema standard are available in other languages (see
 [here](https://json-schema.org/implementations.html)).
 
 Please note that although we are using the JSON Schema standard, the files here are in YAML format because it is more 
@@ -93,12 +93,12 @@ Generating these stable identifiers is not required but is recommended, particul
 
 #### Multiplexed Assays of Variant Effects (MAVEs)
 
-Experimental assays involving scaled, pooled genetic perturbation of a naturally occurring or synthetic DNA element 
+Experimental assays involving scaled, pooled genetic perturbation of a naturally occurring or synthetic DNA element
 followed by multiplexed high-throughput phenotyping (potentially multiple phenotypic modalities).
 
 #### Variant Effect Map (VEM)
 
-A dataset that reports the effects of variation in a DNA element (a gene, transcript, set of regulatory regions, etc.) 
+A dataset that reports the effects of variation in a DNA element (a gene, transcript, set of regulatory regions, etc.)
 on a single or multiplexed set of phenotypes.
 
 #### Atlas of Variant Effects (AVE) ###
@@ -112,12 +112,12 @@ disease.
 For describing assay readouts, we make use of terms from the 
 [Ontology for Biomedical Investigations](https://obi-ontology.org/).
 
-For describing human phenotypes relevant to the assay, we suggest using terms from [OMIM](https://www.omim.org/) or the 
-[Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
+For describing human diseases relevant to the assay, we recommend using terms from [OMIM](https://www.omim.org/) or
+the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
-For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html), 
+For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html),
 where available.
-We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes 
+We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes
 the organism (including strain, where applicable).
 
 ### Experimental vocabulary (genetic perturbation, phenotype and context)
@@ -275,8 +275,8 @@ Commonly used cell lines and model systems
 | Bacteriophage | n/a | 38018 |
 | Cell-free | n/a | n/a |
 
-**Environmental variables** – variance of environmental factors included in the experiment 
-(e.g. addition of specific compounds to cell media, temperature controls, time course, CRISPR interference by KRAB, 
+**Environmental variables** – variance of environmental factors included in the experiment
+(e.g. addition of specific compounds to cell media, temperature controls, time course, CRISPR interference by KRAB,
 KRAB-MeCP2, CRISPR activation by VPR, SAM, or SunTag, etc.)
 
 Controlled vocabulary terms (select one):
@@ -284,9 +284,10 @@ Controlled vocabulary terms (select one):
 - No
 
 #### Variant sequencing characteristics
+
 This section details the method for accurately capturing variant frequency associated with outcome of phenotypic assay.
 
-**Library profiling strategy** – approach used to quantify variants in the population 
+**Library profiling strategy** – approach used to quantify variants in the population
 
 Controlled vocabulary terms (select one):
 - Direct sequencing
