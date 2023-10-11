@@ -54,6 +54,13 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: single dimension
+  replication:
+    type: biological and technical
+    description: 8 biological replicate experiments were performed from three
+      different transfections (4, 3, and 1 experimental replicate for these
+      transfections). Technical replicates were performed as part of QC, but
+      the technical replicates were collapsed and analyzed as one experiment
+      after passing.
   method:
     type: flow cytometry assay
     description: VAMP-seq

@@ -226,6 +226,23 @@ $defs:
             description: additional details about the dimensionality of the assay
         required:
           - type
+      replication:
+        type: object
+        description: replication of phenotyping assay. Describes what kind of replication was performed.
+        properties:
+          type:
+            description: a coding defining the kind of replication performed.
+            type: string
+            enum:
+              - biological
+              - technical
+              - biological and technical
+              - no replication
+          description:
+            type: string
+            description: additional details about the replicate structure of the assay, including number of replicates
+        required:
+          - type
       method:
         description: the assay method, defining the molecular properties interrogated.
         type: object
