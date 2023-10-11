@@ -18,6 +18,11 @@ document:
     Nature Communications
   date: "2022-11-18"
   ref: https://doi.org/10.1038/s41467-022-34742-3
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000113-a
+    ref: https://mavedb.org/#/experiments/urn:mavedb:00000113-a
+    description: processed scores
 variantLibrary:
   scope:
     type: coding
@@ -36,6 +41,10 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: single dimension
+  replication:
+    type: biological and technical
+    description: Three biological replicates (transformations) were performed and five technical replicate selections
+      were done for each. Sequencing was performed by combining six equimolar samples of each technical replicate.
   method:
     type: survival assessment assay
     description: Survival assessment assay (growth in -adenine)
@@ -51,6 +60,11 @@ phenotypicAssay:
       label: Alzheimer’s Disease
   modelSystem:
     type: yeast
-    description: Yeast (S.cerevisiae)
+    description: Saccharomyces cerevisiae [psi-pin-]
+      (MATa ade1-14 his3 leu2-3,112 lys2 trp1 ura3-52)
+    identifiers:
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid4932
+        label: Saccharomyces cerevisiae
   profilingStrategy: direct sequencing
   sequencingMethod: single-segment (short read)

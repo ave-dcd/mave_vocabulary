@@ -42,6 +42,27 @@ $defs:
       label:
         description: a human-readable description of the concept associated with the code
         type: string
+  Dataset:
+    type: object
+    additionalProperties: false
+    description: a dataset available from an external source
+    properties:
+      system:
+        type: string
+        description: the name of the system the dataset is available from, such as a database
+      accession:
+        type: string
+        description: accession number for the dataset in the system
+      ref:
+        type: string
+        format: uri
+        description: a Universal Record Identifier for the dataset
+      description:
+        description: additional details about the dataset, such as whether it contains raw or processed data
+        type: string
+    required:
+      - system
+      - accession
   ReferenceSequence:
     type: object
     additionalProperties: false
@@ -226,6 +247,23 @@ $defs:
             description: additional details about the dimensionality of the assay
         required:
           - type
+      replication:
+        type: object
+        description: replication of phenotyping assay. Describes what kind of replication was performed.
+        properties:
+          type:
+            description: a coding defining the kind of replication performed.
+            type: string
+            enum:
+              - biological
+              - technical
+              - biological and technical
+              - no replication
+          description:
+            type: string
+            description: additional details about the replicate structure of the assay, including number of replicates
+        required:
+          - type
       method:
         description: the assay method, defining the molecular properties interrogated.
         type: object
@@ -278,6 +316,12 @@ $defs:
           description:
             type: string
             description: additional details about the model system.
+          identifiers:
+            description: relevant ontology terms or identifiers for the model system.
+            type: array
+            items:
+              $ref: "#/$defs/Coding"
+            minItems: 1
       profilingStrategy:
         description: the strategy used to profile the variant library
         type: string
@@ -311,6 +355,12 @@ properties:
   document:
     description: the primary document describing this experiment
     $ref: "#/$defs/Document"
+  datasets:
+    description: datasets associated with this experiment
+    type: array
+    items:
+      $ref: "#/$defs/Dataset"
+    minItems: 1
   variantLibrary:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"

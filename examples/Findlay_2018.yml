@@ -16,6 +16,19 @@ document:
     Nature
   date: "2018-09-12"
   ref: https://doi.org/10.1038/s41586-018-0461-z
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000097
+    ref: https://mavedb.org/#/experiment-sets/urn:mavedb:00000097
+    description: processed scores, including scores for each replicate of each exon
+  - system: GEO
+    accession: GSE117159
+    ref: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117159
+    description: raw sequencing data
+  - system: website
+    accession: https://sge.gs.washington.edu/BRCA1/
+    ref: https://sge.gs.washington.edu/BRCA1/
+    description: processed scores and visualizations hosted by the investigators
 variantLibrary:
   scope:
     type: coding
@@ -33,6 +46,9 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: multiple functional readouts
+  replication:
+    type: biological
+    description: two biological replicates were performed
   method:
     type: survival assessment assay
   method:
@@ -53,5 +69,9 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HAP1
+    identifiers:
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid9606
+        label: Homo sapiens
   profilingStrategy: direct sequencing
   sequencingMethod: multi-segment

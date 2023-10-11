@@ -18,6 +18,15 @@ document:
     Nature Genetics
   date: "2018-05-21"
   ref: https://doi.org/10.1038/s41588-018-0122-z
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000013-a
+    ref: https://mavedb.org/#/experiments/urn:mavedb:00000013-a
+    description: processed scores, including scores for each replicate experiment
+  - system: BioProject
+    accession: PRJNA428380
+    ref: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA428380
+    description: raw sequencing data
 variantLibrary:
   scope:
     type: coding
@@ -54,6 +63,13 @@ variantLibrary:
 phenotypicAssay:
   dimensionality:
     type: single dimension
+  replication:
+    type: biological and technical
+    description: 8 biological replicate experiments were performed from three
+      different transfections (4, 3, and 1 experimental replicate for these
+      transfections). Technical replicates were performed as part of QC, but
+      the technical replicates were collapsed and analyzed as one experiment
+      after passing.
   method:
     type: flow cytometry assay
     description: VAMP-seq
@@ -73,5 +89,12 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HEK 293T TetBxb1BFP
+    identifiers:
+      - system: https://www.ebi.ac.uk/ols/ontologies/clo
+        code: CLO:0037372
+        label: HEK293T cell
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid9606
+        label: Homo sapiens
   profilingStrategy: barcode sequencing
   sequencingMethod: single-segment (short read)
