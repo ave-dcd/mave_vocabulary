@@ -133,22 +133,25 @@ For a given DNA element we distinguish the mode of variant programming/engineeri
 (e.g. all SNV, indels, ClinVar variants etc).
 
 Controlled vocabulary terms (one or many):
+
 - Coding
 - Intronic
 - Non-coding regulatory
 - Non-coding other (eg tRNA)
-	
+
 **Variant library characteristics** – methods used to generate the library
 
-*Variant generation method* – how was the variant library created 
+*Variant generation method* – how was the variant library created
 (e.g. doped oligo, mutagenic PCR, primer-based, base editor)
 
 Controlled vocabulary categorical term (can pick both category options):
+
 - Editing at endogenous locus
 - In vitro variant construct generation
 
 *In vitro construct generation method* (if applicable)
-- Oligo-directed mutagenic PCR (e.g. NNK PCR) 
+
+- Oligo-directed mutagenic PCR (e.g. NNK PCR)
 - Error-prone PCR
 - Nicking mutagenesis
 - Microarray synthesis
@@ -159,28 +162,32 @@ Controlled vocabulary categorical term (can pick both category options):
 - Other (please describe)
 
 *Integration/expression of exogenous construct* (if applicable)
+
 - Entire element replacement at the native locus (e.g. with integrases, not base editing)
 
 *Integration of extra-local construct* (e.g. with landing pad; if applicable)
+
 - Viral Integration
 - Episomal delivery
 - Transfection of RNA
 
 *Endogenous genome editing* (if applicable)
+
 - CRISPR/Cas system
 - SpCas9
 - SaCas9
 - AsCas12a
 - RfxCas13d
 - CRISPR/Cas system functionality
-    - Wildtype nuclease
-    - Base Editor
-    - Prime Editor
+  - Wildtype nuclease
+  - Base Editor
+  - Prime Editor
 
-**Delivery method** – how the variant induction machinery and/or construct was delivered to the cell/organism 
+**Delivery method** – how the variant induction machinery and/or construct was delivered to the cell/organism
 (e.g. viral transduction, electroporation, transfection and MOI)
 
 Controlled vocabulary terms (one or many):
+
 - Electroporation
 - Lipofection
 - Nucleofection
@@ -201,37 +208,38 @@ measurement, expression of a particular factor and mode of measurement (FACS, sc
 **Dimensionality of phenotyping assays** – how many phenotypes and of what complexity are included in the map
 
 Controlled vocabulary terms (select one):
+
 - Single functional read-out
 - Single dimension (e.g. FACS fluorescence from a single protein was used)
 - High-dimensional data (e.g. ML/AI enabled cell imaging/classification)
 - The outcomes of multiple phenotypic assays were combined to make this map
 
-**Phenotypic assay examines** – terms selected from OBI subtree with root 
+**Phenotypic assay examines** – terms selected from OBI subtree with root
 [OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070)
 
-- DNA 
-    - OBI_0000913 Promoter activity reporter gene assay RNA
-    - “Other”, e.g. structure, methylation
+- DNA
+  - OBI_0000913 Promoter activity reporter gene assay RNA
+  - “Other”, e.g. structure, methylation
 
 - RNA
-    - OBI_0001177 Bulk RNA-sequencing
-    - OBI_0002631 Single cell RNA-sequencing and single cell combinatorial index RNA-sequencing assay
-    - OBI_0003094 Fluorescence in-situ hybridization (FISH) assay
-    - “Other”
+  - OBI_0001177 Bulk RNA-sequencing
+  - OBI_0002631 Single cell RNA-sequencing and single cell combinatorial index RNA-sequencing assay
+  - OBI_0003094 Fluorescence in-situ hybridization (FISH) assay
+  - “Other”
 
-- Protein 
-    - OBI_0000916 Flow cytometry assay 
-    - OBI_0003096  Imaging Mass Cytometry assay
-    - OBI_0002161 Evolution of ligands by exponential enrichment assay 
-    - “Other”
+- Protein
+  - OBI_0000916 Flow cytometry assay
+  - OBI_0003096  Imaging Mass Cytometry assay
+  - OBI_0002161 Evolution of ligands by exponential enrichment assay
+  - “Other”
 
 - Morphology & Function
-    - OBI_0002119 Single cell imaging 
-    - OBI_0003091 Multiplexed fluorescent antibody imaging
-    - OBI_0001146 Binding assays
-    - OBI_0000891 Cell Proliferation Assay, including fluorescence image-based cell proliferation assay
-    - OBI_0000699 Survival assessment assay
-    - “Other”
+  - OBI_0002119 Single cell imaging
+  - OBI_0003091 Multiplexed fluorescent antibody imaging
+  - OBI_0001146 Binding assays
+  - OBI_0000891 Cell Proliferation Assay, including fluorescence image-based cell proliferation assay
+  - OBI_0000699 Survival assessment assay
+  - “Other”
 
 **Disease/biological process relevance** – choose terms from [OMIM](https://www.omim.org/) or the
 [Mondo Disease Ontology](https://mondo.monarchinitiative.org/)
@@ -242,6 +250,7 @@ Controlled vocabulary terms (select one):
 potentially affect the outcome of the assay (e.g. species, animal strain, genetic ancestry, biological sex)
 
 Controlled vocabulary terms (one or many):
+
 - Immortalized human cells (e.g. HEK293, HeLa cells; please specify below)
 - Murine primary cells
 - Induced pluripotent stem cells from male
@@ -280,6 +289,7 @@ Commonly used cell lines and model systems
 KRAB-MeCP2, CRISPR activation by VPR, SAM, or SunTag, etc.)
 
 Controlled vocabulary terms (select one):
+
 - Yes - If yes, please describe this in detail in the free text methods describing your assay.
 - No
 
@@ -290,11 +300,13 @@ This section details the method for accurately capturing variant frequency assoc
 **Library profiling strategy** – approach used to quantify variants in the population
 
 Controlled vocabulary terms (select one):
+
 - Direct sequencing
 - Shotgun sequencing
 - Barcode sequencing
 
 Controlled vocabulary terms (select one):
+
 - Single segment (short read)
 - Single segment (long read)
 - Multi-segment
