@@ -7,12 +7,21 @@ JSON Schema for validating MAVE experiment metadata
 
 *Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data 
 repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org).
+This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and 
+meta-data sharing for scientists using variant effect mapping technology.
+
 
 ## How to use this repository
 
 This repository contains an implementation of the schema described in the 
 [Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a 
 multiplexed assay experiment.
+
+Overall, it is felt that minimum standard reporting should include information on 
+(1) means and characteristics of genetic perturbation, 
+(2) details of the phenotypic assay employed to identify variant effects, 
+(3) information on the cellular and environmental context(s) in which the assays were carried out, and 
+(4) details of sequencing strategy for variant-effect associations.
 
 The schema defines a set of required and optional fields and possible values that can be used to validate a minimum 
 information document.
@@ -89,25 +98,7 @@ Generating these stable identifiers is not required but is recommended, particul
 
 ## Controlled vocabulary terms
 
-### Important acronyms
-
-#### Multiplexed Assays of Variant Effects (MAVEs)
-
-Experimental assays involving scaled, pooled genetic perturbation of a naturally occurring or synthetic DNA element 
-followed by multiplexed high-throughput phenotyping (potentially multiple phenotypic modalities).
-
-#### Variant Effect Map (VEM)
-
-A dataset that reports the effects of variation in a DNA element (a gene, transcript, set of regulatory regions, etc.) 
-on a single or multiplexed set of phenotypes.
-
-#### Atlas of Variant Effects (AVE) ###
-
-A combined resource for variant effects measured across model systems and contexts applicable to the study of the 
-structure and function of the genome and its products, as well as the consequences of its perturbation in health and 
-disease.
-
-### Ontologies and identifiers
+### Overview of ontologies and identifiers
 
 For describing assay readouts, we make use of terms from the 
 [Ontology for Biomedical Investigations](https://obi-ontology.org/).
