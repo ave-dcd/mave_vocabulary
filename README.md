@@ -10,7 +10,6 @@ repositories associated with the [Atlas of Variant Effects Alliance](https://www
 This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and 
 meta-data sharing for scientists using variant effect mapping technology.
 
-
 ## How to use this repository
 
 This repository contains an implementation of the schema described in the
@@ -86,8 +85,8 @@ users with the ability to download a minimum information file after data deposit
 ### Generating sequence identifiers
 
 Some examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
-These values were generated according to the [GA4GH VRS v1.3](https://vrs.ga4gh.org/) standard (see
-[here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html)) for details.
+These values were generated according to the [GA4GH VRS v1.3](https://vrs.ga4gh.org/) and [refGet](http://samtools.github.io/hts-specs/refget.html)
+standards (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html)) for details.
 
 Generating these stable identifiers is not required but is recommended, particularly for in-vitro construct libraries.
 
