@@ -16,74 +16,69 @@ multiplexed assay experiment.
 
 The schema defines a set of required and optional fields and possible values that can be used to validate a minimum
 information document.
-The implementation is found in the `schema` directory.
+The implementation is found in the [schema](schema/) directory.
 
 In addition to the structure of the minimum information model, the schema also defines controlled vocabulary terms for
 describing one of these experiments.
 
-The `examples` directory contains examples of this type of document describing real experiments, as well as a simple 
+The [examples](examples/) directory contains examples of this type of document describing real experiments, as well as a simple
 Python script that will run the schema validation using [jsonschema](https://pypi.org/project/jsonschema/).
 Many other implementations of the JSON Schema standard are available in other languages (see
 [here](https://json-schema.org/implementations.html)).
 
-Please note that although we are using the JSON Schema standard, the files here are in YAML format because it is more 
-human-readable.
+Please note that although we are using the JSON Schema standard, the schema source file is written in YAML format for ease in human
+reading/writing, and processed to JSON using the provided [Makefile](schema/Makefile).
 
 ## Reading the schema
 
-The `schema` directory contains a YAML representation of the minimum information standard and controlled vocabulary.
-There are multiple levels of required information that can be browsed hierarchically.
-Most fields include a description that details the intention of that field and the type of information that is to be 
-provided.
+The [schema](schema/) directory contains JSON and YAML representations of the minimum information standard and controlled vocabulary
+expressed as JSON Schema. There are multiple levels of required information that can be browsed hierarchically.
+Most fields include a description that details the intention of that field and the type of information that is to be provided.
 
-For many fields, there is an enumerated list of valid values corresponding to the controlled vocabulary terms that can 
+For many fields, there is an enumerated list of valid values corresponding to the controlled vocabulary terms that must
 be used to describe the experiment.
 
-The general schema structure and terms are also described below. 
-The YAML documents in the `schema` directory should be considered the authoritative structure and source of information 
-where there are discrepancies.
+The general schema structure and terms are also described below. The YAML documents in the [schema](schema/) directory should be
+considered the authoritative structure and source of information where discrepancies exist.
 
 ### Applying the schema to your datasets
 
-Unless you are an experienced YAML user who is able to read the `schema/experiment.yml` file yourself, we recommend 
+Unless you are an experienced YAML user who is able to read the [schema/experiment.yml](schema/experiment.yml) file yourself, we recommend
 choosing the most closely-related example file as a starting point and modifying it as needed.
 
 The repository currently contains three examples:
 
-* `examples/Findlay_2018.yml` describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based 
-editing of the endogenous locus and measuring cell survival in HAP1 cells 
+- [examples/Findlay_2018.yml](examples/Findlay_2018.yml) describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based
+editing of the endogenous locus and measuring cell survival in HAP1 cells
 ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/30209399/))
-* `examples/Matreyek_2018.ml` describes a deep mutational scan of PTEN, expressed using a designed construct integrated
-into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq 
+- [examples/Matreyek_2018.yml](examples/Matreyek_2018.yml) describes a deep mutational scan of PTEN, expressed using a designed construct integrated
+into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq
 ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/29785012/))
-* `examples/Seuma_2022.yml` describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
+- [examples/Seuma_2022.yml](examples/Seuma_2022.yml) describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
 effect on yeast growth ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/36400770/))
 
 The schema starts with some descriptive metadata, such as the title and abstract.
-We recommend that the title in particular focus on describing the dataset specific to the document rather than the 
-overall study.
+The title and abstract should reflect the experimental dataset reflected in a study (which may optionally reference a published document that may
+have a differing title).
 The `title` and `abstract` are required properties.
 
-The next section (`document`) describes the publication (if any).
-This part of the schema is optional, but if it is included, the `ref` property that provides an accession number 
-(such as a [DOI](https://www.doi.org/)) is required.
+The next section (`document`) describes a publication associated with the experiment (if any).
+This part of the schema is optional, but if used, must minimally include a `ref` property with a URI (such as a [DOI](https://www.doi.org/))
+linking to the publication.
 
-The following sections `variantLibrary` and `phenotypicAssay` describe the experiment that was performed and both are 
-required.
-Each has several subsections that provide structure for detailing the important experimental design decisions captured 
-by the schema.
-We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help
-complete this section, as it will be different for each experiment.
+The following sections `variantLibrary` and `phenotypicAssay` describe the experiment that was performed and both are required.
+Each has several subsections that provide structure for detailing the important experimental design decisions captured by the schema.
+We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help complete this section,
+as it will be different for each experiment.
 
-*Note:* We anticipate that the standard will be adopted by established resources such as 
-[MaveDB](https://www.mavedb.org) that will provide users with the ability to download a minimum information file after 
-data deposition.
+*Note:* We anticipate that the standard will be adopted by established resources such as [MaveDB](https://www.mavedb.org) that will provide
+users with the ability to download a minimum information file after data deposition.
 
 ### Generating sequence identifiers
 
 Some examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
-These values were generated according to the [GA4GH VRS](https://vrs.ga4gh.org/) standard (see 
-[here](en/stable/impl-guide/computed_identifiers.html)) for details.
+These values were generated according to the [GA4GH VRS v1.3](https://vrs.ga4gh.org/) standard (see
+[here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html)) for details.
 
 Generating these stable identifiers is not required but is recommended, particularly for in-vitro construct libraries.
 
@@ -103,13 +98,16 @@ on a single or multiplexed set of phenotypes.
 
 #### Atlas of Variant Effects (AVE) ###
 
-A combined resource for variant effects measured across model systems and contexts applicable to the study of the 
-structure and function of the genome and its products, as well as the consequences of its perturbation in health and 
-disease.
+A combined resource for variant effects measured across model systems and contexts applicable to the study of the
+structure and function of the genome and its products, as well as the consequences of its perturbation in health and
+disease. Read more at <https://www.varianteffect.org/>.
 
 ### Ontologies and identifiers
 
-For describing assay readouts, we make use of terms from the 
+Concept codes follow the `Coding` model, which describes concepts as objects with a `code` and `label` used by a
+`system` (or `version` of a `system`).
+
+For describing assay readouts, we recommend the use of terms from the
 [Ontology for Biomedical Investigations](https://obi-ontology.org/).
 
 For describing human diseases relevant to the assay, we recommend using terms from [OMIM](https://www.omim.org/) or
@@ -126,10 +124,10 @@ the organism (including strain, where applicable).
 
 This section describes the scope and characteristics of variant introduction.
 
-**Library scope** – the collection of DNA elements introduced into the library. 
-DNA elements can have known (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, 
-repressors, etc), or unknown functions. 
-For a given DNA element we distinguish the mode of variant programming/engineering 
+**Library scope** – the collection of DNA elements introduced into the library.
+DNA elements can have known (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers,
+repressors, etc), or unknown functions.
+For a given DNA element we distinguish the mode of variant programming/engineering
 (e.g. all SNV, indels, ClinVar variants etc).
 
 Controlled vocabulary terms (one or many):
@@ -200,9 +198,9 @@ Controlled vocabulary terms (one or many):
 
 #### Phenotypic assay
 
-A physical adjudication of model system that allows for systematic interrogation of a functional read-out for a large 
-amount of genetic variants (e.g. cell size and mode of adjudication, action potential characteristic(s) and mode of 
-measurement, expression of a particular factor and mode of measurement (FACS, sc-RNA-seq), or transcript expression 
+A physical adjudication of model system that allows for systematic interrogation of a functional read-out for a large
+amount of genetic variants (e.g. cell size and mode of adjudication, action potential characteristic(s) and mode of
+measurement, expression of a particular factor and mode of measurement (FACS, sc-RNA-seq), or transcript expression
 (bulk RNA-seq)).
 
 **Dimensionality of phenotyping assays** – how many phenotypes and of what complexity are included in the map
@@ -246,7 +244,7 @@ Controlled vocabulary terms (select one):
 
 #### Context - Characteristics of the model system that influence expression of phenotype
 
-**Cellular model system and genetic background** – genetically encoded characteristics of the model system that 
+**Cellular model system and genetic background** – genetically encoded characteristics of the model system that
 potentially affect the outcome of the assay (e.g. species, animal strain, genetic ancestry, biological sex)
 
 Controlled vocabulary terms (one or many):
