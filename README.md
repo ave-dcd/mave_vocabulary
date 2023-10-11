@@ -96,7 +96,7 @@ followed by multiplexed high-throughput phenotyping (potentially multiple phenot
 A dataset that reports the effects of variation in a DNA element (a gene, transcript, set of regulatory regions, etc.)
 on a single or multiplexed set of phenotypes.
 
-#### Atlas of Variant Effects (AVE) ###
+#### Atlas of Variant Effects (AVE)
 
 A combined resource for variant effects measured across model systems and contexts applicable to the study of the
 structure and function of the genome and its products, as well as the consequences of its perturbation in health and
@@ -130,12 +130,15 @@ repressors, etc), or unknown functions.
 For a given DNA element we distinguish the mode of variant programming/engineering
 (e.g. all SNV, indels, ClinVar variants etc).
 
-Controlled vocabulary terms (one or many):
+Controlled vocabulary terms for `scope.type` (one or many):
 
-- Coding
-- Intronic
-- Non-coding regulatory
-- Non-coding other (eg tRNA)
+- coding
+- intronic
+- non-coding, regulatory
+- non-coding, other
+
+Libraries may be further described with `scope.description`. The `description` field should be populated for any
+library of type `non-coding, other` (e.g. tRNA libraries).
 
 **Variant library characteristics** – methods used to generate the library
 
