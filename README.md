@@ -86,7 +86,7 @@ users with the ability to download a minimum information file after data deposit
 
 Some examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
 These values were generated according to the [GA4GH VRS v1.3](https://vrs.ga4gh.org/) and [refGet](http://samtools.github.io/hts-specs/refget.html)
-standards (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html)) for details.
+standards (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html) for details).
 
 Generating these stable identifiers is not required but is recommended, particularly for in-vitro construct libraries.
 
@@ -113,6 +113,17 @@ the organism (including strain, where applicable).
 
 This section describes the scope and characteristics of a variant library: a collection of sequence variants for a MAVE experiment
 that are derived from a common target sequence.
+
+#### Target sequences
+
+A collection of sequences used as references from which all variants in the library are defined. This collection is defined as a
+set of `ReferenceSequence` objects, each defined by the following properties:
+
+`id`: an identifier for the sequence.
+`sha512t24u`: the GA4GH `SQ.` identifier (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html) for
+details).
+`sequence`: the literal sequence as a string of [IUPAC single character codes](https://www.bioinformatics.org/sms/iupac.html).
+`sequenceAlphabet`: one of `na` (nucleic acids) or `aa` (amino acids) for interpreting IUPAC character codes in the `sequence`.
 
 #### Library scope
 
@@ -205,7 +216,7 @@ The delivery method is specified by the `type` property and must be one of the f
 
 The `type` field is required. Additional detail about the delivery method may be provided with the `description` property.
 
-#### Phenotypic assay
+### Phenotypic assay
 
 A physical adjudication of model system that allows for systematic interrogation of a functional read-out for a large
 amount of genetic variants (e.g. cell size and mode of adjudication, action potential characteristic(s) and mode of
