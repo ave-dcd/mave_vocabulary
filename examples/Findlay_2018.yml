@@ -28,6 +28,7 @@ datasets:
   - system: website
     accession: https://sge.gs.washington.edu/BRCA1/
     ref: https://sge.gs.washington.edu/BRCA1/
+    description: processed scores and visualizations hosted by the investigators
 variantLibrary:
   scope:
     type: coding
