@@ -161,7 +161,7 @@ $defs:
   VariantLibrary:
     type: object
     additionalProperties: false
-    description: a collection of sequences that are derived from a common target sequence
+    description: a collection of sequence variants that are derived from a common target sequence
     properties:
       targetSequences:
         description: the collection of sequences used as references from which all variants in the library are defined
@@ -228,6 +228,7 @@ $defs:
     description: a physical adjudication of a model system that allows for systematic interrogation of a functional
       read-out for a large amount of genetic variants.
     type: object
+    additionalProperties: false
     properties:
       dimensionality:
         type: object
