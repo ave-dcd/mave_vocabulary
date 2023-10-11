@@ -18,6 +18,11 @@ document:
     Nature Communications
   date: "2022-11-18"
   ref: https://doi.org/10.1038/s41467-022-34742-3
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000113-a
+    ref: https://mavedb.org/#/experiments/urn:mavedb:00000113-a
+    description: processed scores
 variantLibrary:
   scope:
     type: coding

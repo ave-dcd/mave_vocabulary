@@ -42,6 +42,27 @@ $defs:
       label:
         description: a human-readable description of the concept associated with the code
         type: string
+  Dataset:
+    type: object
+    additionalProperties: false
+    description: a dataset available from an external source
+    properties:
+      system:
+        type: string
+        description: the name of the system the dataset is available from, such as a database
+      accession:
+        type: string
+        description: accession number for the dataset in the system
+      ref:
+        type: string
+        format: uri
+        description: a Universal Record Identifier for the dataset
+      description:
+        description: additional details about the dataset, such as whether it contains raw or processed data
+        type: string
+    required:
+      - system
+      - accession
   ReferenceSequence:
     type: object
     additionalProperties: false
@@ -334,6 +355,12 @@ properties:
   document:
     description: the primary document describing this experiment
     $ref: "#/$defs/Document"
+  datasets:
+    description: datasets associated with this experiment
+    type: array
+    items:
+      $ref: "#/$defs/Dataset"
+    minItems: 1
   variantLibrary:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"

@@ -18,6 +18,15 @@ document:
     Nature Genetics
   date: "2018-05-21"
   ref: https://doi.org/10.1038/s41588-018-0122-z
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000013-a
+    ref: https://mavedb.org/#/experiments/urn:mavedb:00000013-a
+    description: processed scores, including scores for each replicate experiment
+  - system: BioProject
+    accession: PRJNA428380
+    ref: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA428380
+    description: raw sequencing data
 variantLibrary:
   scope:
     type: coding
