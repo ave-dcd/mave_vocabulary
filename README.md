@@ -7,7 +7,7 @@ JSON Schema for validating MAVE experiment metadata
 
 *Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data
 repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org).
-This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and 
+This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and
 meta-data sharing for scientists using variant effect mapping technology.
 
 ## How to use this repository
@@ -16,10 +16,10 @@ This repository contains an implementation of the schema described in the
 [Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a
 multiplexed assay experiment.
 
-Overall, it is felt that minimum standard reporting should include information on 
-(1) means and characteristics of genetic perturbation, 
-(2) details of the phenotypic assay employed to identify variant effects, 
-(3) information on the cellular and environmental context(s) in which the assays were carried out, and 
+Overall, it is felt that minimum standard reporting should include information on
+(1) means and characteristics of genetic perturbation,
+(2) details of the phenotypic assay employed to identify variant effects,
+(3) information on the cellular and environmental context(s) in which the assays were carried out, and
 (4) details of sequencing strategy for variant-effect associations.
 
 The schema defines a set of required and optional fields and possible values that can be used to validate a minimum
@@ -94,7 +94,7 @@ Generating these stable identifiers is not required but is recommended, particul
 
 ### Overview of ontologies and identifiers
 
-Concept codes follow the `Coding` model, which describes concepts as objects with a `code` and `label` used by a
+Concept codes used by the schema follow the `Coding` model, which describes concepts as objects with a `code` and `label` used by a
 `system` (or `version` of a `system`).
 
 For describing assay readouts, we recommend the use of terms from the
@@ -105,6 +105,7 @@ the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
 For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html),
 where available.
+
 We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes
 the organism (including strain, where applicable).
 
@@ -118,7 +119,7 @@ This section describes the scope and characteristics of variant introduction.
 DNA elements can have known (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers,
 repressors, etc), or unknown functions.
 For a given DNA element we distinguish the mode of variant programming/engineering
-(e.g. all SNV, indels, ClinVar variants etc).
+(e.g. all SNV, indels, ClinVar variants, etc).
 
 Controlled vocabulary terms for `scope.type` (one or many):
 
