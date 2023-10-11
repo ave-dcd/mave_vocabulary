@@ -74,7 +74,7 @@ The next section (`document`) describes a publication associated with the experi
 This part of the schema is optional, but if used, must minimally include a `ref` property with a URI (such as a [DOI](https://www.doi.org/))
 linking to the publication.
 
-The following sections `variantLibrary` and `phenotypicAssay` describe the experiment that was performed and both are required.
+The [variantLibrary](#variant-library) and [phenotypicAssay](#phenotypic-assay) describe the experiment that was performed and both are required.
 Each has several subsections that provide structure for detailing the important experimental design decisions captured by the schema.
 We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help complete this section,
 as it will be different for each experiment.
@@ -109,15 +109,17 @@ where available.
 We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes
 the organism (including strain, where applicable).
 
-### Experimental vocabulary (genetic perturbation, phenotype and context)
+### Variant Library
 
-#### Genetic perturbation
+This section describes the scope and characteristics of a variant library: a collection of sequence variants for a MAVE experiment
+that are derived from a common target sequence.
 
-This section describes the scope and characteristics of variant introduction.
+#### Library scope
 
-**Library scope** – the collection of DNA elements introduced into the library.
-DNA elements can have known (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers,
-repressors, etc), or unknown functions.
+the functional scope of DNA elements introduced into the library.
+DNA elements can have known or unknown functions. Example functions include a gene, an exon or set of exons included in a 
+transcript, a set of enhancers, a set of repressors, etc.
+
 For a given DNA element we distinguish the mode of variant programming/engineering
 (e.g. all SNV, indels, ClinVar variants, etc).
 
@@ -128,55 +130,59 @@ Controlled vocabulary terms for `scope.type` (one or many):
 - non-coding, regulatory
 - non-coding, other
 
-Libraries may be further described with `scope.description`. The `description` field should be populated for any
+Libraries may be further described with `description`. The `description` field must be populated for any
 library of type `non-coding, other` (e.g. tRNA libraries).
 
-**Variant library characteristics** – methods used to generate the library
+#### Library generation method
 
-*Variant generation method* – how was the variant library created
-(e.g. doped oligo, mutagenic PCR, primer-based, base editor)
+The methods used to generate the library. A library may create and integrate an *in vitro* construct or directly edit an
+endogenous locus. The library generation method is defined by its `type`, which may be one of:
 
-Controlled vocabulary categorical term (can pick both category options):
+- in-vitro construct library
+- endogenous locus library
 
-- Editing at endogenous locus
-- In vitro variant construct generation
+##### In-vitro construct library method
 
-*In vitro construct generation method* (if applicable)
+A methodology for generating and integrating an exogenous variant library.
 
-- Oligo-directed mutagenic PCR (e.g. NNK PCR)
-- Error-prone PCR
-- Nicking mutagenesis
-- Microarray synthesis
-- Site-directed mutagenesis
-- Doped oligo synthesis
-- Oligo pool synthesis
-- Proprietary method
-- Other (please describe)
+For *in-vitro* constructs, `system` is one of the following controlled vocabulary terms:
 
-*Integration/expression of exogenous construct* (if applicable)
+- oligo-directed mutagenic PCR
+- error-prone PCR
+- nicking mutagenesis
+- microarray synthesis
+- site-directed mutagenesis
+- doped oligo synthesis
+- oligo pool synthesis
+- proprietary method
+- other
 
-- Entire element replacement at the native locus (e.g. with integrases, not base editing)
+In addition, `integration` refers to the mechanism for integration or expression of an exogenous construct and is one of
+the following controlled vocabulary terms:
 
-*Integration of extra-local construct* (e.g. with landing pad; if applicable)
+- native locus replacement
+- extra-local construct insertion
+- random locus viral integration
+- episomal delivery
+- plasmid (not integrated)
+- transfection of RNA
 
-- Viral Integration
-- Episomal delivery
-- Transfection of RNA
+`system` and `integration` are required properties. `description` may be used to further describe the generation method
+`system` and `integration` parameters, and is required if the `system` is set to `other`.
 
-*Endogenous genome editing* (if applicable)
+##### Endogenous locus library method
 
-- CRISPR/Cas system
+A methodology for generating a variant library at an endogenous locus.
+
+For endogenous editing, `system` refers to the CRISPR/Cas system used, and is one of the following controlled vocabulary terms:
+
 - SpCas9
 - SaCas9
 - AsCas12a
-- RfxCas13d
-- CRISPR/Cas system functionality
-  - Wildtype nuclease
-  - Base Editor
-  - Prime Editor
+- RfsCas13d
 
-**Delivery method** – how the variant induction machinery and/or construct was delivered to the cell/organism
-(e.g. viral transduction, electroporation, transfection and MOI)
+In addition, `mechanism` is used to define the functional mechanism of the method, and is one of the following controlled vocabulary
+terms:
 
 Controlled vocabulary terms (one or many):
 
