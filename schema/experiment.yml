@@ -240,9 +240,9 @@ $defs:
               readouts.
             type: string
             enum:
-              - single dimension
+              - single-dimensional data
               - high-dimensional data
-              - multiple functional readouts
+              - combined functional data
           description:
             type: string
             description: additional details about the dimensionality of the assay

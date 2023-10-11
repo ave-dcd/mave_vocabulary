@@ -54,6 +54,34 @@
             }
          }
       },
+      "Dataset": {
+         "type": "object",
+         "additionalProperties": false,
+         "description": "a dataset available from an external source",
+         "properties": {
+            "system": {
+               "type": "string",
+               "description": "the name of the system the dataset is available from, such as a database"
+            },
+            "accession": {
+               "type": "string",
+               "description": "accession number for the dataset in the system"
+            },
+            "ref": {
+               "type": "string",
+               "format": "uri",
+               "description": "a Universal Record Identifier for the dataset"
+            },
+            "description": {
+               "description": "additional details about the dataset, such as whether it contains raw or processed data",
+               "type": "string"
+            }
+         },
+         "required": [
+            "system",
+            "accession"
+         ]
+      },
       "ReferenceSequence": {
          "type": "object",
          "additionalProperties": false,
@@ -183,7 +211,7 @@
       "VariantLibrary": {
          "type": "object",
          "additionalProperties": false,
-         "description": "a collection of sequences that are derived from a common target sequence",
+         "description": "a collection of sequence variants that are derived from a common target sequence",
          "properties": {
             "targetSequences": {
                "description": "the collection of sequences used as references from which all variants in the library are defined",
@@ -272,6 +300,7 @@
       "phenotypicAssay": {
          "description": "a physical adjudication of a model system that allows for systematic interrogation of a functional read-out for a large amount of genetic variants.",
          "type": "object",
+         "additionalProperties": false,
          "properties": {
             "dimensionality": {
                "type": "object",
@@ -281,14 +310,37 @@
                      "description": "a coding defining the dimensionality of the assay as single or multiple functional readouts.",
                      "type": "string",
                      "enum": [
-                        "single dimension",
+                        "single-dimensional data",
                         "high-dimensional data",
-                        "multiple functional readouts"
+                        "combined functional data"
                      ]
                   },
                   "description": {
                      "type": "string",
                      "description": "additional details about the dimensionality of the assay"
+                  }
+               },
+               "required": [
+                  "type"
+               ]
+            },
+            "replication": {
+               "type": "object",
+               "description": "replication of phenotyping assay. Describes what kind of replication was performed.",
+               "properties": {
+                  "type": {
+                     "description": "a coding defining the kind of replication performed.",
+                     "type": "string",
+                     "enum": [
+                        "biological",
+                        "technical",
+                        "biological and technical",
+                        "no replication"
+                     ]
+                  },
+                  "description": {
+                     "type": "string",
+                     "description": "additional details about the replicate structure of the assay, including number of replicates"
                   }
                },
                "required": [
@@ -357,6 +409,14 @@
                   "description": {
                      "type": "string",
                      "description": "additional details about the model system."
+                  },
+                  "identifiers": {
+                     "description": "relevant ontology terms or identifiers for the model system.",
+                     "type": "array",
+                     "items": {
+                        "$ref": "#/$defs/Coding"
+                     },
+                     "minItems": 1
                   }
                }
             },
@@ -403,6 +463,14 @@
       "document": {
          "description": "the primary document describing this experiment",
          "$ref": "#/$defs/Document"
+      },
+      "datasets": {
+         "description": "datasets associated with this experiment",
+         "type": "array",
+         "items": {
+            "$ref": "#/$defs/Dataset"
+         },
+         "minItems": 1
       },
       "variantLibrary": {
          "description": "characteristics of the variant library generation process",
