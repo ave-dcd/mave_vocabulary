@@ -240,6 +240,17 @@ where `single-dimensional data` refers to experiments with a single dimension (e
 The `type` field is required. Additional information about the `dimensionality` of an experiment may be provided using the
 `description` field.
 
+#### Replication
+
+Assay replication work performed is defined by its `type`, which must be one of the following controlled vocabulary terms:
+
+- biological
+- technical
+- biological and technical
+- no replication
+
+The `type` field is required. Additional detail about the replication method may be provided with the `description` property.
+
 **Phenotypic assay examines** – terms selected from OBI subtree with root
 [OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070)
 

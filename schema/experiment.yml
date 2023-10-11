@@ -344,6 +344,7 @@ $defs:
       - modelSystem
       - profilingStrategy
       - sequencingMethod
+      - replication
 type: object
 additionalProperties: false
 properties:
