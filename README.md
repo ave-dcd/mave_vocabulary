@@ -223,14 +223,22 @@ amount of genetic variants (e.g. cell size and mode of adjudication, action pote
 measurement, expression of a particular factor and mode of measurement (FACS, sc-RNA-seq), or transcript expression
 (bulk RNA-seq)).
 
-**Dimensionality of phenotyping assays** – how many phenotypes and of what complexity are included in the map
+#### Dimensionality
 
-Controlled vocabulary terms (select one):
+Dimensionality defines how many phenotypes and of what complexity are included in the map.
 
-- Single functional read-out
-- Single dimension (e.g. FACS fluorescence from a single protein was used)
-- High-dimensional data (e.g. ML/AI enabled cell imaging/classification)
-- The outcomes of multiple phenotypic assays were combined to make this map
+Dimensionality is primarily defined by its `type`, which must be one of the following controlled vocabulary terms:
+
+- single-dimensional data
+- high-dimensional data
+- combined functional data
+
+where `single-dimensional data` refers to experiments with a single dimension (e.g. FACS fluorescence from a single protein was used),
+`high-dimensional data` refers to experiments with multiple dimensions (e.g. ML/AI enabled cell imaging/classification), and
+`combined functional data` refers to experiments where multiple phenotypic assays were combined to make a map.
+
+The `type` field is required. Additional information about the `dimensionality` of an experiment may be provided using the
+`description` field.
 
 **Phenotypic assay examines** – terms selected from OBI subtree with root
 [OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070)

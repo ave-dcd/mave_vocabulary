@@ -45,7 +45,7 @@ variantLibrary:
     description: Lipofection - TurboFectin
 phenotypicAssay:
   dimensionality:
-    type: multiple functional readouts
+    type: combined functional data
   replication:
     type: biological
     description: two biological replicates were performed

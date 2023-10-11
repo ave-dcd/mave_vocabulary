@@ -62,7 +62,7 @@ variantLibrary:
     type: chemical or heat shock transformation
 phenotypicAssay:
   dimensionality:
-    type: single dimension
+    type: single-dimensional data
   replication:
     type: biological and technical
     description: 8 biological replicate experiments were performed from three
