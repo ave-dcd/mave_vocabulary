@@ -333,7 +333,7 @@ $defs:
           - direct sequencing
           - shotgun sequencing
           - barcode sequencing
-      sequencingMethod:
+      sequencingReadType:
         description: the sequencing method used
         type: string
         enum:
@@ -346,7 +346,7 @@ $defs:
       - relevance
       - modelSystem
       - profilingStrategy
-      - sequencingMethod
+      - sequencingReadType
       - replication
 type: object
 additionalProperties: false

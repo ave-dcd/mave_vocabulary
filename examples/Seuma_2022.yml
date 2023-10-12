@@ -67,4 +67,4 @@ phenotypicAssay:
         code: NCBI:txid4932
         label: Saccharomyces cerevisiae
   profilingStrategy: direct sequencing
-  sequencingMethod: single-segment (short read)
+  sequencingReadType: single-segment (short read)

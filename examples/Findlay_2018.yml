@@ -74,4 +74,4 @@ phenotypicAssay:
         code: NCBI:txid9606
         label: Homo sapiens
   profilingStrategy: direct sequencing
-  sequencingMethod: multi-segment
+  sequencingReadType: multi-segment

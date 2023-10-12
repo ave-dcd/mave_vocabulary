@@ -97,4 +97,4 @@ phenotypicAssay:
         code: NCBI:txid9606
         label: Homo sapiens
   profilingStrategy: barcode sequencing
-  sequencingMethod: single-segment (short read)
+  sequencingReadType: single-segment (short read)

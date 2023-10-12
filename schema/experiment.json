@@ -433,7 +433,7 @@
                   "barcode sequencing"
                ]
             },
-            "sequencingMethod": {
+            "sequencingReadType": {
                "description": "the sequencing method used",
                "type": "string",
                "enum": [
@@ -449,7 +449,7 @@
             "relevance",
             "modelSystem",
             "profilingStrategy",
-            "sequencingMethod",
+            "sequencingReadType",
             "replication"
          ]
       }

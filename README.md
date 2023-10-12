@@ -319,29 +319,23 @@ where applicable. Some commonly used cell lines and model systems are listed bel
 
 The `type` property is required. Additional detail about the model system may be provided with the `description` property.
 
-**Environmental variables** – variance of environmental factors included in the experiment
-(e.g. addition of specific compounds to cell media, temperature controls, time course, CRISPR interference by KRAB,
-KRAB-MeCP2, CRISPR activation by VPR, SAM, or SunTag, etc.)
+#### Profiling strategy
 
-Controlled vocabulary terms (select one):
+The variant profiling strategy used to capture variant frequency associated with outcome of phenotypic assay. The profiling 
+strategy must be one of the following following controlled vocabulary terms:
 
-- Yes - If yes, please describe this in detail in the free text methods describing your assay.
-- No
+- direct sequencing
+- shotgun sequencing
+- barcode sequencing
 
-#### Variant sequencing characteristics
+`profilingStrategy` is a required property.
 
-This section details the method for accurately capturing variant frequency associated with outcome of phenotypic assay.
+#### Sequencing read type
 
-**Library profiling strategy** – approach used to quantify variants in the population
+The sequencing read type used in the assay. The read type must be one of the following controlled vocabulary terms:
 
-Controlled vocabulary terms (select one):
+- single-segment (short read)
+- single-segment (long read)
+- multi-segment
 
-- Direct sequencing
-- Shotgun sequencing
-- Barcode sequencing
-
-Controlled vocabulary terms (select one):
-
-- Single segment (short read)
-- Single segment (long read)
-- Multi-segment
+`sequencingReadType` is a required property.
