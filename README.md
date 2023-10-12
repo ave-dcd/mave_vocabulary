@@ -255,7 +255,7 @@ The `type` property is required. Additional detail about the replication method 
 
 The assay method, defining the molecular properties interrogated by the experiment. Terms are derived from OBI subtree with root
 [OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070) where appropriate. Term mappings to OBI concept identifiers
-are available in the controlled vocabulary definitions file. The method is specified by the `type` property, which must be one of
+are available in the [controlled vocabulary tsv](controlled_vocabulary.tsv). The method is specified by the `type` property, which must be one of
 the following controlled vocabulary terms:
 
 - promoter activity detection by reporter gene assay
