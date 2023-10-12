@@ -354,16 +354,16 @@
                   "type": {
                      "type": "string",
                      "enum": [
-                        "promoter activity reporter gene assay",
+                        "promoter activity detection by reporter gene assay",
                         "bulk RNA-sequencing",
                         "single-cell RNA sequencing assay",
                         "fluorescence in-situ hybridization (FISH) assay",
                         "flow cytometry assay",
                         "imaging mass cytometry assay",
-                        "evolution of ligands by exponential enrichment assay",
+                        "systematic evolution of ligands by exponential enrichment assay",
                         "single cell imaging",
                         "multiplexed fluorescent antibody imaging",
-                        "binding assays",
+                        "binding assay",
                         "cell proliferation assay",
                         "survival assessment assay",
                         "other"
@@ -445,7 +445,8 @@
             "relevance",
             "modelSystem",
             "profilingStrategy",
-            "sequencingMethod"
+            "sequencingMethod",
+            "replication"
          ]
       }
    },

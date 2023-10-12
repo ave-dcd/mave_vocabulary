@@ -214,7 +214,7 @@ The delivery method is specified by the `type` property and must be one of the f
 - chemical or heat shock transformation
 - other
 
-The `type` field is required. Additional detail about the delivery method may be provided with the `description` property.
+The `type` property is required. Additional detail about the delivery method may be provided with the `description` property.
 
 ### Phenotypic assay
 
@@ -237,8 +237,8 @@ where `single-dimensional data` refers to experiments with a single dimension (e
 `high-dimensional data` refers to experiments with multiple dimensions (e.g. ML/AI enabled cell imaging/classification), and
 `combined functional data` refers to experiments where multiple phenotypic assays were combined to make a map.
 
-The `type` field is required. Additional information about the `dimensionality` of an experiment may be provided using the
-`description` field.
+The `type` property is required. Additional information about the `dimensionality` of an experiment may be provided using the
+`description` property.
 
 #### Replication
 
@@ -249,58 +249,54 @@ Assay replication work performed is defined by its `type`, which must be one of 
 - biological and technical
 - no replication
 
-The `type` field is required. Additional detail about the replication method may be provided with the `description` property.
+The `type` property is required. Additional detail about the replication method may be provided with the `description` property.
 
-**Phenotypic assay examines** – terms selected from OBI subtree with root
-[OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070)
+#### Method
 
-- DNA
-  - OBI_0000913 Promoter activity reporter gene assay RNA
-  - “Other”, e.g. structure, methylation
+The assay method, defining the molecular properties interrogated by the experiment. Terms are derived from OBI subtree with root
+[OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070) where appropriate. Term mappings to OBI concept identifiers
+are available in the controlled vocabulary definitions file. The method is specified by the `type` property, which must be one of
+the following controlled vocabulary terms:
 
-- RNA
-  - OBI_0001177 Bulk RNA-sequencing
-  - OBI_0002631 Single cell RNA-sequencing and single cell combinatorial index RNA-sequencing assay
-  - OBI_0003094 Fluorescence in-situ hybridization (FISH) assay
-  - “Other”
+- promoter activity detection by reporter gene assay
+- bulk RNA-sequencing
+- single-cell RNA sequencing assay
+- fluorescence in-situ hybridization (FISH) assay
+- flow cytometry assay
+- imaging mass cytometry assay
+- systematic evolution of ligands by exponential enrichment assay
+- single cell imaging
+- multiplexed fluorescent antibody imaging
+- binding assay
+- cell proliferation assay
+- survival assessment assay
+- other
 
-- Protein
-  - OBI_0000916 Flow cytometry assay
-  - OBI_0003096  Imaging Mass Cytometry assay
-  - OBI_0002161 Evolution of ligands by exponential enrichment assay
-  - “Other”
+#### Relevance
 
-- Morphology & Function
-  - OBI_0002119 Single cell imaging
-  - OBI_0003091 Multiplexed fluorescent antibody imaging
-  - OBI_0001146 Binding assays
-  - OBI_0000891 Cell Proliferation Assay, including fluorescence image-based cell proliferation assay
-  - OBI_0000699 Survival assessment assay
-  - “Other”
+The disease or biological processes the assay is relevant to. Relevance is specified by an array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)). We recommend relevance to be described by terms from [OMIM](https://www.omim.org/)
+or the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
-**Disease/biological process relevance** – choose terms from [OMIM](https://www.omim.org/) or the
-[Mondo Disease Ontology](https://mondo.monarchinitiative.org/)
+#### Model system
 
-#### Context - Characteristics of the model system that influence expression of phenotype
+The model system context that influences expression of the phenotype. The model system is specified by the `type` property and must 
+be one of the following controlled vocabulary terms:
 
-**Cellular model system and genetic background** – genetically encoded characteristics of the model system that
-potentially affect the outcome of the assay (e.g. species, animal strain, genetic ancestry, biological sex)
+- immortalized human cells
+- murine primary cells
+- induced pluripotent stem cells from human male
+- induced pluripotent stem cells from human female
+- patient derived primary cells (e.g. T-cells, adipocytes)
+- yeast
+- bacteria
+- bacteriophage
+- molecular display
+- other
 
-Controlled vocabulary terms (one or many):
-
-- Immortalized human cells (e.g. HEK293, HeLa cells; please specify below)
-- Murine primary cells
-- Induced pluripotent stem cells from male
-- Induced pluripotent stem cells from female
-- Patient derived primary cells (e.g. T-cells, adipocytes)
-- Yeast
-- E. coli
-- Other bacteria
-- Bacteriophage
-- Molecular display (e.g. ribosome display)
-- Other (please specify - includes all other OBI ontology terms)
-
-Commonly used cell lines and model systems
+We recommend that cell lines are further described by relevant concepts using the `codings` array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)). We recommend that cell lines are described using the Cell Line Ontology
+where applicable. Some commonly used cell lines and model systems are listed below:
 
 | Cell | CLO Term | NCBI Taxonomy ID |
 |------|----------|------------------|
@@ -320,6 +316,8 @@ Commonly used cell lines and model systems
 | NIH3T3 | missing | 10090 |
 | Bacteriophage | n/a | 38018 |
 | Cell-free | n/a | n/a |
+
+The `type` property is required. Additional detail about the model system may be provided with the `description` property.
 
 **Environmental variables** – variance of environmental factors included in the experiment
 (e.g. addition of specific compounds to cell media, temperature controls, time course, CRISPR interference by KRAB,
