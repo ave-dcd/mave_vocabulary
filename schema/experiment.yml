@@ -1,4 +1,3 @@
-# https://docs.google.com/document/d/1HTy5oLd0FWwcqirCh6WXFcBAiwHl5rr5hnjg_kEYKsE/edit
 $schema: https://json-schema.org/draft/2020-12/schema
 title: MAVE experiment definition
 $defs:
@@ -43,6 +42,30 @@ $defs:
       label:
         description: a human-readable description of the concept associated with the code
         type: string
+    required:
+      - system
+      - code
+  Dataset:
+    type: object
+    additionalProperties: false
+    description: a dataset available from an external source
+    properties:
+      system:
+        type: string
+        description: the name of the system the dataset is available from, such as a database
+      accession:
+        type: string
+        description: accession number for the dataset in the system
+      ref:
+        type: string
+        format: uri
+        description: a Universal Record Identifier for the dataset
+      description:
+        description: additional details about the dataset, such as whether it contains raw or processed data
+        type: string
+    required:
+      - system
+      - accession
   ReferenceSequence:
     type: object
     additionalProperties: false
@@ -141,7 +164,7 @@ $defs:
   VariantLibrary:
     type: object
     additionalProperties: false
-    description: a collection of sequences that are derived from a common target sequence
+    description: a collection of sequence variants that are derived from a common target sequence
     properties:
       targetSequences:
         description: the collection of sequences used as references from which all variants in the library are defined
@@ -208,6 +231,7 @@ $defs:
     description: a physical adjudication of a model system that allows for systematic interrogation of a functional
       read-out for a large amount of genetic variants.
     type: object
+    additionalProperties: false
     properties:
       dimensionality:
         type: object
@@ -219,12 +243,29 @@ $defs:
               readouts.
             type: string
             enum:
-              - single dimension
+              - single-dimensional data
               - high-dimensional data
-              - multiple functional readouts
+              - combined functional data
           description:
             type: string
             description: additional details about the dimensionality of the assay
+        required:
+          - type
+      replication:
+        type: object
+        description: replication of phenotyping assay. Describes what kind of replication was performed.
+        properties:
+          type:
+            description: a coding defining the kind of replication performed.
+            type: string
+            enum:
+              - biological
+              - technical
+              - biological and technical
+              - no replication
+          description:
+            type: string
+            description: additional details about the replicate structure of the assay, including number of replicates
         required:
           - type
       method:
@@ -234,16 +275,16 @@ $defs:
           type:
             type: string
             enum:
-              - promoter activity reporter gene assay
+              - promoter activity detection by reporter gene assay
               - bulk RNA-sequencing
               - single-cell RNA sequencing assay
               - fluorescence in-situ hybridization (FISH) assay
               - flow cytometry assay
               - imaging mass cytometry assay
-              - evolution of ligands by exponential enrichment assay
+              - systematic evolution of ligands by exponential enrichment assay
               - single cell imaging
               - multiplexed fluorescent antibody imaging
-              - binding assays
+              - binding assay
               - cell proliferation assay
               - survival assessment assay
               - other
@@ -279,6 +320,12 @@ $defs:
           description:
             type: string
             description: additional details about the model system.
+          codings:
+            description: relevant ontology terms or identifiers for the model system.
+            type: array
+            items:
+              $ref: "#/$defs/Coding"
+            minItems: 1
       profilingStrategy:
         description: the strategy used to profile the variant library
         type: string
@@ -286,7 +333,7 @@ $defs:
           - direct sequencing
           - shotgun sequencing
           - barcode sequencing
-      sequencingMethod:
+      sequencingReadType:
         description: the sequencing method used
         type: string
         enum:
@@ -299,42 +346,8 @@ $defs:
       - relevance
       - modelSystem
       - profilingStrategy
-      - sequencingMethod
-#  scoreSet:
-#    description: a set of assayed variants and their phenotypic scores.
-#    type: object
-#    properties:
-#      variantScores:
-#        description: a set of variants and their phenotypic scores.
-#        type: array
-#        items:
-#          - type: object
-#            properties:
-#              variant:
-#                type: object
-#                description: a variant associated with a phenotypic score.
-#                properties:
-#                  vrs:
-#                    # $ref: "https://w3id.org/ga4gh/vrs/1.3/vrs.json#/definitions/Variation"
-#                    type: object
-#                    description: a computable description of the variant using GA4GH VRS.
-#                  mave-hgvs:
-#                    type: string
-#                    description: a human-readable description of the variant using MAVE-HGVS.
-#                anyOf:
-#                  - required:
-#                      - vrs
-#                  - required:
-#                      - mave-hgvs
-#              score:
-#                type: number
-#                description: a phenotypic score associated with a variant.
-#            required:
-#              - variant
-#              - score
-#        minItems: 1
-#    required:
-#      - variant_scores
+      - sequencingReadType
+      - replication
 type: object
 additionalProperties: false
 properties:
@@ -347,19 +360,19 @@ properties:
   document:
     description: the primary document describing this experiment
     $ref: "#/$defs/Document"
+  datasets:
+    description: datasets associated with this experiment
+    type: array
+    items:
+      $ref: "#/$defs/Dataset"
+    minItems: 1
   variantLibrary:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"
   phenotypicAssay:
     $ref: "#/$defs/phenotypicAssay"
-#  scoreSets:
-#    type: array
-#    items:
-#      - $ref: "#/$defs/scoreSet"
-#    minItems: 1
 required:
   - title
   - abstract
   - variantLibrary
   - phenotypicAssay
-#    - scoreSet

@@ -1,0 +1,70 @@
+title: Amyloid-Beta Deep Mutational Scan
+abstract: >-
+  Multiplexed assays of variant effects (MAVEs) guide clinical variant interpretation and reveal disease mechanisms. To 
+  date, MAVEs have focussed on a single mutation type–amino acid (AA) substitutions–despite the diversity of coding 
+  variants that cause disease. Here we use Deep Indel Mutagenesis (DIM) to generate a comprehensive atlas of diverse 
+  variant effects for a disease protein, the amyloid beta (Aβ) peptide that aggregates in Alzheimer's disease (AD) and 
+  is mutated in familial AD (fAD). The atlas identifies known fAD mutations and reveals that many variants beyond 
+  substitutions accelerate Aβ aggregation and are likely to be pathogenic. Truncations, substitutions, insertions, 
+  single- and internal multi-AA deletions differ in their propensity to enhance or impair aggregation, but likely 
+  pathogenic variants from all classes are highly enriched in the polar N-terminal region of Aβ. This comparative atlas 
+  highlights the importance of including diverse mutation types in MAVEs and provides important mechanistic insights 
+  into amyloid nucleation.
+document:
+  title: >-
+    An atlas of amyloid aggregation: the impact of substitutions, insertions, deletions and truncations on amyloid beta 
+    fibril nucleation.
+  system:
+    Nature Communications
+  date: "2022-11-18"
+  ref: https://doi.org/10.1038/s41467-022-34742-3
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000113-a
+    ref: https://mavedb.org/#/experiments/urn:mavedb:00000113-a
+    description: processed scores
+variantLibrary:
+  scope:
+    type: coding
+  targetSequences:
+    - id: ga4gh:SQ.upmBKNxvwSQPi9n6JMSkWimiVyhutErS
+      sha512t24u: upmBKNxvwSQPi9n6JMSkWimiVyhutErS
+      sequence: DAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIA
+      sequenceAlphabet: protein
+  generationMethod:
+    type: in-vitro construct library
+    system: oligo pool synthesis
+    integration: plasmid (not integrated)
+    description: Oligo pool synthesis, Twist Bioscience
+  deliveryMethod:
+    type: chemical or heat shock transformation
+phenotypicAssay:
+  dimensionality:
+    type: single-dimensional data
+  replication:
+    type: biological and technical
+    description: Three biological replicates (transformations) were performed and five technical replicate selections
+      were done for each. Sequencing was performed by combining six equimolar samples of each technical replicate.
+  method:
+    type: survival assessment assay
+    description: Survival assessment assay (growth in -adenine)
+  relevance:
+    - system: https://www.omim.org/
+      code: "104300"
+      label: ALZHEIMER DISEASE, FAMILIAL, 1; AD1
+    - system: https://www.omim.org/
+      code: "104760"
+      label: AMYLOID BETA A4 PRECURSOR PROTEIN; APP
+    - system: https://mondo.monarchinitiative.org/
+      code: MONDO:0004975
+      label: Alzheimer’s Disease
+  modelSystem:
+    type: yeast
+    description: Saccharomyces cerevisiae [psi-pin-]
+      (MATa ade1-14 his3 leu2-3,112 lys2 trp1 ura3-52)
+    codings:
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid4932
+        label: Saccharomyces cerevisiae
+  profilingStrategy: direct sequencing
+  sequencingReadType: single-segment (short read)

@@ -1,0 +1,77 @@
+title: BRCA1 Saturation Genome Editing
+abstract: >-
+  Variants of uncertain significance fundamentally limit the clinical utility of genetic information. The challenge 
+  they pose is epitomized by BRCA1, a tumour suppressor gene in which germline loss-of-function variants predispose 
+  women to breast and ovarian cancer. Although BRCA1 has been sequenced in millions of women, the risk associated with 
+  most newly observed variants cannot be definitively assigned. Here we use saturation genome editing to assay 96.5% of 
+  all possible single-nucleotide variants (SNVs) in 13 exons that encode functionally critical domains of BRCA1. 
+  Functional effects for nearly 4,000 SNVs are bimodally distributed and almost perfectly concordant with established 
+  assessments of pathogenicity. Over 400 non-functional missense SNVs are identified, as well as around 300 SNVs that 
+  disrupt expression. We predict that these results will be immediately useful for the clinical interpretation of BRCA1 
+  variants, and that this approach can be extended to overcome the challenge of variants of uncertain significance in 
+  additional clinically actionable genes.
+document:
+  title: Accurate classification of BRCA1 variants with saturation genome editing
+  system:
+    Nature
+  date: "2018-09-12"
+  ref: https://doi.org/10.1038/s41586-018-0461-z
+datasets:
+  - system: MaveDB
+    accession: urn:mavedb:00000097
+    ref: https://mavedb.org/#/experiment-sets/urn:mavedb:00000097
+    description: processed scores, including scores for each replicate of each exon
+  - system: GEO
+    accession: GSE117159
+    ref: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117159
+    description: raw sequencing data
+  - system: website
+    accession: https://sge.gs.washington.edu/BRCA1/
+    ref: https://sge.gs.washington.edu/BRCA1/
+    description: processed scores and visualizations hosted by the investigators
+variantLibrary:
+  scope:
+    type: coding
+  targetSequences:
+    - id: NM_007294.3
+      sequenceAlphabet: DNA
+  generationMethod:
+    type: endogenous locus library
+    system: SpCas9
+    mechanism: nuclease
+    description: Array-synthesized oligo pools (Agilent)
+  deliveryMethod:
+    type: other
+    description: Lipofection - TurboFectin
+phenotypicAssay:
+  dimensionality:
+    type: combined functional data
+  replication:
+    type: biological
+    description: two biological replicates were performed
+  method:
+    type: survival assessment assay
+  method:
+    type: bulk RNA-sequencing
+  relevance:
+    - system: https://www.omim.org/
+      code: "604370"
+      label: BREAST-OVARIAN CANCER, FAMILIAL, SUSCEPTIBILITY TO, 1; BROVCA1
+    - system: https://www.omim.org/
+      code: "113705"
+      label: BRCA1 DNA REPAIR-ASSOCIATED PROTEIN; BRCA1
+    - system: https://mondo.monarchinitiative.org/
+      code: MONDO:0004984
+      label: basal-like breast carcinoma
+    - system: https://mondo.monarchinitiative.org/
+      code: MONDO:0011450
+      label: breast-ovarian cancer, familial, susceptibility to, 1
+  modelSystem:
+    type: immortalized human cells
+    description: HAP1
+    codings:
+      - system: https://www.ncbi.nlm.nih.gov/taxonomy
+        code: NCBI:txid9606
+        label: Homo sapiens
+  profilingStrategy: direct sequencing
+  sequencingReadType: multi-segment
