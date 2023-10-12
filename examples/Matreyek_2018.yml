@@ -89,7 +89,7 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HEK 293T TetBxb1BFP
-    identifiers:
+    codings:
       - system: https://www.ebi.ac.uk/ols/ontologies/clo
         code: CLO:0037372
         label: HEK293T cell

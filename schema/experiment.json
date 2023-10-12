@@ -51,12 +51,12 @@
             "label": {
                "description": "a human-readable description of the concept associated with the code",
                "type": "string"
-            },
-            "required": [
-               "system",
-               "code"
-            ]
-         }
+            }
+         },
+         "required": [
+            "system",
+            "code"
+         ]
       },
       "Dataset": {
          "type": "object",
