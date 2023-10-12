@@ -40,7 +40,7 @@ variantLibrary:
     type: chemical or heat shock transformation
 phenotypicAssay:
   dimensionality:
-    type: single dimension
+    type: single-dimensional data
   replication:
     type: biological and technical
     description: Three biological replicates (transformations) were performed and five technical replicate selections
@@ -62,9 +62,9 @@ phenotypicAssay:
     type: yeast
     description: Saccharomyces cerevisiae [psi-pin-]
       (MATa ade1-14 his3 leu2-3,112 lys2 trp1 ura3-52)
-    identifiers:
+    codings:
       - system: https://www.ncbi.nlm.nih.gov/taxonomy
         code: NCBI:txid4932
         label: Saccharomyces cerevisiae
   profilingStrategy: direct sequencing
-  sequencingMethod: single-segment (short read)
+  sequencingReadType: single-segment (short read)

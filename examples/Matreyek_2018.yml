@@ -62,7 +62,7 @@ variantLibrary:
     type: chemical or heat shock transformation
 phenotypicAssay:
   dimensionality:
-    type: single dimension
+    type: single-dimensional data
   replication:
     type: biological and technical
     description: 8 biological replicate experiments were performed from three
@@ -89,7 +89,7 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HEK 293T TetBxb1BFP
-    identifiers:
+    codings:
       - system: https://www.ebi.ac.uk/ols/ontologies/clo
         code: CLO:0037372
         label: HEK293T cell
@@ -97,4 +97,4 @@ phenotypicAssay:
         code: NCBI:txid9606
         label: Homo sapiens
   profilingStrategy: barcode sequencing
-  sequencingMethod: single-segment (short read)
+  sequencingReadType: single-segment (short read)

@@ -45,7 +45,7 @@ variantLibrary:
     description: Lipofection - TurboFectin
 phenotypicAssay:
   dimensionality:
-    type: multiple functional readouts
+    type: combined functional data
   replication:
     type: biological
     description: two biological replicates were performed
@@ -69,9 +69,9 @@ phenotypicAssay:
   modelSystem:
     type: immortalized human cells
     description: HAP1
-    identifiers:
+    codings:
       - system: https://www.ncbi.nlm.nih.gov/taxonomy
         code: NCBI:txid9606
         label: Homo sapiens
   profilingStrategy: direct sequencing
-  sequencingMethod: multi-segment
+  sequencingReadType: multi-segment

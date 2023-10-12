@@ -17,7 +17,7 @@ if __name__ == "__main__":
         try:
             validate(experiment_record, experiment_schema)
         except ValidationError as e:
-            print("failed to validate:", e.message)
+            raise("failed to validate:", e.message)
         else:
             print("validation successful")
 

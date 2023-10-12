@@ -5,94 +5,88 @@
 
 JSON Schema for validating MAVE experiment metadata
 
-*Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data 
+*Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data
 repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org).
-This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and 
+This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and
 meta-data sharing for scientists using variant effect mapping technology.
-
 
 ## How to use this repository
 
-This repository contains an implementation of the schema described in the 
-[Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a 
+This repository contains an implementation of the schema described in the
+[Atlas of Variant Effects Alliance](https://www.varianteffect.org) minimum information model for describing a
 multiplexed assay experiment.
 
-Overall, it is felt that minimum standard reporting should include information on 
-(1) means and characteristics of genetic perturbation, 
-(2) details of the phenotypic assay employed to identify variant effects, 
-(3) information on the cellular and environmental context(s) in which the assays were carried out, and 
+Overall, it is felt that minimum standard reporting should include information on
+(1) means and characteristics of genetic perturbation,
+(2) details of the phenotypic assay employed to identify variant effects,
+(3) information on the cellular and environmental context(s) in which the assays were carried out, and
 (4) details of sequencing strategy for variant-effect associations.
 
-The schema defines a set of required and optional fields and possible values that can be used to validate a minimum 
+The schema defines a set of required and optional fields and possible values that can be used to validate a minimum
 information document.
-The implementation is found in the `schema` directory.
+The implementation is found in the [schema](schema/) directory.
 
-In addition to the structure of the minimum information model, the schema also defines controlled vocabulary terms for 
+In addition to the structure of the minimum information model, the schema also defines controlled vocabulary terms for
 describing one of these experiments.
 
-The `examples` directory contains examples of this type of document describing real experiments, as well as a simple 
+The [examples](examples/) directory contains examples of this type of document describing real experiments, as well as a simple
 Python script that will run the schema validation using [jsonschema](https://pypi.org/project/jsonschema/).
-Many other implementations of the JSON Schema standard are available in other languages (see 
+Many other implementations of the JSON Schema standard are available in other languages (see
 [here](https://json-schema.org/implementations.html)).
 
-Please note that although we are using the JSON Schema standard, the files here are in YAML format because it is more 
-human-readable.
+Please note that although we are using the JSON Schema standard, the schema source file is written in YAML format for ease in human
+reading/writing, and processed to JSON using the provided [Makefile](schema/Makefile).
 
 ## Reading the schema
 
-The `schema` directory contains a YAML representation of the minimum information standard and controlled vocabulary.
-There are multiple levels of required information that can be browsed hierarchically.
-Most fields include a description that details the intention of that field and the type of information that is to be 
-provided.
+The [schema](schema/) directory contains JSON and YAML representations of the minimum information standard and controlled vocabulary
+expressed as JSON Schema. There are multiple levels of required information that can be browsed hierarchically.
+Most fields include a description that details the intention of that field and the type of information that is to be provided.
 
-For many fields, there is an enumerated list of valid values corresponding to the controlled vocabulary terms that can 
+For many fields, there is an enumerated list of valid values corresponding to the controlled vocabulary terms that must
 be used to describe the experiment.
 
-The general schema structure and terms are also described below. 
-The YAML documents in the `schema` directory should be considered the authoritative structure and source of information 
-where there are discrepancies.
+The general schema structure and terms are also described below. The YAML documents in the [schema](schema/) directory should be
+considered the authoritative structure and source of information where discrepancies exist.
 
 ### Applying the schema to your datasets
 
-Unless you are an experienced YAML user who is able to read the `schema/experiment.yml` file yourself, we recommend 
+Unless you are an experienced YAML user who is able to read the [schema/experiment.yml](schema/experiment.yml) file yourself, we recommend
 choosing the most closely-related example file as a starting point and modifying it as needed.
 
 The repository currently contains three examples:
 
-* `examples/Findlay_2018.yml` describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based 
-editing of the endogenous locus and measuring cell survival in HAP1 cells 
+- [examples/Findlay_2018.yml](examples/Findlay_2018.yml) describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based
+editing of the endogenous locus and measuring cell survival in HAP1 cells
 ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/30209399/))
-* `examples/Matreyek_2018.ml` describes a deep mutational scan of PTEN, expressed using a designed construct integrated
-into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq 
+- [examples/Matreyek_2018.yml](examples/Matreyek_2018.yml) describes a deep mutational scan of PTEN, expressed using a designed construct integrated
+into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq
 ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/29785012/))
-* `examples/Seuma_2022.yml` describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
+- [examples/Seuma_2022.yml](examples/Seuma_2022.yml) describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
 effect on yeast growth ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/36400770/))
 
 The schema starts with some descriptive metadata, such as the title and abstract.
-We recommend that the title in particular focus on describing the dataset specific to the document rather than the 
-overall study.
+The title and abstract should reflect the experimental dataset reflected in a study (which may optionally reference a published document that may
+have a differing title).
 The `title` and `abstract` are required properties.
 
-The next section (`document`) describes the publication (if any).
-This part of the schema is optional, but if it is included, the `ref` property that provides an accession number 
-(such as a [DOI](https://www.doi.org/)) is required.
+The next section (`document`) describes a publication associated with the experiment (if any).
+This part of the schema is optional, but if used, must minimally include a `ref` property with a URI (such as a [DOI](https://www.doi.org/))
+linking to the publication.
 
-The following sections `variantLibrary` and `phenotypicAssay` describe the experiment that was performed and both are 
-required.
-Each has several subsections that provide structure for detailing the important experimental design decisions captured 
-by the schema.
-We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help
-complete this section, as it will be different for each experiment.
+The [variantLibrary](#variant-library) and [phenotypicAssay](#phenotypic-assay) describe the experiment that was performed and both are required.
+Each has several subsections that provide structure for detailing the important experimental design decisions captured by the schema.
+We refer users to the examples and the list of [controlled vocabulary terms](#controlled-vocabulary-terms) below to help complete this section,
+as it will be different for each experiment.
 
-*Note:* We anticipate that the standard will be adopted by established resources such as 
-[MaveDB](https://www.mavedb.org) that will provide users with the ability to download a minimum information file after 
-data deposition.
+*Note:* We anticipate that the standard will be adopted by established resources such as [MaveDB](https://www.mavedb.org) that will provide
+users with the ability to download a minimum information file after data deposition.
 
 ### Generating sequence identifiers
 
 Some examples (e.g. `examples/Seuma_2022.yml`) include target sequence identifiers and hashes.
-These values were generated according to the [GA4GH VRS](https://vrs.ga4gh.org/) standard (see 
-[here](en/stable/impl-guide/computed_identifiers.html)) for details.
+These values were generated according to the [GA4GH VRS v1.3](https://vrs.ga4gh.org/) and [refGet](http://samtools.github.io/hts-specs/refget.html)
+standards (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html) for details).
 
 Generating these stable identifiers is not required but is recommended, particularly for in-vitro construct libraries.
 
@@ -100,152 +94,209 @@ Generating these stable identifiers is not required but is recommended, particul
 
 ### Overview of ontologies and identifiers
 
-For describing assay readouts, we make use of terms from the 
+Concept codes used by the schema follow the `Coding` model, which describes concepts as objects with a `code` and `label` used by a
+`system` (or `version` of a `system`).
+
+For describing assay readouts, we recommend the use of terms from the
 [Ontology for Biomedical Investigations](https://obi-ontology.org/).
 
-For describing human phenotypes relevant to the assay, we suggest using terms from [OMIM](https://www.omim.org/) or the 
-[Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
+For describing human diseases relevant to the assay, we recommend using terms from [OMIM](https://www.omim.org/) or
+the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
-For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html), 
+For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html),
 where available.
-We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes 
+
+We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes
 the organism (including strain, where applicable).
 
-### Experimental vocabulary (genetic perturbation, phenotype and context)
+### Variant Library
 
-#### Genetic perturbation
+This section describes the scope and characteristics of a variant library: a collection of sequence variants for a MAVE experiment
+that are derived from a common target sequence.
 
-This section describes the scope and characteristics of variant introduction.
+#### Target sequences
 
-**Library scope** – the collection of DNA elements introduced into the library. 
-DNA elements can have known (e.g. a gene, an exon or set of exons included in a transcript, a set of enhancers, 
-repressors, etc), or unknown functions. 
-For a given DNA element we distinguish the mode of variant programming/engineering 
-(e.g. all SNV, indels, ClinVar variants etc).
+A collection of sequences used as references from which all variants in the library are defined. This collection is defined as a
+set of `ReferenceSequence` objects, each defined by the following properties:
 
-Controlled vocabulary terms (one or many):
-- Coding
-- Intronic
-- Non-coding regulatory
-- Non-coding other (eg tRNA)
-	
-**Variant library characteristics** – methods used to generate the library
+`id`: an identifier for the sequence.
+`sha512t24u`: the GA4GH `SQ.` identifier (see [here](https://vrs.ga4gh.org/en/stable/impl-guide/computed_identifiers.html) for
+details).
+`sequence`: the literal sequence as a string of [IUPAC single character codes](https://www.bioinformatics.org/sms/iupac.html).
+`sequenceAlphabet`: one of `na` (nucleic acids) or `aa` (amino acids) for interpreting IUPAC character codes in the `sequence`.
 
-*Variant generation method* – how was the variant library created 
-(e.g. doped oligo, mutagenic PCR, primer-based, base editor)
+#### Library scope
 
-Controlled vocabulary categorical term (can pick both category options):
-- Editing at endogenous locus
-- In vitro variant construct generation
+The variant library should be defined by the functional scope of DNA elements introduced into the library.
+DNA elements can have known or unknown functions. Example functions include a gene, an exon or set of exons included in a
+transcript, a set of enhancers, a set of repressors, etc.
 
-*In vitro construct generation method* (if applicable)
-- Oligo-directed mutagenic PCR (e.g. NNK PCR) 
-- Error-prone PCR
-- Nicking mutagenesis
-- Microarray synthesis
-- Site-directed mutagenesis
-- Doped oligo synthesis
-- Oligo pool synthesis
-- Proprietary method
-- Other (please describe)
+We define the scope type using the following controlled vocabulary terms:
 
-*Integration/expression of exogenous construct* (if applicable)
-- Entire element replacement at the native locus (e.g. with integrases, not base editing)
+- coding
+- intronic
+- non-coding, regulatory
+- non-coding, other
 
-*Integration of extra-local construct* (e.g. with landing pad; if applicable)
-- Viral Integration
-- Episomal delivery
-- Transfection of RNA
+Libraries may be further described with `description`. The `description` field must be populated for any
+library of type `non-coding, other` (e.g. tRNA libraries).
 
-*Endogenous genome editing* (if applicable)
-- CRISPR/Cas system
+#### Library generation method
+
+The methods used to generate the library. A library may create and integrate an *in vitro* construct or directly edit an
+endogenous locus. The library generation method is defined by its `type`, which may be one of:
+
+- in-vitro construct library
+- endogenous locus library
+
+##### In-vitro construct library method
+
+A methodology for generating and integrating an exogenous variant library.
+
+For *in-vitro* constructs, `system` is one of the following controlled vocabulary terms:
+
+- oligo-directed mutagenic PCR
+- error-prone PCR
+- nicking mutagenesis
+- microarray synthesis
+- site-directed mutagenesis
+- doped oligo synthesis
+- oligo pool synthesis
+- proprietary method
+- other
+
+In addition, `integration` refers to the mechanism for integration or expression of an exogenous construct and is one of
+the following controlled vocabulary terms:
+
+- native locus replacement
+- extra-local construct insertion
+- random locus viral integration
+- episomal delivery
+- plasmid (not integrated)
+- transfection of RNA
+
+`system` and `integration` are required properties. `description` may be used to further describe the generation method
+`system` and `integration` parameters, and is required if the `system` is set to `other`.
+
+##### Endogenous locus library method
+
+A methodology for generating a variant library at an endogenous locus.
+
+For endogenous editing, `system` refers to the CRISPR/Cas system used, and is one of the following controlled vocabulary terms:
+
 - SpCas9
 - SaCas9
 - AsCas12a
-- RfxCas13d
-- CRISPR/Cas system functionality
-    - Wildtype nuclease
-    - Base Editor
-    - Prime Editor
+- RfsCas13d
 
-**Delivery method** – how the variant induction machinery and/or construct was delivered to the cell/organism 
-(e.g. viral transduction, electroporation, transfection and MOI)
+In addition, `mechanism` is used to define the functional mechanism of the method, and is one of the following controlled vocabulary
+terms:
 
-Controlled vocabulary terms (one or many):
-- Electroporation
-- Lipofection
-- Nucleofection
-- Microinjection
-- Chemical-based transfection
-- Transduction: AAV
-- Transduction: lentivirus
-- Transformation: chemical or heat shock
-- Other (please specify)
+- nuclease
+- base editor
+- prime editor
 
-#### Phenotypic assay
+`system` and `mechanism` are required properties. `description` may be used to further describe the generation method
+`system` and `mechanism` parameters.
 
-A physical adjudication of model system that allows for systematic interrogation of a functional read-out for a large 
-amount of genetic variants (e.g. cell size and mode of adjudication, action potential characteristic(s) and mode of 
-measurement, expression of a particular factor and mode of measurement (FACS, sc-RNA-seq), or transcript expression 
+#### Delivery method
+
+The delivery method specifies how the variant induction machinery and/or construct was delivered to the cell/organism
+(e.g. viral transduction, electroporation, transfection and MOI).
+
+The delivery method is specified by the `type` property and must be one of the following controlled vocabulary terms:
+
+- electroporation
+- nucleofection
+- chemical-based transfection
+- adeno-associated virus transduction
+- lentivirus transduction
+- chemical or heat shock transformation
+- other
+
+The `type` property is required. Additional detail about the delivery method may be provided with the `description` property.
+
+### Phenotypic assay
+
+A physical adjudication of model system that allows for systematic interrogation of a functional read-out for a large
+amount of genetic variants (e.g. cell size and mode of adjudication, action potential characteristic(s) and mode of
+measurement, expression of a particular factor and mode of measurement (FACS, sc-RNA-seq), or transcript expression
 (bulk RNA-seq)).
 
-**Dimensionality of phenotyping assays** – how many phenotypes and of what complexity are included in the map
+#### Dimensionality
 
-Controlled vocabulary terms (select one):
-- Single functional read-out
-- Single dimension (e.g. FACS fluorescence from a single protein was used)
-- High-dimensional data (e.g. ML/AI enabled cell imaging/classification)
-- The outcomes of multiple phenotypic assays were combined to make this map
+Dimensionality defines how many phenotypes and of what complexity are included in the map.
 
-**Phenotypic assay examines** – terms selected from OBI subtree with root 
-[OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070)
+Dimensionality is primarily defined by its `type`, which must be one of the following controlled vocabulary terms:
 
-- DNA 
-    - OBI_0000913 Promoter activity reporter gene assay RNA
-    - “Other”, e.g. structure, methylation
+- single-dimensional data
+- high-dimensional data
+- combined functional data
 
-- RNA
-    - OBI_0001177 Bulk RNA-sequencing
-    - OBI_0002631 Single cell RNA-sequencing and single cell combinatorial index RNA-sequencing assay
-    - OBI_0003094 Fluorescence in-situ hybridization (FISH) assay
-    - “Other”
+where `single-dimensional data` refers to experiments with a single dimension (e.g. FACS fluorescence from a single protein was used),
+`high-dimensional data` refers to experiments with multiple dimensions (e.g. ML/AI enabled cell imaging/classification), and
+`combined functional data` refers to experiments where multiple phenotypic assays were combined to make a map.
 
-- Protein 
-    - OBI_0000916 Flow cytometry assay 
-    - OBI_0003096  Imaging Mass Cytometry assay
-    - OBI_0002161 Evolution of ligands by exponential enrichment assay 
-    - “Other”
+The `type` property is required. Additional information about the `dimensionality` of an experiment may be provided using the
+`description` property.
 
-- Morphology & Function
-    - OBI_0002119 Single cell imaging 
-    - OBI_0003091 Multiplexed fluorescent antibody imaging
-    - OBI_0001146 Binding assays
-    - OBI_0000891 Cell Proliferation Assay, including fluorescence image-based cell proliferation assay
-    - OBI_0000699 Survival assessment assay
-    - “Other”
+#### Replication
 
-**Disease/biological process relevance** – choose terms from [OMIM](https://www.omim.org/) or the
-[Mondo Disease Ontology](https://mondo.monarchinitiative.org/)
+Assay replication work performed is defined by its `type`, which must be one of the following controlled vocabulary terms:
 
-#### Context - Characteristics of the model system that influence expression of phenotype
+- biological
+- technical
+- biological and technical
+- no replication
 
-**Cellular model system and genetic background** – genetically encoded characteristics of the model system that 
-potentially affect the outcome of the assay (e.g. species, animal strain, genetic ancestry, biological sex)
+The `type` property is required. Additional detail about the replication method may be provided with the `description` property.
 
-Controlled vocabulary terms (one or many):
-- Immortalized human cells (e.g. HEK293, HeLa cells; please specify below)
-- Murine primary cells
-- Induced pluripotent stem cells from male
-- Induced pluripotent stem cells from female
-- Patient derived primary cells (e.g. T-cells, adipocytes)
-- Yeast
-- E. coli
-- Other bacteria
-- Bacteriophage
-- Molecular display (e.g. ribosome display)
-- Other (please specify - includes all other OBI ontology terms)
+#### Method
 
-Commonly used cell lines and model systems
+The assay method, defining the molecular properties interrogated by the experiment. Terms are derived from OBI subtree with root
+[OBI_0000070: “assay”](http://purl.obolibrary.org/obo/OBI_0000070) where appropriate. Term mappings to OBI concept identifiers
+are available in the [concept vocabulary tsv](concept_vocabulary.tsv). The method is specified by the `type` property, which must be one of
+the following controlled vocabulary terms:
+
+- promoter activity detection by reporter gene assay
+- bulk RNA-sequencing
+- single-cell RNA sequencing assay
+- fluorescence in-situ hybridization (FISH) assay
+- flow cytometry assay
+- imaging mass cytometry assay
+- systematic evolution of ligands by exponential enrichment assay
+- single cell imaging
+- multiplexed fluorescent antibody imaging
+- binding assay
+- cell proliferation assay
+- survival assessment assay
+- other
+
+#### Relevance
+
+The disease or biological processes the assay is relevant to. Relevance is specified by an array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)). We recommend relevance to be described by terms from [OMIM](https://www.omim.org/)
+or the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
+
+#### Model system
+
+The model system context that influences expression of the phenotype. The model system is specified by the `type` property and must 
+be one of the following controlled vocabulary terms:
+
+- immortalized human cells
+- murine primary cells
+- induced pluripotent stem cells from human male
+- induced pluripotent stem cells from human female
+- patient derived primary cells (e.g. T-cells, adipocytes)
+- yeast
+- bacteria
+- bacteriophage
+- molecular display
+- other
+
+We recommend that cell lines are further described by relevant concepts using the `codings` array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)). We recommend that cell lines are described using the Cell Line Ontology
+where applicable. Some commonly used cell lines and model systems are listed below:
 
 | Cell | CLO Term | NCBI Taxonomy ID |
 |------|----------|------------------|
@@ -266,25 +317,25 @@ Commonly used cell lines and model systems
 | Bacteriophage | n/a | 38018 |
 | Cell-free | n/a | n/a |
 
-**Environmental variables** – variance of environmental factors included in the experiment 
-(e.g. addition of specific compounds to cell media, temperature controls, time course, CRISPR interference by KRAB, 
-KRAB-MeCP2, CRISPR activation by VPR, SAM, or SunTag, etc.)
+The `type` property is required. Additional detail about the model system may be provided with the `description` property.
 
-Controlled vocabulary terms (select one):
-- Yes - If yes, please describe this in detail in the free text methods describing your assay.
-- No
+#### Profiling strategy
 
-#### Variant sequencing characteristics
-This section details the method for accurately capturing variant frequency associated with outcome of phenotypic assay.
+The variant profiling strategy used to capture variant frequency associated with outcome of phenotypic assay. The profiling 
+strategy must be one of the following following controlled vocabulary terms:
 
-**Library profiling strategy** – approach used to quantify variants in the population 
+- direct sequencing
+- shotgun sequencing
+- barcode sequencing
 
-Controlled vocabulary terms (select one):
-- Direct sequencing
-- Shotgun sequencing
-- Barcode sequencing
+`profilingStrategy` is a required property.
 
-Controlled vocabulary terms (select one):
-- Single segment (short read)
-- Single segment (long read)
-- Multi-segment
+#### Sequencing read type
+
+The sequencing read type used in the assay. The read type must be one of the following controlled vocabulary terms:
+
+- single-segment (short read)
+- single-segment (long read)
+- multi-segment
+
+`sequencingReadType` is a required property.
