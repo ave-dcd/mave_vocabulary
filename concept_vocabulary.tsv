@@ -27,8 +27,8 @@ LibraryIntegrationMechanism	plasmid (not integrated)		Expression of gene product
 LibraryIntegrationMechanism	random locus viral integration		Intergration of a virus into a random locus
 LibraryIntegrationMechanism	transfection of RNA		Direct transfection of RNA
 PhenotypicAssayDimensionality	high-dimensional data		Assay with inherent high-dimensional data
-PhenotypicAssayDimensionality	multiple functional readouts		Assay with multiple functional readouts
-PhenotypicAssayDimensionality	single dimension		Assay with a single dimensional readout
+PhenotypicAssayDimensionality	combined functional data		Assay with multiple, combined functional readouts
+PhenotypicAssayDimensionality	single-dimensional data		Assay with a single-dimensional readout
 PhenotypicAssayMethod	binding assay	OBI:0001146	Phenotypic assay measuring binding (e.g. between two proteins)
 PhenotypicAssayMethod	bulk RNA-sequencing	OBI:0003090	Phenotypic assay using bulk RNA-sequencing
 PhenotypicAssayMethod	cell proliferation assay	OBI:0000891	Phenotypic assay measuring cell proliferation
