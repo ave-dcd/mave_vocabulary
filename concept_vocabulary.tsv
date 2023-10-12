@@ -1,0 +1,65 @@
+Domain	Term	exactMapping(s)	Definition
+LibraryDeliveryMethod	adeno-associated virus transduction		Library delivery using adeno-associated virus transduction
+LibraryDeliveryMethod	chemical or heat shock transformation		Library delivery using chemical or heat shock transformation
+LibraryDeliveryMethod	chemical-based transfection		Library delivery using chemical-based transfection
+LibraryDeliveryMethod	electroporation		Library delivery using electroporation
+LibraryDeliveryMethod	lentivirus transduction		Library delivery using lentivirus transduction
+LibraryDeliveryMethod	nucleofection		Library delivery using nucleofection
+LibraryGenerationMechanism	base editor		A base editor mechanism of CRISPR/Cas mediated variant library generation
+LibraryGenerationMechanism	prime editor		A prime editor mechanism of CRISPR/Cas mediated variant library generation
+LibraryGenerationMechanism	nuclease		A nuclease mechanism of CRISPR/Cas mediated variant library generation
+LibraryGenerationSystem	AsCas12a		CRISPR/Cas mediated variant library generation by the AsCas12a system
+LibraryGenerationSystem	doped oligo synthesis		Doped oligo synthesis mediated variant library generation
+LibraryGenerationSystem	error-prone PCR		Error-prone Polymerase Chain Reaction (PCR) mediated variant library generation
+LibraryGenerationSystem	microarray synthesis		Microarray synthesis mediated variant library generation
+LibraryGenerationSystem	nicking mutagenesis		Nicking mutagenesis mediated variant library generation
+LibraryGenerationSystem	oligo pool synthesis		Oligo pool synthesis mediated variant library generation
+LibraryGenerationSystem	oligo-directed mutagenic PCR		Oligo-directed mutagenic Polymerase Chain Reaction (PCR) mediated variant library generation
+LibraryGenerationSystem	proprietary method		A proprietary method for variant library generation
+LibraryGenerationSystem	RfsCas13d		CRISPR/Cas mediated variant library generation by the RfsCas13d system
+LibraryGenerationSystem	SaCas9		CRISPR/Cas mediated variant library generation by the SaCas9 system
+LibraryGenerationSystem	site-directed mutagenesis		Site-directed mutagenesis mediated variant library generation
+LibraryGenerationSystem	SpCas9		CRISPR/Cas mediated variant library generation by the SpCas9 system
+LibraryIntegrationMechanism	episomal delivery		Library expression by episomal delivery
+LibraryIntegrationMechanism	extra-local construct insertion		Library integration at a designated integration site, e.g. with Landing Pad
+LibraryIntegrationMechanism	native locus replacement		Entire element replacement at the native locus (e.g. with integrases)
+LibraryIntegrationMechanism	plasmid (not integrated)		Expression of gene products from a non-integrating plasmid
+LibraryIntegrationMechanism	random locus viral integration		Intergration of a virus into a random locus
+LibraryIntegrationMechanism	transfection of RNA		Direct transfection of RNA
+PhenotypicAssayDimensionality	high-dimensional data		Assay with inherent high-dimensional data
+PhenotypicAssayDimensionality	multiple functional readouts		Assay with multiple functional readouts
+PhenotypicAssayDimensionality	single dimension		Assay with a single dimensional readout
+PhenotypicAssayMethod	binding assay	OBI:0001146	Phenotypic assay measuring binding (e.g. between two proteins)
+PhenotypicAssayMethod	bulk RNA-sequencing	OBI:0003090	Phenotypic assay using bulk RNA-sequencing
+PhenotypicAssayMethod	cell proliferation assay	OBI:0000891	Phenotypic assay measuring cell proliferation
+PhenotypicAssayMethod	systematic evolution of ligands by exponential enrichment assay	OBI:0002161	Phenotypic assay measuring evolution of ligands by exponential enrichment
+PhenotypicAssayMethod	flow cytometry assay	OBI:0000916	Phenotypic assay measuring fluorescence by flow cytometry
+PhenotypicAssayMethod	fluorescence in-situ hybridization (FISH) assay	OBI:0003094	Phenotypic assay using fluorescence in-situ hybridization (FISH)
+PhenotypicAssayMethod	imaging mass cytometry assay	OBI:0003096	Phenotypic assay using imaging mass cytometry
+PhenotypicAssayMethod	multiplexed fluorescent antibody imaging	OBI:0003091	Phenotypic assay using multiplexed fluorescent antibody imaging
+PhenotypicAssayMethod	promoter activity detection by reporter gene assay	OBI:0000913	Phenotypic assay measuring promoter activity using a reporter gene
+PhenotypicAssayMethod	single-cell imaging		Phenotypic assay using single cell imaging
+PhenotypicAssayMethod	single-cell RNA sequencing assay	OBI:0002631	Phenotypic assay using single-cell RNA sequencing
+PhenotypicAssayMethod	survival assessment assay	OBI:0000699	Phenotypic assay using a survival assessment assay
+PhenotypicAssayModelSystem	bacteria		Model system of bacteria (E. coli)
+PhenotypicAssayModelSystem	bacteriophage		Model system of bacteriophage
+PhenotypicAssayModelSystem	immortalized human cells		Model system of immortalized human cells (H. sapiens)
+PhenotypicAssayModelSystem	induced pluripotent stem cells from human female		Model system of induced pluripotent stem cells from human female
+PhenotypicAssayModelSystem	induced pluripotent stem cells from human male		Model system of induced pluripotent stem cells from human male
+PhenotypicAssayModelSystem	molecular display		Model system of molecular display
+PhenotypicAssayModelSystem	murine primary cells		Model system of mouse primary cells (M. musculus)
+PhenotypicAssayModelSystem	patient derived primary cells (e.g. T-cells, adipocytes)		Model system of patient derived primary cells (e.g. T-cells, adipocytes)
+PhenotypicAssayModelSystem	yeast		Model system of yeast (S. cerevisiae)
+PhenotypicAssayProfilingStrategy	barcode sequencing		Library profiling strategy of sequencing of a barcode associated with the variant library
+PhenotypicAssayProfilingStrategy	direct sequencing		Library profiling strategy of direct sequencing of the target variant library
+PhenotypicAssayProfilingStrategy	shotgun sequencing		Library profiling strategy of shotgun sequencing
+PhenotypicAssaySequencingMethod	multi-segment		Library sequencing method of sequencing of multiple segments using short or long reads
+PhenotypicAssaySequencingMethod	single-segment (long read)		Library sequencing method of sequencing of a single segment using long reads (e.g. Oxford Nanopore or PacBio)
+PhenotypicAssaySequencingMethod	single-segment (short read)		Library sequencing method of sequencing of a single segment using short reads (e.g. Illumina)
+VariantLibrary	base editor functionality		A base editor mechanism of a CRISPR/Cas variant library generation method
+VariantLibrary	prime editor functionality		A prime editor mechanism of a CRISPR/Cas variant library generation method
+VariantLibrary	wildtype nuclease functionality		A wildtype nuclease mechanism of a CRISPR/Cas variant library generation method
+VariantLibraryScope	coding		The protein-coding sequence of a gene
+VariantLibraryScope	intronic		Intronic sequence in between exons of a gene
+VariantLibraryScope	non-coding, other		Non-coding sequence corresponding to non-regulatory elements
+VariantLibraryScope	non-coding, regulatory		Non-coding sequence corresponding to regulatory elements (e.g. enhancers or promoters)
