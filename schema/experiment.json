@@ -51,7 +51,11 @@
             "label": {
                "description": "a human-readable description of the concept associated with the code",
                "type": "string"
-            }
+            },
+            "required": [
+               "system",
+               "code"
+            ]
          }
       },
       "Dataset": {
@@ -410,7 +414,7 @@
                      "type": "string",
                      "description": "additional details about the model system."
                   },
-                  "identifiers": {
+                  "codings": {
                      "description": "relevant ontology terms or identifiers for the model system.",
                      "type": "array",
                      "items": {
