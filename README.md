@@ -62,7 +62,7 @@ editing of the endogenous locus and measuring cell survival in HAP1 cells
 - [examples/Matreyek_2018.yml](examples/Matreyek_2018.yml) describes a deep mutational scan of PTEN, expressed using a designed construct integrated
 into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq
 ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/29785012/))
-- [examples/Seuma_2022.yml](examples/Seuma_2022.yml) describes a deep mutatational scan of amyloid beta, expressed episomally and measuring the
+- [examples/Seuma_2022.yml](examples/Seuma_2022.yml) describes a deep mutational scan of amyloid beta, expressed episomally and measuring the
 effect on yeast growth ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/36400770/))
 
 The schema starts with some descriptive metadata, such as the title and abstract.
