@@ -367,6 +367,39 @@ $defs:
       - profilingStrategy
       - sequencingReadType
       - replication
+  ScoreRange:
+    type: object
+    additionalProperties: false
+    description: a range of scores calculated for the assay
+    properties:
+      lowerBound:
+        type: number
+        description: lower bound of the range (inclusive)
+      upperBound:
+        type: number
+        description: upper bound of the range (inclusive)
+  ScoreRangeCollection:
+    type: object
+    additionalProperties: false
+    description: collection of score ranges describing the assay results
+    properties:
+      overallRange:
+        description: overall score range
+        $ref: "#/$defs/ScoreRange"
+      abnormalRanges:
+        type: array
+        description: score ranges for functionally abnormal variants
+        items:
+          $ref: "#/$defs/ScoreRange"
+        minItems: 1
+      normalRanges:
+        type: array
+        description: score ranges for functionally normal variants
+        items:
+          $ref: "#/$defs/ScoreRange"
+        minItems: 1
+    required:
+      - overallRange
 type: object
 additionalProperties: false
 properties:
@@ -399,6 +432,9 @@ properties:
     items:
       $ref: "#/$defs/ControlVariant"
     minItems: 1
+  scoreRanges:
+    description: score ranges for the assay
+    $ref: "#/$defs/ScoreRangeCollection"
 required:
   - title
   - abstract
