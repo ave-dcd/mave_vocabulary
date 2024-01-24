@@ -227,7 +227,7 @@ $defs:
       - targetSequences
       - generationMethod
       - deliveryMethod
-  phenotypicAssay:
+  PhenotypicAssay:
     description: a physical adjudication of a model system that allows for systematic interrogation of a functional
       read-out for a large amount of genetic variants.
     type: object
@@ -370,7 +370,7 @@ properties:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"
   phenotypicAssay:
-    $ref: "#/$defs/phenotypicAssay"
+    $ref: "#/$defs/PhenotypicAssay"
 required:
   - title
   - abstract
