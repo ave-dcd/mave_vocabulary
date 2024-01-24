@@ -376,8 +376,11 @@ properties:
   abstract:
     description: an abstract describing the MAVE experiment
     type: string
-  document:
-    description: the primary document describing this experiment
+  assayDocument:
+    description: the primary document describing the experimental assay
+    $ref: "#/$defs/Document"
+  scoreDocument:
+    description: the primary document describing the calculated scores
     $ref: "#/$defs/Document"
   datasets:
     description: datasets associated with this experiment
