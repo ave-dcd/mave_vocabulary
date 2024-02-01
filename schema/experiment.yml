@@ -84,6 +84,25 @@ $defs:
           - DNA
           - RNA
           - protein
+  ControlVariant:
+    type: object
+    additionalProperties: false
+    properties:
+      vrs:
+        description: GA4GH VRS object describing the variant
+        $ref: "https://github.com/ga4gh/vrs/blob/main/schema/vrs.json#definitions/Allele"
+      source:
+        description: source of the control variant
+        oneOf:
+          - $ref: "#/$defs/Document"
+          - $ref: "#/$defs/Coding"
+      concordant:
+        type: string
+        description: whether the assay result is concordant with the control variant
+        enum:
+          - concordant
+          - not concordant
+          - indeterminate
   EndogenousLocusLibraryMethod:
     type: object
     additionalProperties: false
@@ -227,7 +246,7 @@ $defs:
       - targetSequences
       - generationMethod
       - deliveryMethod
-  phenotypicAssay:
+  PhenotypicAssay:
     description: a physical adjudication of a model system that allows for systematic interrogation of a functional
       read-out for a large amount of genetic variants.
     type: object
@@ -348,6 +367,39 @@ $defs:
       - profilingStrategy
       - sequencingReadType
       - replication
+  ScoreRange:
+    type: object
+    additionalProperties: false
+    description: a range of scores calculated for the assay
+    properties:
+      lowerBound:
+        type: number
+        description: lower bound of the range (inclusive)
+      upperBound:
+        type: number
+        description: upper bound of the range (inclusive)
+  ScoreRangeCollection:
+    type: object
+    additionalProperties: false
+    description: collection of score ranges describing the assay results
+    properties:
+      overallRange:
+        description: overall score range
+        $ref: "#/$defs/ScoreRange"
+      abnormalRanges:
+        type: array
+        description: score ranges for functionally abnormal variants
+        items:
+          $ref: "#/$defs/ScoreRange"
+        minItems: 1
+      normalRanges:
+        type: array
+        description: score ranges for functionally normal variants
+        items:
+          $ref: "#/$defs/ScoreRange"
+        minItems: 1
+    required:
+      - overallRange
 type: object
 additionalProperties: false
 properties:
@@ -357,8 +409,11 @@ properties:
   abstract:
     description: an abstract describing the MAVE experiment
     type: string
-  document:
-    description: the primary document describing this experiment
+  assayDocument:
+    description: the primary document describing the experimental assay
+    $ref: "#/$defs/Document"
+  scoreDocument:
+    description: the primary document describing the calculated scores
     $ref: "#/$defs/Document"
   datasets:
     description: datasets associated with this experiment
@@ -370,7 +425,16 @@ properties:
     description: characteristics of the variant library generation process
     $ref: "#/$defs/VariantLibrary"
   phenotypicAssay:
-    $ref: "#/$defs/phenotypicAssay"
+    $ref: "#/$defs/PhenotypicAssay"
+  controlVariants:
+    description: control variants used for assay design or validation
+    type: array
+    items:
+      $ref: "#/$defs/ControlVariant"
+    minItems: 1
+  scoreRanges:
+    description: score ranges for the assay
+    $ref: "#/$defs/ScoreRangeCollection"
 required:
   - title
   - abstract
