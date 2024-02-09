@@ -87,10 +87,10 @@ $defs:
   ControlVariant:
     type: object
     additionalProperties: false
-    description: A variant used as an experimental control to measure assay concorance
+    description: A variant used as an experimental control to measure assay concordance
     properties:
       allele:
-        description: GA4GH VRS object describing the variant
+        description: GA4GH VRS Allele object describing the variant
         $ref: "https://raw.githubusercontent.com/ga4gh/vrs/2.x/schema/vrs.json#definitions/Allele"
       source:
         description: source of the control variant
