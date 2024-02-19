@@ -98,3 +98,38 @@ phenotypicAssay:
         label: Homo sapiens
   profilingStrategy: barcode sequencing
   sequencingReadType: single-segment (short read)
+scoreRanges:
+  overallRange:
+    lowerBound: -0.2235
+    upperBound: 1.462
+  abnormalRanges:
+    - lowerBound: -999  # there has to be a better way to do this?
+      upperBound: 0.71
+      description: 
+        Threshold set by determining score that separated the 95% most abundant
+        synonymous variants from the 5% lowest abundance synonymous variants.
+        Variants below the threshold were classified as "low abundance". If the
+        95% confidence interval overlapped the threshold, the variant was
+        classified as "possibly low abundance".
+  normalRanges:
+    - lowerBound: 0.71
+      upperBound: 999
+      description:
+        Threshold set by determining score that separated the 95% most abundant
+        synonymous variants from the 5% lowest abundance synonymous variants.
+        Variants above the threshold were classified as "wt-like abundance". If 
+        the 95% confidence interval overlapped the threshold, the variant was
+        classified as "possibly wt-like abundance".
+controlVariants:
+  - vrs:
+      # VRS object for P60484:p.Tyr68His
+    source:
+      title: >-
+        Multiplex assessment of protein variant abundance by massively parallel 
+        sequencing
+      system:
+        Nature Genetics
+      date: "2018-05-21"
+      ref: https://doi.org/10.1038/s41588-018-0122-z
+    concordant: concordant
+
