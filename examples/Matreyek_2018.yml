@@ -103,7 +103,7 @@ scoreRanges:
     lowerBound: -0.2235
     upperBound: 1.462
   abnormalRanges:
-    - lowerBound: -999  # there has to be a better way to do this?
+    - lowerBound: -0.2235
       upperBound: 0.71
       description: 
         Threshold set by determining score that separated the 95% most abundant
@@ -113,7 +113,7 @@ scoreRanges:
         classified as "possibly low abundance".
   normalRanges:
     - lowerBound: 0.71
-      upperBound: 999
+      upperBound: 1.462
       description:
         Threshold set by determining score that separated the 95% most abundant
         synonymous variants from the 5% lowest abundance synonymous variants.
