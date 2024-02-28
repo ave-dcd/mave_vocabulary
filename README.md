@@ -51,8 +51,8 @@ considered the authoritative structure and source of information where discrepan
 
 ### Applying the schema to your datasets
 
-Unless you are an experienced YAML user who is able to read the [schema/experiment.yml](schema/experiment.yml) file yourself, we recommend
-choosing the most closely-related example file as a starting point and modifying it as needed.
+Unless you are an experienced YAML user and can read the [schema/experiment.yml](schema/experiment.yml) file yourself,
+we recommend that you choose the most closely-related example file as a starting point and then modify it as needed.
 
 The repository currently contains three examples:
 
