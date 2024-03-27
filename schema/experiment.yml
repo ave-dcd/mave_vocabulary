@@ -436,7 +436,7 @@ properties:
   scoreRanges:
     description: score ranges for the assay
     $ref: "#/$defs/ScoreRangeCollection"
-  variants:
+  assayVariants:
     description: individual variant scores and associated assertions
     type: array
     items:

@@ -121,7 +121,7 @@ scoreRanges:
         the 95% confidence interval overlapped the threshold, the variant was
         classified as "possibly wt-like abundance".
 controlVariants:
-  - vrs:
+  - allele:
       # VRS object for P60484:p.Tyr68His
     source:
       title: >-
@@ -132,4 +132,67 @@ controlVariants:
       date: "2018-05-21"
       ref: https://doi.org/10.1038/s41588-018-0122-z
     concordant: concordant
-
+assayVariants:
+  - allele:
+      # VRS object for P60484:p.Glu7Val
+    score:
+      value: 0.5671770
+      confidenceInterval:
+        lower: 0.45239487
+        upper: 0.6819591
+      source:
+        title: >-
+          Multiplex assessment of protein variant abundance by massively parallel 
+          sequencing
+        system:
+          Nature Genetics
+        date: "2018-05-21"
+        ref: https://doi.org/10.1038/s41588-018-0122-z
+    functionalAffectAssertions:
+      - value: functionally_abnormal (SO:0002218)
+        relevance:
+          - system: https://www.omim.org/
+            code: "601728"
+            label: PHOSPHATASE AND TENSIN HOMOLOG; PTEN
+          - system: https://www.omim.org/
+            code: "158350"
+            label: COWDEN SYNDROME 1; CWS1
+          - system: https://mondo.monarchinitiative.org/
+            code: MONDO:0017623
+            label: PTEN hamartoma tumor syndrome
+          - system: https://mondo.monarchinitiative.org/
+            code: MONDO:0017623
+            label: Cowden syndrome 1
+        source:
+          title: >-
+            Multiplex assessment of protein variant abundance by massively parallel 
+            sequencing
+          system:
+            Nature Genetics
+          date: "2018-05-21"
+          ref: https://doi.org/10.1038/s41588-018-0122-z
+    functionalEvidenceAssertions:
+      - value: PS3_supporting
+        relevance:
+          - system: https://www.omim.org/
+            code: "601728"
+            label: PHOSPHATASE AND TENSIN HOMOLOG; PTEN
+          - system: https://www.omim.org/
+            code: "158350"
+            label: COWDEN SYNDROME 1; CWS1
+          - system: https://mondo.monarchinitiative.org/
+            code: MONDO:0017623
+            label: PTEN hamartoma tumor syndrome
+          - system: https://mondo.monarchinitiative.org/
+            code: MONDO:0017623
+            label: Cowden syndrome 1
+        source:
+          title: >-
+            Closing the gap: Systematic integration of multiplexed functional data 
+            resolves variants of uncertain significance in BRCA1, TP53, and PTEN
+          system:
+            American Journal of Human Genetics
+          date: "2021-12-02"
+          ref: https://doi.org/10.1016/j.ajhg.2021.11.001
+        knownVariants:
+          # TBA - Fayer et al. Table S6
