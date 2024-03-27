@@ -314,7 +314,7 @@ $defs:
         required:
           - type
       relevance:
-        description: the disease or biological processes the assay is relevant to.
+        description: the disease or biological processes the assay was designed to be relevant to.
         type: array
         items:
           $ref: "#/$defs/Coding"

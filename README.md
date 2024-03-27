@@ -278,6 +278,9 @@ The disease or biological processes the assay is relevant to. Relevance is speci
 [note](#overview-of-ontologies-and-identifiers)). We recommend relevance to be described by terms from [OMIM](https://www.omim.org/)
 or the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
+Note that this field captures the intent of the experimenters who designed and/or performed the assay, and should not be interpreted as a
+gene-disease relationship that has been validated or evaluated clinically.
+
 #### Model system
 
 The model system context that influences expression of the phenotype. The model system is specified by the `type` property and must 
