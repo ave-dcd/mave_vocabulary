@@ -1,0 +1,117 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: curated MAVE variant definition
+$defs:
+  FunctionalEffect:
+    type: object
+    additionalProperties: false
+    description: the categorical functional effect for the variant
+    properties:
+      value:
+        type: string
+        description: categorical functional effect
+        enum:
+          - function_uncertain_variant (SO:0002220) 
+          - functionally_normal (SO:0002219)
+          - functionally_abnormal (SO:0002218)
+      relevance:
+        description: the disease or biological processes for this assertion
+        type: array
+        items:
+          $ref: "#/$defs/Coding"
+      source:
+        description: source of the functional effect assertion
+        oneOf:
+          - $ref: "experiment.json#/$defs/Document"
+          - $ref: "experiment.json#/$defs/Coding"
+  EvidenceVariant:
+    type: object
+    additionalProperties: false
+    description: variant with a known classification used to assign strength of evidence
+    allele:
+      description: GA4GH VRS Allele object describing the variant
+      $ref: "https://raw.githubusercontent.com/ga4gh/vrs/2.x/schema/vrs.json#definitions/Allele"
+    classification:
+      type: string
+      description: classification of the variant
+      enum:
+        - benign
+        - likely benign
+        - likely pathogenic
+        - pathogenic
+    source:
+      description: source of the variant classification
+      oneOf:
+        - $ref: "experiment.json#/$defs/Document"
+        - $ref: "experiment.json#/$defs/Coding"
+  FunctionalEvidence:
+    type: object
+    additionalProperties: false
+    description: the categorical functional evidence for the variant according to Brnich guidelines
+    properties:
+      value:
+        type: string
+        description: categorical functional evidence
+        enum:
+          - PS3_supporting
+          - PS3_moderate
+          - PS3
+          - BS3_supporting
+          - BS3_moderate
+          - BS3
+      relevance:
+        description: the disease or biological processes for this assertion
+        type: array
+        items:
+          $ref: "experiment.json#/$defs/Coding"
+        minItems: 1
+      source:
+        description: source of the functional evidence assertion
+        oneOf:
+          - $ref: "experiment.json#/$defs/Document"
+          - $ref: "experiment.json#/$defs/Coding"
+      knownVariants:
+        description: variants with known classification used for evidence calculation
+        type: array
+        items:
+          $ref: "#/$defs/EvidenceVariant"
+        minItems: 1
+type: object
+additionalProperties: false
+properties:
+  allele:
+    description: GA4GH VRS Allele object describing the variant
+    $ref: "https://raw.githubusercontent.com/ga4gh/vrs/2.x/schema/vrs.json#definitions/Allele"
+  score:
+    type: object
+    additionalProperties: false
+    description: numeric score for the variant and associated values
+    properties:
+      value:
+        type: number
+        description: numeric score for this variant
+      confidenceInterval:
+        type: object
+        additionalProperties: false
+        description: 95% confidence interval for the variant score
+        properties:
+          lower:
+            type: number
+            description: lower bound of the confidence interval
+          upper:
+            type: number
+            description: upper bound of the confidence interval
+      source:
+        description: source of the variant score and confidence interval
+        oneOf:
+          - $ref: "experiment.json#/$defs/Document"
+          - $ref: "experiment.json#/$defs/Coding"
+  functionalEffectAssertions:
+    description: assertions about the variant's function in the assay
+    type: array
+    items:
+      $ref: "#/$defs/FunctionalEffect"
+  functionalEvidenceAssertions:
+    description: assertions about the variant's strenght of evidence for a specific gene-disease context
+    type: array
+    items:
+      $ref: "#/$defs/FunctionalEvidence"
