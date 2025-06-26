@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: Please cite the following works when using this standard.
+type: software
+authors:
+  - family-names: Claussnitzer
+    given-names: Melina
+  - family-names: Parikh
+    given-names: Victoria N
+  - family-names: Wagner
+    given-names: Alex H
+  - family-names: Arbesfeld
+    given-names: Jeremy A
+  - family-names: Bult
+    given-names: Carol J
+  - family-names: Firth
+    given-names: Helen V
+  - family-names: Muffley
+    given-names: Lara A
+  - family-names: Nguyen Ba
+    given-names: Alex N
+  - family-names: Riehle
+    given-names: Kevin
+  - family-names: Roth
+    given-names: Frederick P
+  - family-names: Tabet
+    given-names: Daniel
+  - family-names: Bolognesi
+    given-names: Benedetta
+  - family-names: Glazer
+    given-names: Andrew M
+  - family-names: Rubin
+    given-names: Alan F
+doi: 10.1186/s13059-024-03223-9
+identifiers:
+  - type: doi
+    value: 10.1186/s13059-024-03223-9
+  - type: other
+    value: urn:issn:1474-7596
+  - type: other
+    value: pmcid:PMC11027375
+  - type: other
+    value: pmid:38641812
+title: >-
+  Minimum information and guidelines for reporting a multiplexed assay of
+  variant effect
