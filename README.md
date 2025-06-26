@@ -6,9 +6,13 @@
 JSON Schema for validating MAVE experiment metadata
 
 *Purpose:* To provide an overarching organization and definitions for terms relevant to tech development and data
-repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org).
+repositories associated with the [Atlas of Variant Effects Alliance](https://www.varianteffect.org), 
+particularly related to multiplexed assays of variant effect (MAVEs).
 This "controlled vocabulary" and standard is intended to give structure to minimum required information for data and
-meta-data sharing for scientists using variant effect mapping technology.
+meta-data sharing for scientists using all types of variant effect mapping technology.
+
+For representing results from MAVEs and other variant effect mapping experiments, we recommend the
+[GA4GH VA-Spec](https://va-spec.ga4gh.org/) standard.
 
 ## How to use this repository
 
