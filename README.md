@@ -301,27 +301,31 @@ be one of the following controlled vocabulary terms:
 - molecular display
 - other
 
-We recommend that cell lines are further described by relevant concepts using the `codings` array of `Coding` objects (see
-[note](#overview-of-ontologies-and-identifiers)). We recommend that cell lines are described using the Cell Line Ontology
-where applicable. Some commonly used cell lines and model systems are listed below:
+We recommend that cell lines or organisms are further described by relevant concepts using the `codings` array of `Coding` 
+objects (see [note](#overview-of-ontologies-and-identifiers)).
+We recommend using EFO terms where applicable, as well as specifying an NCBI Taxonomy ID.
+The latter is especially useful for describing experiments performed in viruses, and can often resolve to individual strains.
 
-| Cell | EFO Term | NCBI Taxonomy ID |
+Some commonly used cell lines and experimental systems are listed below:
+
+| Cell/system | EFO Term | NCBI Taxonomy ID |
 |------|----------|------------------|
-| Yeast | n/a | 4932 |
-| HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) | 9606 |
-| HAP1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) | 9606 |
-| HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) | 9606 |
-| *E. coli* | n/a | 562 |
-| iPSC-derived cell line | [EFO:0005740](http://www.ebi.ac.uk/efo/EFO_0005740) | 9606 |
-| *C. elegans* | n/a | 6239 |
-| *C. savignyi* | n/a | 51511 |
-| *D. melanogaster* | n/a | 7227 |
-| HepG2 | [EFO:0001187](http://www.ebi.ac.uk/efo/EFO_0001187) | 9606 |
-| Human hepatocytes | [CL:0000182](http://purl.obolibrary.org/obo/CL_0000182) | 9606 |
-| K562 | [EFO:0002067](http://www.ebi.ac.uk/efo/EFO_0002067) | 9606 |
-| Mouse embryonic stem cell | [EFO:0004038](http://www.ebi.ac.uk/efo/EFO_0004038) | 10090 |
-| NIH3T3 | [EFO:0001222](http://www.ebi.ac.uk/efo/EFO_0001222) | 10090 |
-| Bacteriophage | n/a | 38018 |
+| *E. coli* | n/a | [562](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562) |
+| *S. cerevisiae* | n/a | [4932](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=4932) |
+| *C. elegans* | n/a | [6239](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=6239) |
+| *D. melanogaster* | n/a | [7227](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=7227) |
+| HAP-1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| HepG2 | [EFO:0001187](http://www.ebi.ac.uk/efo/EFO_0001187) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| Human hepatocytes | [CL:0000182](http://purl.obolibrary.org/obo/CL_0000182) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| iPSC-derived cell line | [EFO:0005740](http://www.ebi.ac.uk/efo/EFO_0005740) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| K562 | [EFO:0002067](http://www.ebi.ac.uk/efo/EFO_0002067) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| Mouse embryonic stem cell | [EFO:0004038](http://www.ebi.ac.uk/efo/EFO_0004038) | [10090](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090) |
+| NIH3T3 | [EFO:0001222](http://www.ebi.ac.uk/efo/EFO_0001222) | [10090](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090) |
+| Influenza A virus | n/a | [11320](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=11320) |
+| Bacteriophage | n/a | [38018](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=38018) |
+| *C. savignyi* | n/a | [51511](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=51511) |
 | Cell-free | n/a | n/a |
 
 The `type` property is required. Additional detail about the model system may be provided with the `description` property.
