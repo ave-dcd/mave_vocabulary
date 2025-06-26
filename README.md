@@ -102,13 +102,13 @@ Concept codes used by the schema follow the `Coding` model, which describes conc
 `system` (or `version` of a `system`).
 
 For describing assay readouts, we recommend the use of terms from the
-[Ontology for Biomedical Investigations](https://obi-ontology.org/).
+[Experimental Factor Ontology](https://www.ebi.ac.uk/efo/).
 
 For describing human diseases relevant to the assay, we recommend using terms from [OMIM](https://www.omim.org/) or
 the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
-For describing human cell lines, we use terms from the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html),
-where available.
+For describing mammalian cell lines, we use terms from the [Experimental Factor Ontology](https://www.ebi.ac.uk/efo/),
+some of which are also in the [Cell Line Ontology](http://obofoundry.org/ontology/clo.html).
 
 We encourage users to provide an [NCBI Taxonomy ID](https://www.ncbi.nlm.nih.gov/taxonomy) that specifically denotes
 the organism (including strain, where applicable).
@@ -305,22 +305,22 @@ We recommend that cell lines are further described by relevant concepts using th
 [note](#overview-of-ontologies-and-identifiers)). We recommend that cell lines are described using the Cell Line Ontology
 where applicable. Some commonly used cell lines and model systems are listed below:
 
-| Cell | CLO Term | NCBI Taxonomy ID |
+| Cell | EFO Term | NCBI Taxonomy ID |
 |------|----------|------------------|
 | Yeast | n/a | 4932 |
-| HEK293T | 37372 or 37373 | 9606 |
-| HAP1 | missing | 9606 |
-| HeLa | 3684 | 9606 |
+| HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) | 9606 |
+| HAP1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) | 9606 |
+| HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) | 9606 |
 | *E. coli* | n/a | 562 |
-| iPSC-derived | 37308 | 9606 |
+| iPSC-derived cell line | [EFO:0005740](http://www.ebi.ac.uk/efo/EFO_0005740) | 9606 |
 | *C. elegans* | n/a | 6239 |
 | *C. savignyi* | n/a | 51511 |
 | *D. melanogaster* | n/a | 7227 |
-| HepG2 | 3704 | 9606 |
-| Human hepatocytes | 182 | 9606 |
-| K562 | 7050 | 9606 |
-| Mouse embryonic stem cells | 37317 | 10090 |
-| NIH3T3 | missing | 10090 |
+| HepG2 | [EFO:0001187](http://www.ebi.ac.uk/efo/EFO_0001187) | 9606 |
+| Human hepatocytes | [CL:0000182](http://purl.obolibrary.org/obo/CL_0000182) | 9606 |
+| K562 | [EFO:0002067](http://www.ebi.ac.uk/efo/EFO_0002067) | 9606 |
+| Mouse embryonic stem cell | [EFO:0004038](http://www.ebi.ac.uk/efo/EFO_0004038) | 10090 |
+| NIH3T3 | [EFO:0001222](http://www.ebi.ac.uk/efo/EFO_0001222) | 10090 |
 | Bacteriophage | n/a | 38018 |
 | Cell-free | n/a | n/a |
 
