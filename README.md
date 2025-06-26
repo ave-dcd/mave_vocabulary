@@ -62,12 +62,12 @@ The repository currently contains three examples:
 
 - [examples/Findlay_2018.yml](examples/Findlay_2018.yml) describes a saturation genome editing (SGE) experiment on BRCA1, involving CRISPR-based
 editing of the endogenous locus and measuring cell survival in HAP1 cells
-([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/30209399/))
+([PubMed: 30209399](https://pubmed.ncbi.nlm.nih.gov/30209399/))
 - [examples/Matreyek_2018.yml](examples/Matreyek_2018.yml) describes a deep mutational scan of PTEN, expressed using a designed construct integrated
 into the genome using a landing pad system and measuring cell fluorescence, also known as VAMP-seq
-([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/29785012/))
+([PubMed: 29785012](https://pubmed.ncbi.nlm.nih.gov/29785012/))
 - [examples/Seuma_2022.yml](examples/Seuma_2022.yml) describes a deep mutational scan of amyloid beta, expressed episomally and measuring the
-effect on yeast growth ([PubMed reference](https://pubmed.ncbi.nlm.nih.gov/36400770/))
+effect on yeast growth ([PubMed: 36400770](https://pubmed.ncbi.nlm.nih.gov/36400770/))
 
 The schema starts with some descriptive metadata, such as the title and abstract.
 The title and abstract should reflect the experimental dataset reflected in a study (which may optionally reference a published document that may
