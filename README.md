@@ -268,12 +268,15 @@ the following controlled vocabulary terms:
 - fluorescence in-situ hybridization (FISH) assay ([OBI:0003094](http://purl.obolibrary.org/obo/OBI_0003094))
 - flow cytometry assay ([OBI:0000916](http://purl.obolibrary.org/obo/OBI_0000916))
 - imaging mass cytometry assay ([OBI:0003096](http://purl.obolibrary.org/obo/OBI_0003096))
-- systematic evolution of ligands by exponential enrichment assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
+- systematic evolution of ligands by exponential enrichment (SELEX) assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
 - single cell imaging (TBA)
 - multiplexed fluorescent antibody imaging ([OBI:0003091](http://purl.obolibrary.org/obo/OBI_0003091))
 - binding assay ([OBI:0001146](http://purl.obolibrary.org/obo/OBI_0001146))
 - cell proliferation assay ([OBI:0000891](http://purl.obolibrary.org/obo/OBI_0000891))
-- survival assessment assay ([OBI:0000699](http://purl.obolibrary.org/obo/OBI_0000699))
+- cellular survival assay ([EFO:0022952](http://www.ebi.ac.uk/efo/EFO_0022952))
+- enzyme assay ([EFO:0022947](http://www.ebi.ac.uk/efo/EFO_0022947))
+- minigene splicing assay ([EFO:0022942](http://www.ebi.ac.uk/efo/EFO_0022942))
+- patch clamp ([EFO:0022948](http://www.ebi.ac.uk/efo/EFO_0022948))
 - other
 
 #### Relevance
