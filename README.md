@@ -262,18 +262,18 @@ The assay method, defining the molecular properties interrogated by the experime
 are available in the [concept vocabulary tsv](concept_vocabulary.tsv). The method is specified by the `type` property, which must be one of
 the following controlled vocabulary terms:
 
-- promoter activity detection by reporter gene assay
-- bulk RNA-sequencing
-- single-cell RNA sequencing assay
-- fluorescence in-situ hybridization (FISH) assay
-- flow cytometry assay
-- imaging mass cytometry assay
-- systematic evolution of ligands by exponential enrichment assay
-- single cell imaging
-- multiplexed fluorescent antibody imaging
-- binding assay
-- cell proliferation assay
-- survival assessment assay
+- promoter activity assay ([EFO:0022950](http://www.ebi.ac.uk/efo/EFO_0022950))
+- bulk RNA-sequencing assay ([OBI:0003090](http://purl.obolibrary.org/obo/OBI_0003090))
+- single-cell RNA-sequencing assay ([EFO:0008913](http://www.ebi.ac.uk/efo/EFO_0008913))
+- fluorescence in-situ hybridization (FISH) assay ([OBI:0003094](http://purl.obolibrary.org/obo/OBI_0003094))
+- flow cytometry assay ([OBI:0000916](http://purl.obolibrary.org/obo/OBI_0000916))
+- imaging mass cytometry assay ([OBI:0003096](http://purl.obolibrary.org/obo/OBI_0003096))
+- systematic evolution of ligands by exponential enrichment assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
+- single cell imaging (TBA)
+- multiplexed fluorescent antibody imaging ([OBI:0003091](http://purl.obolibrary.org/obo/OBI_0003091))
+- binding assay ([OBI:0001146](http://purl.obolibrary.org/obo/OBI_0001146))
+- cell proliferation assay ([OBI:0000891](http://purl.obolibrary.org/obo/OBI_0000891))
+- survival assessment assay ([OBI:0000699](http://purl.obolibrary.org/obo/OBI_0000699))
 - other
 
 #### Relevance
