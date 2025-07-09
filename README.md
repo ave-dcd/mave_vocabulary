@@ -279,14 +279,21 @@ the following controlled vocabulary terms:
 - patch clamp ([EFO:0022948](http://www.ebi.ac.uk/efo/EFO_0022948))
 - other
 
-#### Relevance
+#### Process investigated
 
-The disease or biological processes the assay is relevant to. Relevance is specified by an array of `Coding` objects (see
-[note](#overview-of-ontologies-and-identifiers)). We recommend relevance to be described by terms from [OMIM](https://www.omim.org/)
+The molecular or biological process investigated by the assay. Process investigated is specified by an array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)).
+We recommend relevance to be described by terms from [Gene Ontology (GO)](https://www.geneontology.org/).
+
+#### Disease relevance
+
+The disease the assay is relevant to, if applicable. Disease relevance is specified by an array of `Coding` objects (see
+[note](#overview-of-ontologies-and-identifiers)).
+We recommend relevance to be described by terms from [OMIM](https://www.omim.org/)
 or the [Mondo Disease Ontology](https://mondo.monarchinitiative.org/).
 
-Note that this field captures the intent of the experimenters who designed and/or performed the assay, and should not be interpreted as a
-gene-disease relationship that has been validated or evaluated clinically.
+Note that this field captures the intent of the experimenters who designed and/or performed the assay,
+and should not be interpreted as a gene-disease relationship that has been validated or evaluated clinically.
 
 #### Model system
 
@@ -331,6 +338,7 @@ Some commonly used cell lines and experimental systems are listed below:
 | Cell-free | n/a | n/a |
 
 The `type` property is required. Additional detail about the model system may be provided with the `description` property.
+This is the preferred location to record modifications to the model system, such as modifications to a cell line to incorporate a landing pad site.
 
 #### Profiling strategy
 
