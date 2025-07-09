@@ -291,10 +291,9 @@ The model system context that influences expression of the phenotype. The model 
 be one of the following controlled vocabulary terms:
 
 - immortalized human cells
+- human induced pluripotent stem cells
+- patient-derived primary cells
 - murine primary cells
-- induced pluripotent stem cells from human male
-- induced pluripotent stem cells from human female
-- patient derived primary cells (e.g. T-cells, adipocytes)
 - yeast
 - bacteria
 - bacteriophage
