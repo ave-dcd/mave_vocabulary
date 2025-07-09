@@ -181,6 +181,7 @@ the following controlled vocabulary terms:
 
 `system` and `integration` are required properties. `description` may be used to further describe the generation method
 `system` and `integration` parameters, and is required if the `system` is set to `other`.
+If the sequence was codon optimized please include this in the `description` field.
 
 ##### Endogenous locus library method
 
