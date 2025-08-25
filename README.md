@@ -263,23 +263,23 @@ The assay method, defining the molecular properties interrogated by the experime
 are available in the [concept vocabulary tsv](concept_vocabulary.tsv). The method is specified by the `type` property, which must be one of
 the following controlled vocabulary terms:
 
-- promoter activity assay ([EFO:0022950](http://www.ebi.ac.uk/efo/EFO_0022950))
-- bulk RNA-sequencing assay ([OBI:0003090](http://purl.obolibrary.org/obo/OBI_0003090))
-- single-cell RNA-sequencing assay ([EFO:0008913](http://www.ebi.ac.uk/efo/EFO_0008913))
-- fluorescence in-situ hybridization (FISH) assay ([OBI:0003094](http://purl.obolibrary.org/obo/OBI_0003094))
-- flow cytometry assay ([OBI:0000916](http://purl.obolibrary.org/obo/OBI_0000916))
-- imaging mass cytometry assay ([OBI:0003096](http://purl.obolibrary.org/obo/OBI_0003096))
-- systematic evolution of ligands by exponential enrichment (SELEX) assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
-- single cell imaging (TBA)
-- multiplexed fluorescent antibody imaging ([OBI:0003091](http://purl.obolibrary.org/obo/OBI_0003091))
-- binding assay ([OBI:0001146](http://purl.obolibrary.org/obo/OBI_0001146))
 - cell proliferation assay ([OBI:0000891](http://purl.obolibrary.org/obo/OBI_0000891))
 - cellular survival assay ([EFO:0022952](http://www.ebi.ac.uk/efo/EFO_0022952))
 - enzyme assay ([EFO:0022947](http://www.ebi.ac.uk/efo/EFO_0022947))
-- minigene splicing assay ([EFO:0022942](http://www.ebi.ac.uk/efo/EFO_0022942))
-- patch clamp ([EFO:0022948](http://www.ebi.ac.uk/efo/EFO_0022948))
+- binding assay ([OBI:0001146](http://purl.obolibrary.org/obo/OBI_0001146))
 - DNA binding assay ([EFO:0022951](http://www.ebi.ac.uk/efo/EFO_0022951))
+- flow cytometry assay ([OBI:0000916](http://purl.obolibrary.org/obo/OBI_0000916))
+- promoter activity assay ([EFO:0022950](http://www.ebi.ac.uk/efo/EFO_0022950))
+- bulk RNA-sequencing assay ([OBI:0003090](http://purl.obolibrary.org/obo/OBI_0003090))
+- single-cell RNA-sequencing assay ([EFO:0008913](http://www.ebi.ac.uk/efo/EFO_0008913))
+- minigene splicing assay ([EFO:0022942](http://www.ebi.ac.uk/efo/EFO_0022942))
+- systematic evolution of ligands by exponential enrichment (SELEX) assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
 - subcellular protein localization assay ([EFO:0022949](http://www.ebi.ac.uk/efo/EFO_0022949))
+- single cell imaging (TBA)
+- multiplexed fluorescent antibody imaging ([OBI:0003091](http://purl.obolibrary.org/obo/OBI_0003091))
+- fluorescence in-situ hybridization (FISH) assay ([OBI:0003094](http://purl.obolibrary.org/obo/OBI_0003094))
+- imaging mass cytometry assay ([OBI:0003096](http://purl.obolibrary.org/obo/OBI_0003096))
+- patch clamp ([EFO:0022948](http://www.ebi.ac.uk/efo/EFO_0022948))
 - other
 
 #### Process investigated
