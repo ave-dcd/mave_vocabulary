@@ -253,7 +253,8 @@ Assay replication work performed is defined by its `type`, which must be one of 
 - biological and technical
 - no replication
 
-The `type` property is required. Additional detail about the replication method may be provided with the `description` property.
+The `type` property is required.
+Additional detail about the replication method, including the number of replicates, may be provided with the `description` property.
 
 #### Method
 
@@ -277,6 +278,8 @@ the following controlled vocabulary terms:
 - enzyme assay ([EFO:0022947](http://www.ebi.ac.uk/efo/EFO_0022947))
 - minigene splicing assay ([EFO:0022942](http://www.ebi.ac.uk/efo/EFO_0022942))
 - patch clamp ([EFO:0022948](http://www.ebi.ac.uk/efo/EFO_0022948))
+- DNA binding assay ([EFO:0022951](http://www.ebi.ac.uk/efo/EFO_0022951))
+- subcellular protein localization assay ([EFO:0022949](http://www.ebi.ac.uk/efo/EFO_0022949))
 - other
 
 #### Process investigated
