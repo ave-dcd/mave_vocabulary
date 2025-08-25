@@ -343,6 +343,8 @@ Some commonly used cell lines and experimental systems are listed below:
 The `type` property is required. Additional detail about the model system may be provided with the `description` property.
 This is the preferred location to record modifications to the model system, such as modifications to a cell line to incorporate a landing pad site.
 
+For donor cells, the `description` property should include the sex of the donor if relevant.
+
 #### Profiling strategy
 
 The variant profiling strategy used to capture variant frequency associated with outcome of phenotypic assay. The profiling 
@@ -363,3 +365,6 @@ The sequencing read type used in the assay. The read type must be one of the fol
 - multi-segment
 
 `sequencingReadType` is a required property.
+
+Multi-segment includes both discontinuous regions of the same gene,
+as well as various tiling strategies.
