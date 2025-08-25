@@ -138,7 +138,6 @@ transcript, a set of enhancers, a set of repressors, etc.
 We define the scope type using the following controlled vocabulary terms:
 
 - coding
-- intronic
 - non-coding, regulatory
 - non-coding, other
 
