@@ -317,7 +317,7 @@ It is a `Coding` object (see [note](#overview-of-ontologies-and-identifiers)) th
 A table of relevant TaxIDs is provided here for reference:
 
 | Organism | NCBI Taxonomy ID |
-|------|----------|------------------|
+|------|------------------|
 | *H. sapiens* | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
 | *E. coli* | [562](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562) |
 | *S. cerevisiae* | [4932](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=4932) |
@@ -337,7 +337,7 @@ Where available, EFO terms are preferred.
 Ontology terms for some commonly used cell lines are listed below:
 
 | Cell Line | Ontology Term |
-|------|----------|------------------|
+|------|------------------|
 | HAP-1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) |
 | HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) |
 | HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) |
