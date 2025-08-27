@@ -300,47 +300,57 @@ and should not be interpreted as a gene-disease relationship that has been valid
 
 #### Model system
 
-The model system context that influences expression of the phenotype. The model system is specified by the `type` property and must 
-be one of the following controlled vocabulary terms:
+The model system context that influences expression of the phenotype.
+The model system is specified by a combination of the `type` property and `organism` property.
 
-- immortalized human cells
-- human induced pluripotent stem cells
-- patient-derived primary cells
-- murine primary cells
-- yeast
-- bacteria
-- bacteriophage
-- molecular display
-- other
+The `type` property and must be one of the following controlled vocabulary terms:
 
-We recommend that cell lines or organisms are further described by relevant concepts using the `codings` array of `Coding` 
-objects (see [note](#overview-of-ontologies-and-identifiers)).
-We recommend using EFO terms where applicable, as well as specifying an NCBI Taxonomy ID.
-The latter is especially useful for describing experiments performed in viruses, and can often resolve to individual strains.
+- immortalized cells
+- induced pluripotent stem cells
+- primary cells
+- virus
+- cell-free
 
-Some commonly used cell lines and experimental systems are listed below:
+The `organism` property specifies the species or strain being used.
+It is a `Coding` object (see [note](#overview-of-ontologies-and-identifiers)) that specifies an NCBI Taxonomy ID.
 
-| Cell/system | EFO Term | NCBI Taxonomy ID |
+A table of relevant TaxIDs is provided here for reference:
+
+| Organism | NCBI Taxonomy ID |
 |------|----------|------------------|
-| *E. coli* | n/a | [562](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562) |
-| *S. cerevisiae* | n/a | [4932](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=4932) |
-| *C. elegans* | n/a | [6239](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=6239) |
-| *D. melanogaster* | n/a | [7227](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=7227) |
-| HAP-1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| HepG2 | [EFO:0001187](http://www.ebi.ac.uk/efo/EFO_0001187) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| Human hepatocytes | [CL:0000182](http://purl.obolibrary.org/obo/CL_0000182) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| iPSC-derived cell line | [EFO:0005740](http://www.ebi.ac.uk/efo/EFO_0005740) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| K562 | [EFO:0002067](http://www.ebi.ac.uk/efo/EFO_0002067) | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
-| Mouse embryonic stem cell | [EFO:0004038](http://www.ebi.ac.uk/efo/EFO_0004038) | [10090](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090) |
-| NIH3T3 | [EFO:0001222](http://www.ebi.ac.uk/efo/EFO_0001222) | [10090](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090) |
-| Influenza A virus | n/a | [11320](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=11320) |
-| Bacteriophage | n/a | [38018](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=38018) |
-| *C. savignyi* | n/a | [51511](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=51511) |
-| Cell-free | n/a | n/a |
+| *H. sapiens* | [9606](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606) |
+| *E. coli* | [562](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562) |
+| *S. cerevisiae* | [4932](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=4932) |
+| *C. elegans* | [6239](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=6239) |
+| *D. melanogaster* | [7227](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=7227) |
+| *C. savignyi* | [51511](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=51511) |
+| *M. musculus* | [10090](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090) |
+| Influenza A virus | [11320](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=11320) |
+| Bacteriophage | [38018](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=38018) |
 
-The `type` property is required. Additional detail about the model system may be provided with the `description` property.
+Note that many TaxIDs for specific strains or isolates have also been defined and can be found using the links above.
+These can be resolved to the relevant parent TaxID for searching and aggregating datasets.
+
+We recommend that cell lines or organisms are further described by relevant concepts using the `codings` array of `Coding` objects.
+Where available, EFO terms are preferred.
+
+Ontology terms for some commonly used cell lines are listed below:
+
+| Cell Line | Ontology Term |
+|------|----------|------------------|
+| HAP-1 | [EFO:0007598](http://www.ebi.ac.uk/efo/EFO_0001082) |
+| HEK293T | [EFO:0001082](http://www.ebi.ac.uk/efo/EFO_0001082) |
+| HeLa | [EFO:0001185](http://www.ebi.ac.uk/efo/EFO_0001185) |
+| HepG2 | [EFO:0001187](http://www.ebi.ac.uk/efo/EFO_0001187) |
+| Human hepatocytes | [CL:0000182](http://purl.obolibrary.org/obo/CL_0000182) |
+| iPSC-derived cell line | [EFO:0005740](http://www.ebi.ac.uk/efo/EFO_0005740) |
+| K562 | [EFO:0002067](http://www.ebi.ac.uk/efo/EFO_0002067) |
+| Mouse embryonic stem cell | [EFO:0004038](http://www.ebi.ac.uk/efo/EFO_0004038) |
+| NIH3T3 | [EFO:0001222](http://www.ebi.ac.uk/efo/EFO_0001222) |
+
+The `type` property is always required and `organism` and is required unless `type` is "cell-free".
+
+Additional detail about the model system may be provided with the `description` property.
 This is the preferred location to record modifications to the model system, such as modifications to a cell line to incorporate a landing pad site.
 
 For donor cells, the `description` property should include the sex of the donor if relevant.
