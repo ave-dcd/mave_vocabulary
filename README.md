@@ -275,7 +275,7 @@ the following controlled vocabulary terms:
 - minigene splicing assay ([EFO:0022942](http://www.ebi.ac.uk/efo/EFO_0022942))
 - systematic evolution of ligands by exponential enrichment (SELEX) assay ([OBI:0002161](http://purl.obolibrary.org/obo/OBI_0002161))
 - subcellular protein localization assay ([EFO:0022949](http://www.ebi.ac.uk/efo/EFO_0022949))
-- single cell imaging (TBA)
+- microscopy assay ([OBI:0002119](http://purl.obolibrary.org/obo/OBI_0002119))
 - multiplexed fluorescent antibody imaging ([OBI:0003091](http://purl.obolibrary.org/obo/OBI_0003091))
 - fluorescence in-situ hybridization (FISH) assay ([OBI:0003094](http://purl.obolibrary.org/obo/OBI_0003094))
 - imaging mass cytometry assay ([OBI:0003096](http://purl.obolibrary.org/obo/OBI_0003096))
